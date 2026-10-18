@@ -1,0 +1,161 @@
+[gd_scene load_steps=3 format=3 uid="uid://eventscene001"]
+
+[ext_resource type="Script" path="res://scenes/event/event_scene.gd" id="1_event"]
+[ext_resource type="PackedScene" path="res://scenes/ui_common/map_preview.tscn" id="2_map_preview"]
+
+[node name="EventScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_event")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10, 0.12, 0.16, 1.0)
+
+[node name="TopBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "❓ Titik Kejadian Tak Terduga"
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "❤️ HP: 10 / 10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BtnMap" type="Button" parent="TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(110, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🗺️ PETA"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 70.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainCard" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1100, 600)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MainCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainCard/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="EventTitle" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Judul Peristiwa"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StoryText" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "Cerita pendek kejadian tak terduga dalam perjalanan hidup Bima..."
+autowrap_mode = 2
+
+[node name="OutcomeBadge" type="PanelContainer" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/OutcomeBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 10
+
+[node name="OutcomeLabel" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/OutcomeBadge/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "EFEK PERISTIWA"
+horizontal_alignment = 1
+
+[node name="ResultDesc" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Penjelasan konsekuensi terhadap kondisi Bima."
+horizontal_alignment = 1
+
+[node name="BottomBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BtnAction" type="Button" parent="BottomBar"]
+custom_minimum_size = Vector2(340, 56)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -28.0
+offset_right = 170.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "LANJUTKAN PERJALANAN ➔"
+
+[node name="Popups" type="CanvasLayer" parent="."]
+
+[node name="DefeatModal" type="AcceptDialog" parent="Popups"]
+title = "Daya Tahan Habis"
+size = Vector2i(450, 180)
+dialog_text = "Kejadian tak terduga menguras habis tenaga Bima...\nBima akan mengulang dari Api Unggun terbaru."
+
+[node name="MapPreview" parent="." instance=ExtResource("2_map_preview")]

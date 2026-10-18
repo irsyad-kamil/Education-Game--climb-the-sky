@@ -1,0 +1,396 @@
+ID Soal,Tahap (1/2/3),Kategori (Normal/Elite/Boss),Bentuk (PG/TF/Isian/Matching),Narasi Konteks Bima (Optional),Teks Soal,Pilihan Jawaban / Pasangan,Kunci Jawaban,Time Attack? (Ya/Tidak)
+T1-NRM-01,1,Normal,PG,"Setelah malam itu, Bima mulai mencatat nilai ulangan matematikanya agar tahu seberapa jauh ia sudah berubah.","Nilai lima ulangan matematika Bima adalah 60, 70, 75, 80, dan 85. Rata-rata nilai ulangan Bima adalah ...","A. 70
+B. 72
+C. 74
+D. 75",C,Tidak
+T1-NRM-02,1,Normal,PG,,"Median dari data 4, 9, 2, 7, 5 adalah ...","A. 2
+B. 5
+C. 5,4
+D. 9",B,Tidak
+T1-NRM-03,1,Normal,PG,Bima mulai disiplin mengerjakan soal latihan setiap hari.,"Banyak soal latihan yang dikerjakan Bima selama 8 hari: 3, 5, 5, 6, 7, 5, 8, 6. Modus data tersebut adalah ...","A. 3
+B. 5
+C. 6
+D. 8",B,Tidak
+T1-NRM-04,1,Normal,TF,,"Median dari data 7, 3, 9, 5, 1 adalah 9, karena 9 berada di posisi tengah deretan data.","Benar
+Salah",Salah,Tidak
+T1-NRM-05,1,Normal,TF,,Sebuah data tidak mungkin memiliki lebih dari satu modus.,"Benar
+Salah",Salah,Tidak
+T1-NRM-06,1,Normal,PG,Bima mencatat lama belajar mandirinya selama empat hari berturut-turut.,"Lama belajar mandiri Bima (menit) selama empat hari: 140, 60, 40, 80. Median data tersebut adalah ...","A. 60
+B. 70
+C. 80
+D. 90",B,Tidak
+T1-ELT-01,1,Elite,PG,"Nilai-nilai ulangan Bima mulai membaik, dan guru memintanya menghitung sendiri rata-ratanya.","Nilai enam ulangan Bima: 70, 85, 90, 65, 80, 90. Rata-rata nilai tersebut adalah ...","A. 78
+B. 80
+C. 82,5
+D. 90",B,Ya
+T1-ELT-02,1,Elite,PG,,"Median dari data 12, 5, 9, 15, 7, 20, 10 adalah ...","A. 9
+B. 10
+C. 12
+D. 15",B,Ya
+T1-ELT-03,1,Elite,Isian,Bima mulai menyisihkan sebagian uang jajannya setiap hari.,"Tabungan Bima selama lima hari (dalam ribu rupiah): 8, 10, 12, 14, 6. Rata-rata tabungan Bima per hari (dalam ribu rupiah) adalah ...",-,10,Tidak
+T1-ELT-04,1,Elite,Matching,,Pasangkan setiap ukuran pemusatan data dengan pengertiannya.,"SOAL:
+1. Mean
+2. Median
+3. Modus
+JAWABAN:
+A. Nilai tengah setelah data diurutkan
+B. Nilai yang paling sering muncul
+C. Jumlah seluruh data dibagi banyak data",1-C; 2-A; 3-B,Tidak
+T1-BOS-A1,1,Boss,PG,,"Rata-rata dari data 3, 5, 7, 9, 16 adalah ...","A. 7
+B. 8
+C. 9
+D. 10
+E. 16",B,Ya
+T1-BOS-A2,1,Boss,PG,Hari ujian akhir SMA tiba. Bima menggenggam pensilnya erat-erat dan mulai mengerjakan.,"Median dari data 6, 2, 9, 4, 7, 3 adalah ...","A. 4
+B. 5
+C. 5,2
+D. 6
+E. 7",B,Ya
+T1-BOS-B1,1,Boss,TF,,"Median dari data 2, 4, 4, 6, 9 adalah 4.","Benar
+Salah",Benar,Ya
+T1-BOS-B2,1,Boss,TF,,"Pada data 1, 2, 3, 4, 100, nilai mean dan median-nya sama.","Benar
+Salah",Salah,Ya
+T1-BOS-C1,1,Boss,Isian,,"Modus dari data 8, 6, 8, 9, 6, 8, 7 adalah ...",-,8,Ya
+T1-BOS-C2,1,Boss,Isian,"Ibu pernah berkata, kerja keras tidak pernah mengkhianati hasil. Bima mengingatnya sambil menjawab.","Median dari data 15, 11, 19, 13, 22 adalah ...",-,15,Ya
+T1-BOS-D1,1,Boss,Matching,,Pasangkan setiap data dengan rata-ratanya.,"SOAL:
+1. Mean dari data 2, 4, 6
+2. Mean dari data 3, 5, 10
+3. Mean dari data 7, 8, 9
+4. Mean dari data 4, 4, 13
+JAWABAN:
+A. 8
+B. 4
+C. 7
+D. 6",1-B; 2-D; 3-A; 4-C,Ya
+T1-BOS-D2,1,Boss,Matching,,Pasangkan setiap data dengan mediannya.,"SOAL:
+1. Median dari data 9, 3, 7
+2. Median dari data 4, 8, 2, 6
+3. Median dari data 12, 5, 10, 8, 20
+4. Median dari data 1, 2, 3, 4, 5, 6
+JAWABAN:
+A. 10
+B. 3,5
+C. 7
+D. 5",1-C; 2-D; 3-A; 4-B,Ya
+T1-BOS-E1,1,Boss,Matching,,Pasangkan setiap soal dengan jawabannya. Ada jawaban yang tidak terpakai (3 soal : 5 jawaban).,"SOAL:
+1. Mean dari 4, 6, 8
+2. Median dari 9, 2, 7
+3. Modus dari 3, 5, 3, 8
+JAWABAN:
+A. 3
+B. 5
+C. 6
+D. 7
+E. 9",1-C; 2-D; 3-A,Tidak
+T1-BOS-E2,1,Boss,Matching,,Pasangkan soal dengan jawabannya. Ada soal yang tidak memiliki pasangan (5 soal : 3 jawaban).,"SOAL:
+1. Mean dari 2, 4, 6
+2. Mean dari 1, 2, 3
+3. Median dari 1, 9, 5
+4. Median dari 10 dan 20
+5. Modus dari 7, 2, 7, 3
+JAWABAN:
+A. 5
+B. 7
+C. 4",1-C; 3-A; 5-B; soal 2 & 4 tanpa pasangan (pengecoh),Tidak
+T2-NRM-01,2,Normal,PG,"Di tahun pertama kuliah, Bima rajin mencatat hasil kuisnya.","Hasil kuis Bima dan teman-temannya disajikan dalam tabel berikut:
+Nilai | Frekuensi
+6 | 2
+7 | 3
+8 | 5
+Rata-rata nilai kuis tersebut adalah ...","A. 7
+B. 7,3
+C. 7,5
+D. 8",B,Tidak
+T2-NRM-02,2,Normal,PG,Bima ingin tahu nilai kuis keenam yang ia perlukan agar rata-rata kuisnya memenuhi syarat beasiswa.,Rata-rata lima nilai kuis Bima adalah 78. Nilai kuis keenam yang harus diperoleh agar rata-rata keenam kuis menjadi 80 adalah ...,"A. 85
+B. 88
+C. 90
+D. 92",C,Tidak
+T2-NRM-03,2,Normal,PG,,"Modus dari data 4, 5, 5, 6, 6, 7 adalah ...","A. 5
+B. 6
+C. 5 dan 6
+D. Tidak ada modus",C,Tidak
+T2-NRM-04,2,Normal,PG,,"Perhatikan tabel frekuensi nilai ujian berikut:
+Nilai | Frekuensi
+5 | 3
+6 | 4
+7 | 2
+8 | 3
+Median data tersebut adalah ...","A. 5
+B. 6
+C. 6,5
+D. 7",B,Tidak
+T2-NRM-05,2,Normal,PG,Bima menghitung penghasilan dari kerja paruh waktunya.,"Penghasilan Bima dari empat shift kerja paruh waktu (dalam puluhan ribu rupiah) adalah x, 6, 8, dan 10. Jika rata-ratanya 7, nilai x adalah ...","A. 2
+B. 3
+C. 4
+D. 5",C,Tidak
+T2-NRM-06,2,Normal,PG,,"Rata-rata nilai 10 mahasiswa dalam satu kelompok adalah 70. Jika satu mahasiswa bernilai 52 dikeluarkan, rata-rata nilai 9 mahasiswa yang tersisa adalah ...","A. 70
+B. 71
+C. 72
+D. 74",C,Tidak
+T2-NRM-07,2,Normal,PG,Bima mencatat jam kerja paruh waktunya selama seminggu.,"Jam kerja paruh waktu Bima setiap hari selama seminggu: 4, 5, 4, 6, 4, 5, 3. Modus data tersebut adalah ...","A. 3
+B. 4
+C. 5
+D. 6",B,Tidak
+T2-NRM-08,2,Normal,TF,,"Jika rata-rata 5 data adalah 12, maka jumlah kelima data tersebut adalah 60.","Benar
+Salah",Benar,Tidak
+T2-NRM-09,2,Normal,TF,,"Median dari data 3, 5, 8, 10 adalah 8.","Benar
+Salah",Salah,Tidak
+T2-NRM-10,2,Normal,TF,Bima menemukan data nilai yang semuanya berbeda dan bertanya-tanya apakah ada modusnya.,"Jika semua nilai dalam suatu data berbeda, maka data tersebut tidak memiliki modus.","Benar
+Salah",Benar,Tidak
+T2-NRM-11,2,Normal,TF,,Mean dari suatu data selalu merupakan salah satu nilai dalam data tersebut.,"Benar
+Salah",Salah,Tidak
+T2-NRM-12,2,Normal,TF,,Menambahkan satu data yang nilainya sama dengan rata-rata awal tidak mengubah rata-rata data tersebut.,"Benar
+Salah",Benar,Tidak
+T2-ELT-01,2,Elite,PG,Dosen memberi kuis kilat. Bima harus menjawab sebelum waktu habis.,"Perhatikan tabel nilai berikut:
+Nilai | Frekuensi
+5 | 2
+6 | 3
+7 | 4
+8 | 1
+Rata-rata nilai tersebut adalah ...","A. 6
+B. 6,4
+C. 6,5
+D. 7",B,Ya
+T2-ELT-02,2,Elite,PG,,"Rata-rata 6 data adalah 9. Jika ditambahkan satu data baru, rata-rata menjadi 10. Data baru tersebut bernilai ...","A. 14
+B. 15
+C. 16
+D. 17",C,Ya
+T2-ELT-03,2,Elite,PG,,"Median dari data 18, 25, 20, 22, 30, 16, 28, 24 adalah ...","A. 22
+B. 23
+C. 24
+D. 25",B,Ya
+T2-ELT-04,2,Elite,Isian,Bima membantu teman sekelompoknya menghitung nilai yang belum diketahui.,"Rata-rata nilai empat mahasiswa adalah 7,5. Tiga di antaranya mendapat nilai 6, 8, dan 9. Nilai mahasiswa keempat adalah ...",-,7,Tidak
+T2-ELT-05,2,Elite,Isian,,"Perhatikan tabel frekuensi berikut:
+Nilai | Frekuensi
+3 | 4
+4 | 6
+5 | 8
+6 | 2
+Median data tersebut adalah ...",-,"4,5 (diterima: 4.5)",Tidak
+T2-ELT-06,2,Elite,Isian,,"Jumlah dari 8 data adalah 96. Jika setiap data ditambah 3, rata-rata data yang baru adalah ...",-,15,Tidak
+T2-ELT-07,2,Elite,Matching,,Pasangkan setiap data dengan mediannya.,"SOAL:
+1. Median dari data 4, 9, 1, 7, 3
+2. Median dari data 10, 2, 8, 6
+3. Median dari data 15, 5, 25
+JAWABAN:
+A. 7
+B. 15
+C. 4",1-C; 2-A; 3-B,Tidak
+T2-ELT-08,2,Elite,Matching,,Pasangkan setiap kondisi dengan nilai x yang memenuhi.,"SOAL:
+1. Rata-rata dari 4, 6, x adalah 6
+2. Rata-rata dari 5, 9, 10, x adalah 9
+3. Rata-rata dari 2, x, 10 adalah 5
+JAWABAN:
+A. 3
+B. 8
+C. 12",1-B; 2-C; 3-A,Tidak
+T2-BOS-A1,2,Boss,PG,Ujian akhir semester di depan mata. Bima membuka lembar soal dan mulai menghitung.,"Perhatikan tabel nilai berikut:
+Nilai | Frekuensi
+6 | 3
+7 | 4
+8 | 2
+9 | 1
+Rata-rata nilai tersebut adalah ...","A. 6,9
+B. 7
+C. 7,1
+D. 7,5
+E. 7,8",C,Ya
+T2-BOS-A2,2,Boss,PG,,"Rata-rata 4 bilangan adalah 12. Jika bilangan kelima ditambahkan, rata-rata kelima bilangan menjadi 14. Bilangan kelima tersebut adalah ...","A. 18
+B. 20
+C. 22
+D. 24
+E. 26",C,Ya
+T2-BOS-B1,2,Boss,TF,,"Jika data 3, 4, 5 ditambah satu data bernilai 4, maka rata-ratanya tetap 4.","Benar
+Salah",Benar,Ya
+T2-BOS-B2,2,Boss,TF,,"Median dari data 2, 5, 5, 8, 10, 12 adalah 5.","Benar
+Salah",Salah,Ya
+T2-BOS-C1,2,Boss,Isian,,"Agar rata-rata dari 5, 7, x, 9, dan 11 sama dengan 8, nilai x adalah ...",-,8,Ya
+T2-BOS-C2,2,Boss,Isian,"Untuk tugas akhir mata kuliah statistik, Bima menganalisis data frekuensi berikut.","Nilai | Frekuensi
+3 | 2
+4 | 5
+5 | 8
+6 | 5
+Rata-rata data tersebut adalah ...",-,"4,8 (diterima: 4.8)",Ya
+T2-BOS-D1,2,Boss,Matching,,Pasangkan setiap ukuran dengan nilainya untuk data yang sama.,"SOAL:
+1. Mean data 2, 2, 4, 5, 6, 11
+2. Median data 2, 2, 4, 5, 6, 11
+3. Modus data 2, 2, 4, 5, 6, 11
+4. Jumlah seluruh data 2, 2, 4, 5, 6, 11
+JAWABAN:
+A. 2
+B. 4,5
+C. 5
+D. 30",1-C; 2-B; 3-A; 4-D,Ya
+T2-BOS-D2,2,Boss,Matching,,Pasangkan setiap keperluan dengan cara/ukuran yang tepat.,"SOAL:
+1. Menentukan ukuran sepatu yang paling banyak dipesan
+2. Menentukan nilai rata-rata ujian satu kelas
+3. Menentukan nilai yang membagi data terurut menjadi dua bagian sama banyak
+4. Menentukan jumlah seluruh data bila rata-rata dan banyak data diketahui
+JAWABAN:
+A. Median
+B. Kalikan mean dengan banyak data
+C. Modus
+D. Mean",1-C; 2-D; 3-A; 4-B,Ya
+T2-BOS-E1,2,Boss,Matching,,Pasangkan setiap soal dengan jawabannya. Ada jawaban yang tidak terpakai (3 soal : 5 jawaban).,"SOAL:
+1. Mean dari 3, 5, 10
+2. Median dari 1, 8, 4, 6
+3. Modus dari 9, 2, 9, 4
+JAWABAN:
+A. 5
+B. 6
+C. 9
+D. 4
+E. 18",1-B; 2-A; 3-C,Tidak
+T2-BOS-E2,2,Boss,Matching,,Pasangkan soal dengan jawabannya. Ada soal yang tidak memiliki pasangan (5 soal : 3 jawaban).,"SOAL:
+1. Mean dari 2, 6, 10
+2. Mean dari 3 dan 3
+3. Median dari 12, 3, 9, 5
+4. Median dari 20, 10, 40
+5. Modus dari 4, 8, 4, 1
+JAWABAN:
+A. 7
+B. 4
+C. 6",1-C; 3-A; 5-B; soal 2 & 4 tanpa pasangan (pengecoh),Tidak
+T3-NRM-01,3,Normal,PG,Bima mengikuti pelatihan kerja yang dibagi menjadi dua kelompok.,"Kelompok Pagi (20 peserta) memiliki rata-rata nilai 70, sedangkan Kelompok Sore (30 peserta) memiliki rata-rata nilai 80. Rata-rata nilai seluruh peserta adalah ...","A. 75
+B. 76
+C. 77
+D. 80",B,Tidak
+T3-NRM-02,3,Normal,PG,"Saat melamar kerja, Bima membaca iklan: ""Rata-rata gaji karyawan kami lebih dari Rp13 juta!"" Ia ingin memastikan angka itu tidak menyesatkan.","Gaji bulanan 6 karyawan (juta rupiah): 3, 3, 4, 4, 5, 60. Ukuran pemusatan yang paling mewakili gaji kebanyakan karyawan adalah ...","A. Mean, karena paling mudah dihitung
+B. Median, karena tidak terpengaruh nilai yang sangat besar
+C. Modus, karena nilainya paling besar
+D. Jumlah data, karena menunjukkan total gaji",B,Tidak
+T3-NRM-03,3,Normal,PG,"Seleksi kerja Bima terdiri atas wawancara, tes tertulis, dan praktik, dengan bobot yang berbeda-beda.","Bobot wawancara 20%, tes tertulis 30%, dan praktik 50%. Bima memperoleh nilai 90 (wawancara), 80 (tes tertulis), dan 70 (praktik). Nilai akhir Bima adalah ...","A. 75
+B. 77
+C. 78
+D. 80",B,Tidak
+T3-NRM-04,3,Normal,PG,,"Rata-rata suatu data adalah 12. Jika setiap data dikali 2 lalu dikurangi 3, rata-rata data yang baru adalah ...","A. 18
+B. 21
+C. 22
+D. 24",B,Tidak
+T3-NRM-05,3,Normal,PG,Bima membuka usaha kecil bersama temannya dan mencatat jumlah barang yang terjual setiap hari.,"Tabel jumlah barang terjual per hari:
+Barang terjual | Banyak hari
+8 | 3
+9 | 4
+10 | 2
+12 | 1
+Rata-rata barang terjual per hari adalah ...","A. 9
+B. 9,2
+C. 9,5
+D. 10",B,Tidak
+T3-NRM-06,3,Normal,PG,Bima mengukur waktunya mengerjakan tugas pekerjaan kantor.,"Waktu (menit) Bima menyelesaikan 7 tugas: 12, 9, 15, 11, 9, 14, 10. Median data tersebut adalah ...","A. 9
+B. 11
+C. 11,4
+D. 12",B,Tidak
+T3-NRM-07,3,Normal,PG,Perusahaan mengumumkan hasil tes seluruh pelamar dalam bentuk tabel berkelompok.,"Perhatikan tabel berikut:
+Nilai | Frekuensi
+41–50 | 2
+51–60 | 3
+61–70 | 3
+71–80 | 2
+Rata-rata nilai tes (menggunakan titik tengah kelas) adalah ...","A. 58,5
+B. 60,5
+C. 60
+D. 62,5",B,Tidak
+T3-NRM-08,3,Normal,TF,,"Jika rata-rata gaji 4 karyawan adalah Rp5 juta, maka total gaji keempat karyawan tersebut adalah Rp20 juta.","Benar
+Salah",Benar,Tidak
+T3-NRM-09,3,Normal,TF,,"Jika dua kelompok data memiliki rata-rata 60 dan 80, maka rata-rata gabungannya pasti 70.","Benar
+Salah",Salah,Tidak
+T3-NRM-10,3,Normal,TF,,Nilai ekstrem (outlier) memengaruhi mean lebih besar daripada memengaruhi median.,"Benar
+Salah",Benar,Tidak
+T3-NRM-11,3,Normal,TF,,"Jika setiap data dikali 3, maka median data yang baru juga menjadi 3 kali median data awal.","Benar
+Salah",Benar,Tidak
+T3-NRM-12,3,Normal,TF,,"Pada data 5, 7, 7, 9, 12, mengganti angka 12 dengan 100 akan mengubah nilai median.","Benar
+Salah",Salah,Tidak
+T3-ELT-01,3,Elite,PG,Bima diminta menggabungkan hasil dua tim penjualan di tempat kerjanya.,Tim A (15 orang) memiliki rata-rata nilai 80 dan Tim B (25 orang) memiliki rata-rata nilai 72. Rata-rata nilai gabungan kedua tim adalah ...,"A. 74
+B. 75
+C. 76
+D. 77",B,Ya
+T3-ELT-02,3,Elite,PG,,"Rata-rata 9 nilai adalah 72. Jika nilai Bima, yaitu 82, ikut dihitung, rata-rata 10 nilai menjadi ...","A. 72,5
+B. 73
+C. 73,5
+D. 74",B,Ya
+T3-ELT-03,3,Elite,PG,,"Rata-rata 8 data adalah 14. Jika dua data, yaitu 10 dan 12, dikeluarkan, rata-rata 6 data yang tersisa adalah ...","A. 14
+B. 15
+C. 16
+D. 17",B,Ya
+T3-ELT-04,3,Elite,Isian,Penilaian kinerja karyawan di tempat kerja Bima memakai bobot yang berbeda untuk tiap aspek.,"Kedisiplinan (bobot 2) bernilai 85, ketelitian (bobot 3) bernilai 80, dan kerja sama (bobot 5) bernilai 90. Nilai rata-rata terbobot kinerja tersebut adalah ...",-,86,Tidak
+T3-ELT-05,3,Elite,Isian,,"Rata-rata 10 data adalah 25. Jika setiap data dikali 4 lalu ditambah 7, rata-rata data yang baru adalah ...",-,107,Tidak
+T3-ELT-06,3,Elite,Isian,,"Rata-rata 5 bilangan adalah 14. Jika bilangan 30 diganti dengan 10, rata-rata yang baru adalah ...",-,10,Tidak
+T3-ELT-07,3,Elite,Matching,,Pasangkan setiap situasi dengan ukuran/cara yang paling tepat.,"SOAL:
+1. Gaji sebagian besar pegawai ingin diwakili, padahal ada satu gaji direktur yang sangat besar
+2. Menentukan ukuran seragam yang paling banyak diminta
+3. Menggabungkan rata-rata dua kelas yang jumlah siswanya berbeda
+JAWABAN:
+A. Modus
+B. Rata-rata gabungan (terbobot)
+C. Median",1-C; 2-A; 3-B,Tidak
+T3-ELT-08,3,Elite,Matching,,"Data awal: 6, 8, 10. Pasangkan setiap perubahan dengan hasilnya.","SOAL:
+1. Mean setelah setiap data dikali 2
+2. Mean setelah setiap data ditambah 5
+3. Median setelah setiap data dikurangi 1
+JAWABAN:
+A. 13
+B. 16
+C. 7",1-B; 2-A; 3-C,Tidak
+T3-BOS-A1,3,Boss,PG,Wawancara terakhir. Tim HRD menyodorkan data dua kelompok pelamar kepada Bima.,"Kelompok A (12 pelamar) memiliki rata-rata nilai tes 75, dan Kelompok B (18 pelamar) memiliki rata-rata nilai tes 80. Rata-rata nilai seluruh pelamar adalah ...","A. 76
+B. 77
+C. 77,5
+D. 78
+E. 78,5",D,Ya
+T3-BOS-A2,3,Boss,PG,,"Perhatikan tabel nilai berikut:
+Nilai | Frekuensi
+60 | 3
+70 | 5
+80 | 4
+90 | 2
+Median data tersebut adalah ...","A. 65
+B. 70
+C. 73,6
+D. 75
+E. 80",B,Ya
+T3-BOS-B1,3,Boss,TF,,"Jika rata-rata 5 data adalah 10 dan satu data bernilai 10 dikeluarkan, rata-rata 4 data yang tersisa tetap 10.","Benar
+Salah",Benar,Ya
+T3-BOS-B2,3,Boss,TF,,"Pada data yang terdiri dari 5 bilangan, mengganti bilangan terbesar dengan bilangan yang lebih besar lagi tidak mengubah median.","Benar
+Salah",Benar,Ya
+T3-BOS-C1,3,Boss,Isian,,Rata-rata 4 bilangan adalah 9 dan rata-rata 6 bilangan lainnya adalah 14. Rata-rata dari kesepuluh bilangan tersebut adalah ...,-,12,Ya
+T3-BOS-C2,3,Boss,Isian,Bima membantu menghitung ulang nilai pelatihan kelompoknya setelah dua orang mengundurkan diri.,"Rata-rata nilai 12 peserta adalah 7,5. Jika dua peserta bernilai 3 dan 6 mengundurkan diri, rata-rata nilai 10 peserta yang tersisa adalah ...",-,"8,1 (diterima: 8.1)",Ya
+T3-BOS-D1,3,Boss,Matching,,Pasangkan setiap situasi dengan ukuran yang paling tepat.,"SOAL:
+1. Menentukan merek minuman yang paling sering dibeli
+2. Gaji pegawai dengan satu direktur bergaji sangat tinggi
+3. Nilai akhir dengan bobot berbeda pada tiap komponen
+4. Suhu harian selama seminggu dengan data yang seragam
+JAWABAN:
+A. Rata-rata terbobot
+B. Modus
+C. Mean
+D. Median",1-B; 2-D; 3-A; 4-C,Ya
+T3-BOS-D2,3,Boss,Matching,,"Data awal: 4, 6, 8, 10, 12. Pasangkan setiap pernyataan dengan hasilnya.","SOAL:
+1. Mean setelah setiap data dikali 2
+2. Mean setelah setiap data ditambah 3
+3. Median setelah setiap data dikurangi 2
+4. Jumlah seluruh data awal
+JAWABAN:
+A. 16
+B. 6
+C. 40
+D. 11",1-A; 2-D; 3-B; 4-C,Ya
+T3-BOS-E1,3,Boss,Matching,,Pasangkan setiap soal dengan jawabannya. Ada jawaban yang tidak terpakai (3 soal : 5 jawaban).,"SOAL:
+1. Rata-rata gabungan dari 10 orang dengan rata-rata 60 dan 10 orang dengan rata-rata 80
+2. Jumlah 4 bilangan yang rata-ratanya 8
+3. Median dari 7, 1, 5, 9, 3
+JAWABAN:
+A. 5
+B. 32
+C. 70
+D. 8
+E. 12",1-C; 2-B; 3-A,Tidak
+T3-BOS-E2,3,Boss,Matching,,Pasangkan soal dengan jawabannya. Ada soal yang tidak memiliki pasangan (5 soal : 3 jawaban).,"SOAL:
+1. Median dari 14, 2, 8
+2. Mean dari 2 dan 4
+3. Modus dari 5, 9, 5, 2, 9, 5
+4. Median dari 1, 2, 3, 4
+5. Mean dari 6, 10, 14
+JAWABAN:
+A. 10
+B. 8
+C. 5",1-B; 3-C; 5-A; soal 2 & 4 tanpa pasangan (pengecoh),Tidak

@@ -1,0 +1,167 @@
+[gd_scene load_steps=3 format=3 uid="uid://campfirescene001"]
+
+[ext_resource type="Script" path="res://scenes/campfire/campfire_scene.gd" id="1_campfire"]
+[ext_resource type="PackedScene" path="res://scenes/ui_common/map_preview.tscn" id="2_map_preview"]
+
+[node name="CampfireScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_campfire")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11, 0.10, 0.16, 1.0)
+
+[node name="TopBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.75, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+text = "🔥 Meja Belajar Bima — Titik Istirahat"
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "❤️ HP: 10 / 10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BtnMap" type="Button" parent="TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(110, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🗺️ PETA"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 70.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainCard" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1200, 680)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MainCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainCard/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="IntroLabel" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "Konteks narasi Bima di titik api unggun..."
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SlideContent" type="VBoxContainer" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="SlideHeading" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/SlideContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.45, 1)
+theme_override_font_sizes/font_size = 26
+text = "Judul Materi Slide"
+
+[node name="SlideBody" type="RichTextLabel" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/SlideContent"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Penjelasan materi konsep pemusatan data..."
+
+[node name="Navigation" type="HBoxContainer" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BtnPrev" type="Button" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/Navigation"]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "◀ Sebelumnya"
+
+[node name="PageIndicator" type="Label" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/Navigation"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Halaman 1 / 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnNext" type="Button" parent="CenterContainer/MainCard/MarginContainer/VBoxContainer/Navigation"]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Selanjutnya ▶"
+
+[node name="BottomBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BtnContinue" type="Button" parent="BottomBar"]
+custom_minimum_size = Vector2(320, 56)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -28.0
+offset_right = 160.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "LANJUTKAN PENDAKIAN ➔"
+
+[node name="MapPreview" parent="." instance=ExtResource("2_map_preview")]

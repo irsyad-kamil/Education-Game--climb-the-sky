@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui_common/map_preview.gd" id="1_preview"]
+[ext_resource type="Script" path="res://scenes/ui_common/map_preview_canvas.gd" id="2_canvas"]
+
+[node name="MapPreview" type="CanvasLayer"]
+layer = 50
+visible = false
+script = ExtResource("1_preview")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.1, 0.14, 0.96)
+
+[node name="TopBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 70)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+text = "🗺️ Pratinjau Rute Peta"
+vertical_alignment = 1
+
+[node name="BtnClose" type="Button" parent="TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(180, 44)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 18
+text = "✕ KEMBALI"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MapCanvas" type="Control" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("2_canvas")

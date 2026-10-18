@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dk37nik850kba"
+
+[deps]
+
+files=["res://data/draft_soal.Tahap (1/2/3).translation", "res://data/draft_soal.Kategori (Normal/Elite/Boss).translation", "res://data/draft_soal.Bentuk (PG/TF/Isian/Matching).translation", "res://data/draft_soal.Narasi Konteks Bima (Optional).translation", "res://data/draft_soal.Teks Soal.translation", "res://data/draft_soal.Pilihan Jawaban / Pasangan.translation", "res://data/draft_soal.Kunci Jawaban.translation", "res://data/draft_soal.Time Attack? (Ya/Tidak).translation"]
+
+source_file="res://data/draft_soal.csv"
+dest_files=["res://data/draft_soal.Tahap (1/2/3).translation", "res://data/draft_soal.Kategori (Normal/Elite/Boss).translation", "res://data/draft_soal.Bentuk (PG/TF/Isian/Matching).translation", "res://data/draft_soal.Narasi Konteks Bima (Optional).translation", "res://data/draft_soal.Teks Soal.translation", "res://data/draft_soal.Pilihan Jawaban / Pasangan.translation", "res://data/draft_soal.Kunci Jawaban.translation", "res://data/draft_soal.Time Attack? (Ya/Tidak).translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

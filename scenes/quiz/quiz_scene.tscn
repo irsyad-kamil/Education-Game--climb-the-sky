@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://quizscene001"]
+[gd_scene load_steps=2 format=3 uid="uid://quizscene001"]
 
 [ext_resource type="Script" path="res://scenes/quiz/quiz_scene.gd" id="1_quiz"]
-[ext_resource type="Script" path="res://scenes/quiz/matching_canvas.gd" id="2_matching_canvas"]
-[ext_resource type="PackedScene" path="res://scenes/ui_common/map_preview.tscn" id="3_map_preview"]
 
 [node name="QuizScene" type="Control"]
 layout_mode = 3
@@ -20,305 +18,216 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.12, 0.14, 0.18, 1.0)
+color = Color(0.08, 0.10, 0.15, 1.0)
 
 [node name="TopBar" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="RightButtons" type="HBoxContainer" parent="TopBar"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = 10.0
-offset_right = -30.0
-offset_bottom = -10.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/separation = 16
-
-[node name="BtnMap" type="Button" parent="TopBar/RightButtons"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-text = "MAP"
-
-[node name="BtnMenu" type="Button" parent="TopBar/RightButtons"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-text = "MENU"
-
-[node name="StageArea" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 500)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 60.0
-offset_bottom = 560.0
-grow_horizontal = 2
-
-[node name="StageBackground" type="ColorRect" parent="StageArea"]
+[node name="MarginContainer" type="MarginContainer" parent="TopBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.24, 0.22, 0.16, 0.4)
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
-[node name="CharacterContainer" type="VBoxContainer" parent="StageArea"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 140.0
-offset_top = -210.0
-offset_right = 440.0
-offset_bottom = 210.0
-grow_vertical = 2
-alignment = 1
-
-[node name="HPSymbol" type="PanelContainer" parent="StageArea/CharacterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 24
 
-[node name="HPLabel" type="Label" parent="StageArea/CharacterContainer/HPSymbol"]
+[node name="BtnMap" type="Button" parent="TopBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 44)
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+text = "🗺️ Peta"
+
+[node name="StageLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
 theme_override_font_sizes/font_size = 20
-text = "❤️ 10 / 10"
-horizontal_alignment = 1
+text = "Level 1 • Titik 1 dari 5"
+vertical_alignment = 1
 
-[node name="CharacterPanel" type="PanelContainer" parent="StageArea/CharacterContainer"]
-custom_minimum_size = Vector2(300, 300)
+[node name="ScoreLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="StageArea/CharacterContainer/CharacterPanel"]
-layout_mode = 2
-
-[node name="CharIcon" type="Label" parent="StageArea/CharacterContainer/CharacterPanel/CenterContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "🧑‍🎓"
-
-[node name="NameLabel" type="Label" parent="StageArea/CharacterContainer"]
-layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1.0, 0.6, 1)
 theme_override_font_sizes/font_size = 20
-text = "BIMA"
-horizontal_alignment = 1
+text = "⭐ Skor: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="TimeBadge" type="PanelContainer" parent="StageArea"]
-visible = false
-custom_minimum_size = Vector2(220, 60)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -110.0
-offset_top = 24.0
-offset_right = 110.0
-offset_bottom = 84.0
-grow_horizontal = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="StageArea/TimeBadge"]
+[node name="BtnMenu" type="Button" parent="TopBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 44)
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+text = "🏠 Menu"
 
-[node name="TimeLabel" type="Label" parent="StageArea/TimeBadge/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "⏱️ 30 dtk"
-horizontal_alignment = 1
-
-[node name="TimerBar" type="ProgressBar" parent="StageArea/TimeBadge"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-size_flags_vertical = 8
-max_value = 30.0
-value = 30.0
-show_percentage = false
-
-[node name="EnemyContainer" type="VBoxContainer" parent="StageArea"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -440.0
-offset_top = -210.0
-offset_right = -140.0
-offset_bottom = 210.0
-grow_horizontal = 0
-grow_vertical = 2
-alignment = 1
-
-[node name="Spacer" type="Control" parent="StageArea/EnemyContainer"]
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-
-[node name="EnemyPanel" type="PanelContainer" parent="StageArea/EnemyContainer"]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="StageArea/EnemyContainer/EnemyPanel"]
-layout_mode = 2
-
-[node name="EnemyIcon" type="Label" parent="StageArea/EnemyContainer/EnemyPanel/CenterContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "⚔️"
-
-[node name="NameLabel" type="Label" parent="StageArea/EnemyContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "TANTANGAN SOAL"
-horizontal_alignment = 1
-
-[node name="BottomArea" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 520)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BottomArea"]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 24
+horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BottomArea/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="BossTrackerLabel" type="Label" parent="BottomArea/MarginContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 18
-text = "Pertanyaan Bos: 1 / 5"
-
-[node name="NarrativeLabel" type="Label" parent="BottomArea/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.75, 1)
-theme_override_font_sizes/font_size = 18
-text = "Konteks Cerita Bima..."
-autowrap_mode = 2
-
-[node name="PromptLabel" type="RichTextLabel" parent="BottomArea/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 22
-bbcode_enabled = true
-text = "Teks Soal Matematika..."
-fit_content = true
-
-[node name="Panels" type="CenterContainer" parent="BottomArea/MarginContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MultipleChoicePanel" type="GridContainer" parent="BottomArea/MarginContainer/VBoxContainer/Panels"]
+[node name="MainContent" type="VBoxContainer" parent="ScrollContainer/CenterContainer"]
+custom_minimum_size = Vector2(1300, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StoryPanel" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StoreIcon" type="Label" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "🏪"
+
+[node name="NarrativeLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.92, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "Bima membantu ayah membuka buku catatan penjualan toko sembako..."
+autowrap_mode = 2
+
+[node name="QuestionPanel" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="PromptLabel" type="RichTextLabel" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.95, 0.8, 1)
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Data penjualan telur ayam selama 5 hari..."
+fit_content = true
+
+[node name="FeedbackPanel" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
+
+[node name="FeedbackLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Umpan balik..."
+horizontal_alignment = 1
+
+[node name="Panels" type="CenterContainer" parent="ScrollContainer/CenterContainer/MainContent"]
+layout_mode = 2
+
+[node name="MultipleChoicePanel" type="GridContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="TrueFalsePanel" type="HBoxContainer" parent="BottomArea/MarginContainer/VBoxContainer/Panels"]
+[node name="TrueFalsePanel" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 40
 
-[node name="ShortAnswerPanel" type="HBoxContainer" parent="BottomArea/MarginContainer/VBoxContainer/Panels"]
+[node name="ShortAnswerPanel" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 12
 
-[node name="InputIsian" type="LineEdit" parent="BottomArea/MarginContainer/VBoxContainer/Panels/ShortAnswerPanel"]
-custom_minimum_size = Vector2(400, 54)
+[node name="InputRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-placeholder_text = "Ketik jawaban angka..."
+theme_override_constants/separation = 16
 
-[node name="BtnSubmitIsian" type="Button" parent="BottomArea/MarginContainer/VBoxContainer/Panels/ShortAnswerPanel"]
-custom_minimum_size = Vector2(140, 54)
+[node name="InputIsian" type="LineEdit" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/InputRow"]
+custom_minimum_size = Vector2(480, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+placeholder_text = "Ketik jawaban angka (contoh: 25 atau 7,5)..."
+
+[node name="BtnSubmitIsian" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/InputRow"]
+custom_minimum_size = Vector2(160, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "KIRIM"
 
-[node name="MatchingPanel" type="Control" parent="BottomArea/MarginContainer/VBoxContainer/Panels"]
+[node name="HelperLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 15
+text = "* Gunakan koma (,) atau titik (.) untuk bilangan desimal."
+horizontal_alignment = 1
+
+[node name="ProcedurePanel" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
-custom_minimum_size = Vector2(1200, 240)
+custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
-script = ExtResource("2_matching_canvas")
+theme_override_constants/separation = 14
 
-[node name="Columns" type="HBoxContainer" parent="BottomArea/MarginContainer/VBoxContainer/Panels/MatchingPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 300
-alignment = 1
-
-[node name="LeftCol" type="VBoxContainer" parent="BottomArea/MarginContainer/VBoxContainer/Panels/MatchingPanel/Columns"]
+[node name="ItemsList" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
-[node name="RightCol" type="VBoxContainer" parent="BottomArea/MarginContainer/VBoxContainer/Panels/MatchingPanel/Columns"]
+[node name="BtnCheckProcedure" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel"]
+custom_minimum_size = Vector2(260, 50)
 layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="BtnCheckMatching" type="Button" parent="BottomArea/MarginContainer/VBoxContainer/Panels/MatchingPanel"]
-custom_minimum_size = Vector2(220, 44)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -44.0
-offset_right = 110.0
-grow_horizontal = 2
-grow_vertical = 0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
-text = "PERIKSA PASANGAN"
+text = "PERIKSA URUTAN"
+
+[node name="ActionArea" type="CenterContainer" parent="ScrollContainer/CenterContainer/MainContent"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="BtnNextPoint" type="Button" parent="ScrollContainer/CenterContainer/MainContent/ActionArea"]
+visible = false
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Lanjut ke Titik Berikutnya ➡️"
 
 [node name="Popups" type="CanvasLayer" parent="."]
 
-[node name="RevealModal" type="AcceptDialog" parent="Popups"]
-title = "Bantuan Konsep"
-size = Vector2i(450, 180)
-dialog_text = "Kunci jawaban: ..."
-
-[node name="VictoryModal" type="AcceptDialog" parent="Popups"]
-title = "Tantangan Terlampaui!"
-size = Vector2i(450, 180)
-dialog_text = "Bima berhasil menjawab dengan benar!"
-
-[node name="DefeatModal" type="AcceptDialog" parent="Popups"]
-title = "Daya Tahan Habis"
-size = Vector2i(450, 180)
-dialog_text = "Bima mengulang dari Api Unggun terbaru."
-
-[node name="MapPreview" parent="." instance=ExtResource("3_map_preview")]
+[node name="LevelCompleteModal" type="AcceptDialog" parent="Popups"]
+title = "Selamat! Level Selesai!"
+size = Vector2i(560, 300)
+dialog_text = "Level Selesai!"

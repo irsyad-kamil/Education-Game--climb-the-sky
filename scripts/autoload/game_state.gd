@@ -25,6 +25,7 @@ var current_point_index: int = 1
 var level_score: int = 0
 var wrong_attempts_current_question: int = 0
 var active_level_questions: Dictionary = {} # point_index (int) -> Dictionary (varian soal terpilih 25% tiap jenis)
+var open_level_select_on_main_menu: bool = false
 
 # Status Unlock Level & Skor Terbaik
 var is_level_1_cleared: bool = false
@@ -265,6 +266,7 @@ func reset_progress() -> void:
 	is_level_2_cleared = false
 	is_level_3_cleared = false
 	best_scores = {1: 0, 2: 0, 3: 0}
+	open_level_select_on_main_menu = false
 	save_progress()
 	print("GameState: Progres di-reset ke nilai awal.")
 

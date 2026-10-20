@@ -59,8 +59,14 @@ func _ready() -> void:
 	btn_stage_2.pressed.connect(func(): _on_stage_clicked(2))
 	btn_stage_3.pressed.connect(func(): _on_stage_clicked(3))
 
-	main_view.visible = true
-	level_select_view.visible = false
+	var gs = _get_gs()
+	if gs and gs.get("open_level_select_on_main_menu") == true:
+		gs.open_level_select_on_main_menu = false
+		main_view.visible = false
+		level_select_view.visible = true
+	else:
+		main_view.visible = true
+		level_select_view.visible = false
 
 	_update_ui_state()
 

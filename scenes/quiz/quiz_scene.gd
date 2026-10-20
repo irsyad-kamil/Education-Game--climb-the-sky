@@ -64,7 +64,7 @@ class_name QuizScene
 
 # --- ACTION AREA ---
 @onready var btn_next_point: Button = $ScrollContainer/CenterContainer/MainContent/ActionArea/BtnNextPoint
-@onready var level_complete_modal: AcceptDialog = $Popups/LevelCompleteModal
+@onready var level_complete_modal: Control = $Popups/LevelCompleteModal
 
 # --- MODAL TABEL DISTRIBUSI FREKUENSI ---
 @onready var table_modal: Control = $Popups/TableModal
@@ -104,7 +104,13 @@ func _ready() -> void:
 	btn_reset_matching.pressed.connect(_on_reset_matching)
 	btn_check_matching.pressed.connect(_on_check_matching)
 	btn_next_point.pressed.connect(_on_next_point_pressed)
-	level_complete_modal.confirmed.connect(_on_level_complete_confirmed)
+	if level_complete_modal:
+		if level_complete_modal.has_signal("menu_requested"):
+			level_complete_modal.menu_requested.connect(_on_level_complete_menu)
+		if level_complete_modal.has_signal("continue_requested"):
+			level_complete_modal.continue_requested.connect(_on_level_complete_continue)
+		elif level_complete_modal.has_signal("confirmed"):
+			level_complete_modal.confirmed.connect(_on_level_complete_continue)
 
 	var gs = _get_gs()
 	if gs and not gs.answer_revealed.is_connected(_on_answer_revealed):
@@ -631,7 +637,7 @@ func _render_matching_ui() -> void:
 			if left_items[i].get("id") == selected_left_id:
 				sel_idx = i
 				break
-		matching_status_label.text += "  •  [Item %d Dipilih] 👉 Klik pasangannya di kolom kanan" % (sel_idx + 1)
+		matching_status_label.text += "  •  [Item %d Dipilih] Klik pasangannya di kolom kanan" % (sel_idx + 1)
 
 	# Render Left Column
 	for i in range(left_items.size()):
@@ -852,7 +858,7 @@ func _on_right_item_pressed(right_id: String) -> void:
 		if unp:
 			_render_matching_ui()
 		else:
-			matching_status_label.text = "💡 Pilih item di kolom kiri terlebih dahulu!"
+			matching_status_label.text = "Pilih item di kolom kiri terlebih dahulu!"
 
 func _on_reset_matching() -> void:
 	if is_solved:
@@ -924,7 +930,7 @@ func _process_answer_result(is_correct: bool) -> void:
 		var lvl = gs.current_level
 		var total_pts = dm.get_total_points(lvl) if dm else 5
 		if gs.current_point_index >= total_pts:
-			btn_next_point.text = "Selesaikan Level 🎉"
+			btn_next_point.text = "Selesaikan Level"
 		else:
 			btn_next_point.text = "Lanjut ke Titik Berikutnya"
 		btn_next_point.visible = true
@@ -991,18 +997,29 @@ func _on_next_point_pressed() -> void:
 	if is_level_complete:
 		var lvl = gs.current_level
 		var best = gs.best_scores.get(lvl, gs.level_score)
-		level_complete_modal.dialog_text = (
-			"Selamat! Kamu berhasil menuntaskan seluruh titik soal di Level %d!\n\n" +
-			"Skor Akhir Level: %d\n" +
-			"Skor Terbaik: %d\n\n" +
-			"Level berikutnya kini telah terbuka di Menu Pemilihan Level!"
-		) % [lvl, gs.level_score, best]
-		level_complete_modal.popup_centered()
+		if level_complete_modal and level_complete_modal.has_method("setup_level_complete"):
+			level_complete_modal.setup_level_complete(lvl, gs.level_score, best)
+		elif level_complete_modal:
+			level_complete_modal.visible = true
 	else:
 		get_tree().change_scene_to_file("res://scenes/map/map_scene.tscn")
 
+func _on_level_complete_menu() -> void:
+	var gs = _get_gs()
+	if gs:
+		gs.open_level_select_on_main_menu = false
+	if is_inside_tree() and get_tree():
+		get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
+func _on_level_complete_continue() -> void:
+	var gs = _get_gs()
+	if gs:
+		gs.open_level_select_on_main_menu = true
+	if is_inside_tree() and get_tree():
+		get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
 func _on_level_complete_confirmed() -> void:
-	get_tree().change_scene_to_file("res://scenes/map/map_scene.tscn")
+	_on_level_complete_continue()
 
 func _on_map_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/map/map_scene.tscn")

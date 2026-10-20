@@ -24,6 +24,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 
 DataManager="*res://scripts/autoload/data_manager.gd"
 GameState="*res://scripts/autoload/game_state.gd"
+ThemeManager="*res://scripts/autoload/theme_manager.gd"
 
 [display]
 

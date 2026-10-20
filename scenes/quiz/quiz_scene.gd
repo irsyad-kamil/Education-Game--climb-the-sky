@@ -49,6 +49,7 @@ class_name QuizScene
 @onready var panel_isian: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel
 @onready var input_isian: LineEdit = $ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/InputRow/InputIsian
 @onready var btn_submit_isian: Button = $ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/InputRow/BtnSubmitIsian
+@onready var helper_isian: Label = $ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/HelperLabel
 
 @onready var panel_procedure: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel
 @onready var procedure_items_list: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel/ItemsList
@@ -458,6 +459,9 @@ func _setup_short_answer() -> void:
 	input_isian.editable = true
 	input_isian.text = ""
 	btn_submit_isian.disabled = false
+	if helper_isian:
+		helper_isian.text = "* Gunakan koma (,) atau titik (.) untuk bilangan desimal."
+		helper_isian.add_theme_color_override("font_color", Color(0.35, 0.42, 0.55, 1))
 	input_isian.grab_focus()
 
 func _on_submit_isian() -> void:
@@ -935,18 +939,35 @@ func _process_answer_result(is_correct: bool) -> void:
 			btn_next_point.text = "Lanjut ke Titik Berikutnya"
 		btn_next_point.visible = true
 	else:
+		# Jika jawaban sudah di-reveal (batas 6x percobaan di Isian Singkat tercapai),
+		# tampilan bantuan kunci jawaban & tombol lanjut sudah diatur oleh _on_answer_revealed.
+		if res.get("revealed", false):
+			return
+
 		_set_bima_avatar("bingung")
 
 		var wrong_col = tm.COLOR_WRONG_RED if tm else Color("#FF7A7A")
-		var sa_cfg = dm.get_short_answer_settings() if dm else {}
-		var max_att = int(sa_cfg.get("max_wrong_attempts_before_reveal", 6))
 		_style_feedback_panel(wrong_col, "cross", "%d" % res["delta"])
-		feedback_label.text = "Jawaban Kurang Tepat (%d Skor). Coba teliti kembali! [Percobaan: %d/%d]" % [
-			res["delta"], res["attempts"], max_att
-		]
+
+		var is_isian = current_question.get("type") == "Isian"
+		if is_isian:
+			var sa_cfg = dm.get_short_answer_settings() if dm else {}
+			var max_att = int(sa_cfg.get("max_wrong_attempts_before_reveal", 6))
+			feedback_label.text = "Jawaban Kurang Tepat (%d Skor). Coba teliti kembali! [Percobaan: %d/%d]" % [
+				res["delta"], res["attempts"], max_att
+			]
+		else:
+			# Khusus PG, TF, dan Matching: tidak menampilkan penghitung percobaan 6x
+			feedback_label.text = "Jawaban Kurang Tepat (%d Skor). Coba teliti kembali!" % res["delta"]
 
 func _on_answer_revealed(_point_idx: int, ans_str: String) -> void:
 	var tm = _get_tm()
+	var dm = _get_dm()
+	var gs = _get_gs()
+
+	is_solved = true
+	_lock_current_inputs()
+
 	feedback_panel.visible = true
 	_set_bima_avatar("normal")
 
@@ -969,8 +990,24 @@ func _on_answer_revealed(_point_idx: int, ans_str: String) -> void:
 			lines.append("• %s  ➔  %s" % [left_map.get(l_id, l_id), right_map.get(r_id, r_id)])
 		reveal_text = "\n" + "\n".join(lines)
 
-	feedback_label.text = "Catatan Bantuan: Kunci jawaban yang benar adalah: %s" % reveal_text
-	btn_next_point.text = "Lanjut ke Titik Berikutnya"
+	feedback_label.text = "Batas 6 kali percobaan tercapai. Kunci jawaban yang benar adalah: %s" % reveal_text
+
+	# Tampilkan jawaban di isian singkat secara eksplisit
+	if current_question.get("type") == "Isian":
+		input_isian.text = str(ans_str)
+		input_isian.editable = false
+		btn_submit_isian.disabled = true
+		if helper_isian:
+			helper_isian.text = "Kunci Jawaban yang Benar: %s (Silakan pelajari dan lanjutkan)" % ans_str
+			helper_isian.add_theme_color_override("font_color", tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB"))
+
+	var lvl = gs.current_level if gs else 1
+	var total_pts = dm.get_total_points(lvl) if dm else 5
+	var cur_pt = gs.current_point_index if gs else 1
+	if cur_pt >= total_pts:
+		btn_next_point.text = "Selesaikan Level"
+	else:
+		btn_next_point.text = "Lanjut ke Titik Berikutnya"
 	btn_next_point.visible = true
 
 func _lock_current_inputs() -> void:

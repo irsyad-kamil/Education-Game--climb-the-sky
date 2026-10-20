@@ -68,6 +68,9 @@ func _init() -> void:
 		"Inisialisasi level harus bersih")
 	print("  ✓ Inisialisasi Level 1 berhasil (Titik: 1, Skor: 0)")
 	
+	# Tetapkan tipe Isian pada Titik 1 untuk menguji counter percobaan dan threshold bantuan
+	gs.active_level_questions[1] = {"type": "Isian", "correct_answer": "15,8"}
+	
 	# Simulasi salah 2 kali berturut-turut (skor negatif)
 	gs.register_answer(false)
 	assert(gs.level_score == -25, "Skor harus -25 setelah salah pertama")

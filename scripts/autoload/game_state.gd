@@ -135,26 +135,35 @@ func register_answer(is_correct: bool) -> Dictionary:
 	else:
 		delta = int(scoring_rules.get("wrong_score", -25))
 		level_score += delta
-		wrong_attempts_current_question += 1
 		emit_signal("score_changed", level_score, delta)
 
 		var sa_settings = dm.get_short_answer_settings() if dm else {"max_wrong_attempts_before_reveal": 6}
 		var max_attempts = int(sa_settings.get("max_wrong_attempts_before_reveal", 6))
-		emit_signal("wrong_attempt_added", wrong_attempts_current_question, max_attempts)
 
-		if wrong_attempts_current_question >= max_attempts:
-			revealed = true
-			var correct_ans = ""
-			var q = get_current_question()
-			if q.has("correct_answer"):
-				correct_ans = str(q.get("correct_answer", ""))
-			elif q.has("correct_order"):
-				correct_ans = ", ".join(q.get("correct_order", []))
-			emit_signal("answer_revealed", current_point_index, correct_ans)
-			print("GameState: Jawaban SALAH ke-%d! Kunci jawaban dibuka: %s" % [wrong_attempts_current_question, correct_ans])
+		var q = get_current_question()
+		var q_type = q.get("type", "")
+		var is_isian = (q_type == "Isian") or (q_type == "")
+
+		if is_isian:
+			wrong_attempts_current_question += 1
+			emit_signal("wrong_attempt_added", wrong_attempts_current_question, max_attempts)
+
+			if wrong_attempts_current_question >= max_attempts:
+				revealed = true
+				var correct_ans = ""
+				if q.has("correct_answer"):
+					correct_ans = str(q.get("correct_answer", ""))
+				elif q.has("correct_order"):
+					correct_ans = ", ".join(q.get("correct_order", []))
+				emit_signal("answer_revealed", current_point_index, correct_ans)
+				print("GameState: Jawaban SALAH ke-%d! Kunci jawaban dibuka: %s" % [wrong_attempts_current_question, correct_ans])
+			else:
+				print("GameState: Jawaban SALAH! Penalti %d (Total skor level: %d, Percobaan salah: %d/%d)" % [
+					delta, level_score, wrong_attempts_current_question, max_attempts
+				])
 		else:
-			print("GameState: Jawaban SALAH! Penalti %d (Total skor level: %d, Percobaan salah: %d/%d)" % [
-				delta, level_score, wrong_attempts_current_question, max_attempts
+			print("GameState: Jawaban SALAH! Penalti %d (Total skor level: %d)" % [
+				delta, level_score
 			])
 
 		return {

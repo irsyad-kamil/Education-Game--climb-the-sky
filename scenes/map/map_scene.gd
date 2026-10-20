@@ -1,27 +1,42 @@
 extends Control
 class_name MapScene
 
-# MapScene v1.0 (GDD v1.0 Architecture)
-# Menampilkan peta jalur vertikal linear naik ke atas dari Titik 1 ke Titik N.
-# Dilengkapi fitur pop-up Tabel Distribusi Frekuensi per level
+# MapScene v2.0 (Modern, Clean, & Palette desain.md)
+# Menampilkan peta jalur vertikal linear naik ke atas dari Titik 1 ke Titik N
+# Terintegrasi ThemeManager, palet warna desain.md, ikon vektor flat SVG,
+# serta pop-up Tabel Distribusi Frekuensi modern bebas emoji.
 
 @export var node_scene: PackedScene = preload("res://scenes/map/map_node.tscn")
 
+# --- BACKGROUND ---
+@onready var background_rect: ColorRect = $Background
+@onready var background_art: TextureRect = $BackgroundArt
+
+# --- SCROLL & KANVAS JALUR ---
 @onready var scroll_container: ScrollContainer = $ScrollContainer
 @onready var map_canvas: Control = $ScrollContainer/MapCanvas
-@onready var stage_label: Label = $TopHUD/MarginContainer/HBoxContainer/StageLabel
-@onready var progress_label: Label = $TopHUD/MarginContainer/HBoxContainer/ProgressLabel
-@onready var btn_frequency_table: Button = $TopHUD/MarginContainer/HBoxContainer/BtnFrequencyTable
-@onready var score_label: Label = $TopHUD/MarginContainer/HBoxContainer/ScoreLabel
+
+# --- TOP HUD ---
+@onready var top_hud: Panel = $TopHUD
 @onready var btn_menu: Button = $TopHUD/MarginContainer/HBoxContainer/BtnMenu
+@onready var level_badge: PanelContainer = $TopHUD/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/LevelBadge
+@onready var level_badge_label: Label = $TopHUD/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/LevelBadge/BadgeMargin/BadgeLabel
+@onready var stage_label: Label = $TopHUD/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/StageLabel
+@onready var progress_label: Label = $TopHUD/MarginContainer/HBoxContainer/ProgressContainer/Margin/ProgressLabel
+@onready var btn_frequency_table: Button = $TopHUD/MarginContainer/HBoxContainer/BtnFrequencyTable
+@onready var star_icon: TextureRect = $TopHUD/MarginContainer/HBoxContainer/ScoreContainer/Margin/HBox/StarIcon
+@onready var score_label: Label = $TopHUD/MarginContainer/HBoxContainer/ScoreContainer/Margin/HBox/ScoreLabel
+
+# --- INFO PANEL ---
 @onready var info_panel: PanelContainer = $InfoPanel
 @onready var info_text: Label = $InfoPanel/MarginContainer/VBoxContainer/InfoText
 
-# Modal Tabel Distribusi Frekuensi
+# --- MODAL TABEL DISTRIBUSI FREKUENSI ---
 @onready var table_modal: Control = $TableModal
 @onready var modal_subtitle: Label = $TableModal/CenterContainer/Panel/Margin/VBox/Subtitle
 @onready var raw_data_label: Label = $TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox/RawText
 @onready var table_rows_container: VBoxContainer = $TableModal/CenterContainer/Panel/Margin/VBox/TableScroll/TableRows
+@onready var table_header_icon: TextureRect = $TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox/HeaderIcon
 @onready var btn_close_x: Button = $TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox/BtnCloseX
 @onready var btn_close_bottom: Button = $TableModal/CenterContainer/Panel/Margin/VBox/BtnCloseBottom
 
@@ -41,6 +56,8 @@ var node_positions: Dictionary:
 		return legacy_dict
 
 func _ready() -> void:
+	_setup_visual_theme()
+
 	btn_menu.pressed.connect(_on_menu_pressed)
 	btn_frequency_table.pressed.connect(_show_frequency_table_modal)
 	btn_close_x.pressed.connect(_hide_frequency_table_modal)
@@ -59,6 +76,29 @@ func _ready() -> void:
 	await get_tree().process_frame
 	_scroll_to_current_point()
 
+func _setup_visual_theme() -> void:
+	var tm = _get_tm()
+	if not tm:
+		return
+
+	# Terapkan palet latar utama #EAF6FF
+	background_rect.color = tm.COLOR_BG_MAIN
+
+	# Pasang icon flat vector SVG bebas emoji
+	btn_menu.icon = tm.get_icon("arrow_left")
+	btn_menu.add_theme_color_override("icon_normal_color", tm.COLOR_TEXT_NAVY)
+	btn_menu.add_theme_color_override("icon_hover_color", tm.COLOR_BTN_PRIMARY)
+	btn_menu.add_theme_color_override("icon_pressed_color", tm.COLOR_BTN_PRIMARY)
+	btn_menu.add_theme_color_override("icon_focus_color", tm.COLOR_TEXT_NAVY)
+
+	btn_frequency_table.icon = tm.get_icon("table")
+
+	star_icon.texture = tm.get_icon("star")
+	star_icon.modulate = Color("#FFC93C") # Emas / Kuning
+
+	table_header_icon.texture = tm.get_icon("table")
+	table_header_icon.modulate = tm.COLOR_BTN_PRIMARY
+
 func _get_gs() -> Node:
 	if is_inside_tree() and has_node("/root/GameState"):
 		return get_node("/root/GameState")
@@ -75,8 +115,17 @@ func _get_dm() -> Node:
 		return main_loop.root.get_node("DataManager")
 	return null
 
+func _get_tm() -> Node:
+	if is_inside_tree() and has_node("/root/ThemeManager"):
+		return get_node("/root/ThemeManager")
+	var main_loop = Engine.get_main_loop()
+	if main_loop and main_loop is SceneTree and main_loop.root.has_node("ThemeManager"):
+		return main_loop.root.get_node("ThemeManager")
+	return null
+
 func _update_hud() -> void:
 	var gs = _get_gs()
+	var tm = _get_tm()
 	var level_names = {
 		1: "Level 1: Konsep & Perhitungan Rata-rata (Mean)",
 		2: "Level 2: Konsep & Penentuan Nilai Tengah (Median)",
@@ -86,16 +135,33 @@ func _update_hud() -> void:
 	var lvl = gs.current_level if gs else 1
 	var score = gs.level_score if gs else 0
 
+	if level_badge_label:
+		level_badge_label.text = "LEVEL %d" % lvl
 	if stage_label:
 		stage_label.text = level_names.get(lvl, "Level %d" % lvl)
 	if progress_label:
 		progress_label.text = "Titik %d dari %d" % [current_point, total_points]
 	if score_label:
-		score_label.text = "⭐ Skor: %d" % score
+		score_label.text = "Skor: %d" % score
+
+	if tm:
+		var lvl_col = tm.get_level_color(lvl)
+		var b_style = StyleBoxFlat.new()
+		b_style.bg_color = lvl_col
+		b_style.set_corner_radius_all(10)
+		level_badge.add_theme_stylebox_override("panel", b_style)
+
+		# Wallpaper latar tematik toko sembako per level
+		var bg_tex = tm.get_level_bg(lvl)
+		if bg_tex:
+			background_art.texture = bg_tex
+			background_art.visible = true
+		else:
+			background_art.visible = false
 
 func _on_score_changed(new_score: int, _delta: int) -> void:
 	if score_label:
-		score_label.text = "⭐ Skor: %d" % new_score
+		score_label.text = "Skor: %d" % new_score
 
 func _on_point_advanced(new_point: int, _total_pts: int) -> void:
 	current_point = new_point
@@ -197,6 +263,7 @@ func _show_frequency_table_modal() -> void:
 	raw_data_label.text = tbl_data.get("raw_data", "")
 
 	for child in table_rows_container.get_children():
+		table_rows_container.remove_child(child)
 		child.queue_free()
 
 	# Baris Header
@@ -206,10 +273,11 @@ func _show_frequency_table_modal() -> void:
 
 	# Baris Data Kelas Interval
 	var rows: Array = tbl_data.get("rows", [])
-	for r in rows:
+	for i in range(rows.size()):
+		var r = rows[i]
 		var interval_str = str(r.get("interval", ""))
 		var freq_str = str(r.get("frequency", ""))
-		table_rows_container.add_child(_create_table_row(interval_str, freq_str, false, false))
+		table_rows_container.add_child(_create_table_row(interval_str, freq_str, false, false, i % 2 == 1))
 
 	# Baris Total / Jumlah
 	var total_freq = str(tbl_data.get("total_frequency", 30))
@@ -220,16 +288,14 @@ func _show_frequency_table_modal() -> void:
 func _hide_frequency_table_modal() -> void:
 	table_modal.visible = false
 
-func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bool) -> PanelContainer:
+func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bool, is_zebra: bool = false) -> PanelContainer:
+	var tm = _get_tm()
 	var panel = PanelContainer.new()
-	var margin = MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 16)
-	margin.add_theme_constant_override("margin_right", 16)
-	margin.add_theme_constant_override("margin_top", 8)
-	margin.add_theme_constant_override("margin_bottom", 8)
+	var style = StyleBoxFlat.new()
+	style.set_corner_radius_all(8)
+	style.set_content_margin_all(10)
 
 	var hbox = HBoxContainer.new()
-
 	var lbl1 = Label.new()
 	lbl1.text = col1
 	lbl1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -242,22 +308,26 @@ func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bo
 	lbl2.add_theme_font_size_override("font_size", 16)
 
 	if is_header:
-		panel.self_modulate = Color(0.2, 0.28, 0.42, 1.0)
-		lbl1.add_theme_color_override("font_color", Color(1.0, 0.88, 0.35))
-		lbl2.add_theme_color_override("font_color", Color(1.0, 0.88, 0.35))
+		style.bg_color = tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A")
+		lbl1.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+		lbl2.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	elif is_total:
-		panel.self_modulate = Color(0.18, 0.32, 0.24, 1.0)
-		lbl1.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6))
-		lbl2.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6))
+		style.bg_color = Color("#EAF6FF")
+		style.border_color = tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB")
+		style.set_border_width_all(2)
+		lbl1.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+		lbl2.add_theme_color_override("font_color", tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB"))
 	else:
-		panel.self_modulate = Color(0.15, 0.17, 0.22, 0.8)
-		lbl1.add_theme_color_override("font_color", Color(0.9, 0.92, 0.95))
-		lbl2.add_theme_color_override("font_color", Color(0.9, 0.92, 0.95))
+		style.bg_color = Color("#F4F9FF") if is_zebra else Color("#FFFFFF")
+		style.border_color = Color("#E2E9F2")
+		style.set_border_width_all(1)
+		lbl1.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+		lbl2.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
 
+	panel.add_theme_stylebox_override("panel", style)
 	hbox.add_child(lbl1)
 	hbox.add_child(lbl2)
-	margin.add_child(hbox)
-	panel.add_child(margin)
+	panel.add_child(hbox)
 	return panel
 
 func _on_menu_pressed() -> void:

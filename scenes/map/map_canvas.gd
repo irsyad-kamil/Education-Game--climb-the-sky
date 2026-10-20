@@ -1,7 +1,7 @@
 extends Control
 
-# MapCanvas v1.0 (GDD v1.0 Architecture)
-# Menggambar garis jalur vertikal linear menghubungkan titik-titik pendakian langit
+# MapCanvas v2.0 (Modern Light Palette desain.md)
+# Menggambar garis jalur vertikal linear naik ke atas dari Titik 1 ke Titik N
 
 func _draw() -> void:
 	var map_scene = get_parent().get_parent()
@@ -15,6 +15,11 @@ func _draw() -> void:
 	if total_points <= 1 or positions.is_empty():
 		return
 
+	var gs = map_scene.call("_get_gs") if map_scene.has_method("_get_gs") else null
+	var tm = map_scene.call("_get_tm") if map_scene.has_method("_get_tm") else null
+	var lvl = gs.current_level if gs else 1
+	var lvl_color = tm.get_level_color(lvl) if tm else Color("#FF8A3D")
+
 	for p in range(1, total_points):
 		if not positions.has(p) or not positions.has(p + 1):
 			continue
@@ -22,16 +27,17 @@ func _draw() -> void:
 		var start_pos: Vector2 = positions[p]
 		var end_pos: Vector2 = positions[p + 1]
 
-		# 1. Garis dasar / latar belakang jalur
-		draw_line(start_pos, end_pos, Color(0.12, 0.15, 0.22, 0.9), 10.0, true)
+		# 1. Jalur dasar (Track border lembut)
+		draw_line(start_pos, end_pos, Color(0.82, 0.87, 0.93, 1.0), 14.0, true)
+		draw_line(start_pos, end_pos, Color(1.0, 1.0, 1.0, 0.95), 8.0, true)
 
-		# 2. Garis status warna
+		# 2. Jalur progres warna
 		if (p + 1) < current_point:
-			# Jalur yang sudah selesai sepenuhnya
-			draw_line(start_pos, end_pos, Color(0.3, 0.85, 0.5, 0.9), 4.0, true)
+			# Segmen selesai sepenuhnya: Hijau #3DDC97
+			draw_line(start_pos, end_pos, tm.COLOR_CORRECT_GREEN if tm else Color("#3DDC97"), 6.0, true)
 		elif (p + 1) == current_point:
-			# Jalur menuju titik yang sedang aktif
-			draw_line(start_pos, end_pos, Color(1.0, 0.85, 0.3, 0.95), 5.0, true)
+			# Segmen aktif menuju current_point: Warna aksen level aktif
+			draw_line(start_pos, end_pos, lvl_color, 6.0, true)
 		else:
-			# Jalur yang masih terkunci ke atas
-			draw_line(start_pos, end_pos, Color(0.3, 0.35, 0.45, 0.6), 3.0, true)
+			# Segmen terkunci ke atas: Abu-abu redup
+			draw_line(start_pos, end_pos, Color(0.75, 0.82, 0.90, 0.6), 4.0, true)

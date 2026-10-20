@@ -1,6 +1,87 @@
-[gd_scene load_steps=2 format=3 uid="uid://mainmenu001"]
+[gd_scene load_steps=10 format=3 uid="uid://mainmenu001"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_menu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_PlayNormal"]
+bg_color = Color(0.97, 0.97, 0.97, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24, 0.26, 0.29, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_PlayHover"]
+bg_color = Color(0.9, 0.94, 0.98, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.15, 0.45, 0.85, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ExitNormal"]
+bg_color = Color(0.97, 0.97, 0.97, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.38, 0.42, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ExitHover"]
+bg_color = Color(0.92, 0.92, 0.94, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.22, 0.25, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_CardHover"]
+bg_color = Color(1, 1, 1, 0.08)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.92, 0.4, 0.95)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_CardNormal"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Lock"]
+bg_color = Color(0.04, 0.06, 0.12, 0.84)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_CardInfo"]
+bg_color = Color(0.06, 0.1, 0.16, 0.8)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,16 +92,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.08, 0.10, 0.15, 1.0)
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MainMenuView" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,147 +100,376 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
+[node name="Background" type="ColorRect" parent="MainMenuView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.965, 0.965, 0.965, 1)
+
+[node name="CurvedTitleContainer" type="Control" parent="MainMenuView"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 450.0
+grow_horizontal = 2
+
+[node name="ButtonsBox" type="VBoxContainer" parent="MainMenuView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = 50.0
+offset_right = 170.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
 alignment = 1
 
-[node name="TitleBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="BtnPlay" type="Button" parent="MainMenuView/ButtonsBox"]
+custom_minimum_size = Vector2(340, 84)
 layout_mode = 2
-theme_override_constants/separation = 8
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.22, 0.24, 0.27, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.14, 0.16, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBox_PlayHover")
+theme_override_styles/normal = SubResource("StyleBox_PlayNormal")
+text = "PLAY"
 
-[node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer/TitleBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
-theme_override_font_sizes/font_size = 64
-text = "CLIMB THE SKY"
-horizontal_alignment = 1
-
-[node name="Subtitle" type="Label" parent="CenterContainer/VBoxContainer/TitleBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
-theme_override_font_sizes/font_size = 22
-text = "Perjalanan Bima — Pembelajaran Statistika Berbasis STEAM"
-horizontal_alignment = 1
-
-[node name="TopicTag" type="Label" parent="CenterContainer/VBoxContainer/TitleBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 18
-text = "[ Materi: Ukuran Pemusatan Data (Mean & Median) — Matematika Kelas X ]"
-horizontal_alignment = 1
-
-[node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.8, 0.75, 1)
-theme_override_font_sizes/font_size = 16
-text = "Status: Memulai dari Level 1"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
+[node name="BtnQuit" type="Button" parent="MainMenuView/ButtonsBox"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.35, 0.38, 0.42, 1)
+theme_override_colors/font_hover_color = Color(0.15, 0.17, 0.2, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBox_ExitHover")
+theme_override_styles/normal = SubResource("StyleBox_ExitNormal")
+text = "EXIT"
 
-[node name="MenuButtons" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 16
+[node name="LevelSelectView" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BtnPlay" type="Button" parent="CenterContainer/VBoxContainer/MenuButtons"]
-custom_minimum_size = Vector2(380, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "▶ MULAI PERJALANAN"
+[node name="Background" type="TextureRect" parent="LevelSelectView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 0
 
-[node name="BtnSelectStage" type="Button" parent="CenterContainer/VBoxContainer/MenuButtons"]
-custom_minimum_size = Vector2(380, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "🗺️ PILIH LEVEL"
+[node name="BtnBack" type="Button" parent="LevelSelectView"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 22.0
+offset_right = 208.0
+offset_bottom = 212.0
+mouse_default_cursor_shape = 2
+flat = true
 
-[node name="BtnStorySTEAM" type="Button" parent="CenterContainer/VBoxContainer/MenuButtons"]
-custom_minimum_size = Vector2(380, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "📖 KISAH BIMA & STEAM"
+[node name="Cards" type="Control" parent="LevelSelectView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="BtnQuit" type="Button" parent="CenterContainer/VBoxContainer/MenuButtons"]
-custom_minimum_size = Vector2(380, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "❌ KELUAR"
+[node name="Card1" type="Control" parent="LevelSelectView/Cards"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 255.0
+offset_right = 660.0
+offset_bottom = 845.0
 
-[node name="FooterLabel" type="Label" parent="."]
+[node name="BtnStage1" type="Button" parent="LevelSelectView/Cards/Card1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBox_CardHover")
+theme_override_styles/normal = SubResource("StyleBox_CardNormal")
+flat = true
+
+[node name="InfoPanel" type="PanelContainer" parent="LevelSelectView/Cards/Card1"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
+offset_left = 20.0
+offset_top = -90.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.5, 0.55, 0.65, 1)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_CardInfo")
+
+[node name="Margin" type="MarginContainer" parent="LevelSelectView/Cards/Card1/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card1/InfoPanel/Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="LevelSelectView/Cards/Card1/InfoPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 18
+text = "Level 1 • Konsep Mean (Rata-rata)"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="LevelSelectView/Cards/Card1/InfoPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "5 Titik Soal • Max Skor: 500"
+horizontal_alignment = 1
+
+[node name="Card2" type="Control" parent="LevelSelectView/Cards"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 255.0
+offset_right = 1335.0
+offset_bottom = 845.0
+
+[node name="BtnStage2" type="Button" parent="LevelSelectView/Cards/Card2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBox_CardHover")
+theme_override_styles/normal = SubResource("StyleBox_CardNormal")
+flat = true
+
+[node name="InfoPanel" type="PanelContainer" parent="LevelSelectView/Cards/Card2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -90.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_CardInfo")
+
+[node name="Margin" type="MarginContainer" parent="LevelSelectView/Cards/Card2/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card2/InfoPanel/Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="LevelSelectView/Cards/Card2/InfoPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 18
+text = "Level 2 • Konsep Median (Nilai Tengah)"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="LevelSelectView/Cards/Card2/InfoPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "4 Titik Soal • Max Skor: 400"
+horizontal_alignment = 1
+
+[node name="LockOverlay" type="Panel" parent="LevelSelectView/Cards/Card2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Lock")
+
+[node name="Center" type="CenterContainer" parent="LevelSelectView/Cards/Card2/LockOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card2/LockOverlay/Center"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="LockIcon" type="Label" parent="LevelSelectView/Cards/Card2/LockOverlay/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "🔒"
+horizontal_alignment = 1
+
+[node name="LockText" type="Label" parent="LevelSelectView/Cards/Card2/LockOverlay/Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+text = "TERKUNCI"
+horizontal_alignment = 1
+
+[node name="LockHint" type="Label" parent="LevelSelectView/Cards/Card2/LockOverlay/Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.85, 0.9, 0.8)
+theme_override_font_sizes/font_size = 16
+text = "Selesaikan Level 1 Terlebih Dahulu"
+horizontal_alignment = 1
+
+[node name="Card3" type="Control" parent="LevelSelectView/Cards"]
+layout_mode = 0
+offset_left = 1495.0
+offset_top = 255.0
+offset_right = 1910.0
+offset_bottom = 845.0
+
+[node name="BtnStage3" type="Button" parent="LevelSelectView/Cards/Card3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBox_CardHover")
+theme_override_styles/normal = SubResource("StyleBox_CardNormal")
+flat = true
+
+[node name="InfoPanel" type="PanelContainer" parent="LevelSelectView/Cards/Card3"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -90.0
+offset_right = -10.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_CardInfo")
+
+[node name="Margin" type="MarginContainer" parent="LevelSelectView/Cards/Card3/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card3/InfoPanel/Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="LevelSelectView/Cards/Card3/InfoPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 17
+text = "Level 3 • Evaluasi Komparatif"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="LevelSelectView/Cards/Card3/InfoPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
 theme_override_font_sizes/font_size = 14
-text = "Game Edukasi Media Pembelajaran STEAM • Climb the Sky v1.0"
+text = "3 Titik Soal • Max Skor: 300"
+horizontal_alignment = 1
+
+[node name="LockOverlay" type="Panel" parent="LevelSelectView/Cards/Card3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Lock")
+
+[node name="Center" type="CenterContainer" parent="LevelSelectView/Cards/Card3/LockOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card3/LockOverlay/Center"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="LockIcon" type="Label" parent="LevelSelectView/Cards/Card3/LockOverlay/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "🔒"
+horizontal_alignment = 1
+
+[node name="LockText" type="Label" parent="LevelSelectView/Cards/Card3/LockOverlay/Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+text = "TERKUNCI"
+horizontal_alignment = 1
+
+[node name="LockHint" type="Label" parent="LevelSelectView/Cards/Card3/LockOverlay/Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.85, 0.9, 0.8)
+theme_override_font_sizes/font_size = 15
+text = "Selesaikan Level 2 Terlebih Dahulu"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="LevelSelectView"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 18
+text = "Pemain Baru: Memulai Petualangan di Level 1 (Mean)"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Popups" type="CanvasLayer" parent="."]
-
-[node name="StageSelectModal" type="PopupPanel" parent="Popups"]
-title = "Pilih Level Permainan"
-size = Vector2i(640, 420)
-
-[node name="MarginContainer" type="MarginContainer" parent="Popups/StageSelectModal"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 636.0
-offset_bottom = 416.0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Popups/StageSelectModal/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Title" type="Label" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Pilih Titik Awal Level:"
-horizontal_alignment = 1
-
-[node name="BtnStage1" type="Button" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-text = "Level 1: Konsep & Perhitungan Rata-rata (Mean)
-5 Titik Soal • Skor Maks: 500"
-
-[node name="BtnStage2" type="Button" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-text = "Level 2: Konsep & Penentuan Nilai Tengah (Median)
-4 Titik Soal • Skor Maks: 400"
-
-[node name="BtnStage3" type="Button" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-disabled = true
-text = "Level 3: Evaluasi Komparatif Mean & Median
-3 Titik Soal • Skor Maks: 300"
-
-[node name="AboutModal" type="AcceptDialog" parent="Popups"]
-title = "Tentang Climb the Sky & STEAM"
-size = Vector2i(720, 500)
-dialog_text = "KISAH BIMA:
-Bima membantu ayahnya mengelola pembukuan dan analisis data penjualan di toko sembako keluarga. Melalui pemahaman konsep statistika (Mean dan Median), Bima membantu toko membuat keputusan stok dan penjualan yang akurat.
-
-INTEGRASI STEAM:
-• Science: Analisis data empiris dan fluktuasi penjualan kebutuhan pokok.
-• Technology: Media simulasi edukatif interaktif berbasis Godot Engine.
-• Engineering: Alur logika sistematis dan tahapan komputasi bertahap.
-• Art: Storytelling kontekstual toko sembako dan visual pendakian langit.
-• Mathematics: Ukuran Pemusatan Data — Mean (Rata-rata) & Median (Nilai Tengah)."
-dialog_autowrap = true

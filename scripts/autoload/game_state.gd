@@ -124,7 +124,10 @@ func register_answer(is_correct: bool) -> Dictionary:
 			var correct_ans = ""
 			if dm:
 				var q = dm.get_question(current_level, current_point_index)
-				correct_ans = str(q.get("correct_answer", ""))
+				if q.has("correct_answer"):
+					correct_ans = str(q.get("correct_answer", ""))
+				elif q.has("correct_order"):
+					correct_ans = ", ".join(q.get("correct_order", []))
 			emit_signal("answer_revealed", current_point_index, correct_ans)
 			print("GameState: Jawaban SALAH ke-%d! Kunci jawaban dibuka: %s" % [wrong_attempts_current_question, correct_ans])
 		else:

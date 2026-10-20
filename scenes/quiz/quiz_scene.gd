@@ -5,6 +5,7 @@ class_name QuizScene
 # Mengelola interaksi kuis pembelajaran statistika berbasis konteks toko sembako
 # Mendukung 4 tipe soal: PG, TF, Isian Singkat, dan Prosedur (Urutan Langkah)
 # Dilengkapi fitur pop-up Tabel Distribusi Frekuensi per level
+# Mendukung bank 48 soal (4 varian per titik dengan peluang merata 25%)
 
 @onready var stage_label: Label = $TopBar/MarginContainer/HBoxContainer/StageLabel
 @onready var score_label: Label = $TopBar/MarginContainer/HBoxContainer/ScoreLabel
@@ -110,7 +111,10 @@ func _load_current_point_question() -> void:
 
 	_update_top_bar()
 
-	current_question = dm.get_question(gs.current_level, gs.current_point_index)
+	current_question = gs.get_current_question()
+	if current_question.is_empty():
+		current_question = dm.get_question(gs.current_level, gs.current_point_index)
+
 	if current_question.is_empty():
 		prompt_label.text = "Soal tidak ditemukan untuk level dan titik ini."
 		return
@@ -328,7 +332,20 @@ func _setup_procedure() -> void:
 	btn_check_procedure.disabled = false
 
 	procedure_order_list = current_question.get("procedure_items", []).duplicate()
+	# Acak urutan awal saat ditampilkan agar pemain yang mengurutkannya
+	procedure_order_list.shuffle()
+	var correct_order: Array = current_question.get("correct_order", [])
+	if _is_procedure_matching(correct_order) and procedure_order_list.size() > 1:
+		procedure_order_list.reverse()
 	_render_procedure_items()
+
+func _is_procedure_matching(correct_order: Array) -> bool:
+	if procedure_order_list.size() != correct_order.size():
+		return false
+	for i in range(correct_order.size()):
+		if procedure_order_list[i].get("id", "") != correct_order[i]:
+			return false
+	return true
 
 func _render_procedure_items() -> void:
 	for child in procedure_items_list.get_children():
@@ -389,16 +406,7 @@ func _on_check_procedure() -> void:
 	if is_solved:
 		return
 	var correct_order: Array = current_question.get("correct_order", [])
-	var is_correct = true
-
-	if procedure_order_list.size() != correct_order.size():
-		is_correct = false
-	else:
-		for i in range(correct_order.size()):
-			if procedure_order_list[i].get("id", "") != correct_order[i]:
-				is_correct = false
-				break
-
+	var is_correct = _is_procedure_matching(correct_order)
 	_process_answer_result(is_correct)
 
 # --- SISTEM SKOR & HASIL EVALUASI ---

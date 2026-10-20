@@ -1,7 +1,8 @@
 extends Node
 
 # Data Manager v1.0 (GDD v1.0 Architecture)
-# Mengelola konfigurasi permainan, tabel distribusi frekuensi, dan database soal tetap
+# Mengelola konfigurasi permainan, tabel distribusi frekuensi, dan bank 48 soal
+# Setiap titik memiliki 4 varian soal (PG, TF, Isian, Prosedur) dengan peluang 25% per tipe
 
 var game_config: Dictionary = {}
 var levels_config: Dictionary = {} # level (int) -> Dictionary
@@ -104,30 +105,51 @@ func load_questions(file_path: String) -> void:
 		var lvl = int(q.get("level", 1))
 		var pt = int(q.get("point_index", 1))
 		if questions_by_level.has(lvl):
-			questions_by_level[lvl][pt] = q
+			if not questions_by_level[lvl].has(pt):
+				questions_by_level[lvl][pt] = []
+			questions_by_level[lvl][pt].append(q)
 
-	print("DataManager: Berhasil memuat %d soal tetap (Level 1: %d, Level 2: %d, Level 3: %d)." % [
+	print("DataManager: Berhasil memuat %d soal dalam bank soal (Level 1: %d titik, Level 2: %d titik, Level 3: %d titik)." % [
 		questions_list.size(),
 		questions_by_level[1].size(),
 		questions_by_level[2].size(),
 		questions_by_level[3].size()
 	])
 
-# Mengambil 1 soal spesifik berdasarkan level dan nomor titik (1-based)
-func get_question(level: int, point_index: int) -> Dictionary:
+# Mengambil seluruh varian soal pada titik tertentu (4 varian: PG, TF, Isian, Prosedur)
+func get_question_variants(level: int, point_index: int) -> Array:
 	if questions_by_level.has(level) and questions_by_level[level].has(point_index):
 		return questions_by_level[level][point_index]
-	push_warning("DataManager: Soal untuk Level %d Titik %d tidak ditemukan!" % [level, point_index])
-	return {}
+	push_warning("DataManager: Varian soal untuk Level %d Titik %d tidak ditemukan!" % [level, point_index])
+	return []
 
-# Mengambil daftar seluruh soal di level tertentu
+# Mengambil 1 varian acak dari 4 jenis soal dengan peluang sama (25% PG, 25% TF, 25% Isian, 25% Prosedur)
+func get_random_question(level: int, point_index: int) -> Dictionary:
+	var variants = get_question_variants(level, point_index)
+	if variants.is_empty():
+		return {}
+	return variants.pick_random()
+
+# Mengambil soal aktif untuk level dan titik (prioritas dari GameState sesi aktif, atau acak 25%)
+func get_question(level: int, point_index: int) -> Dictionary:
+	var main_loop = Engine.get_main_loop()
+	if main_loop and main_loop is SceneTree and main_loop.root.has_node("GameState"):
+		var gs = main_loop.root.get_node("GameState")
+		if gs and "active_level_questions" in gs and gs.active_level_questions.has(point_index):
+			return gs.active_level_questions[point_index]
+
+	return get_random_question(level, point_index)
+
+# Mengambil daftar seluruh soal di level tertentu (seluruh varian)
 func get_questions_for_level(level: int) -> Array:
 	var list: Array = []
 	if questions_by_level.has(level):
 		var keys = questions_by_level[level].keys()
 		keys.sort()
 		for k in keys:
-			list.append(questions_by_level[level][k])
+			var var_list: Array = questions_by_level[level][k]
+			for q in var_list:
+				list.append(q)
 	return list
 
 # Mengambil konfigurasi spesifik level (total points, max score, dll.)

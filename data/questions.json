@@ -1,158 +1,1048 @@
 {
-  "total": 12,
   "questions": [
     {
-      "id": "L1-P1",
+      "correct_answer": "C",
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T1-PG",
       "level": 1,
+      "narrative": "Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.",
+      "options": [
+        {
+          "key": "A",
+          "text": "15"
+        },
+        {
+          "key": "B",
+          "text": "16"
+        },
+        {
+          "key": "C",
+          "text": "15,8"
+        },
+        {
+          "key": "D",
+          "text": "18"
+        }
+      ],
       "point_index": 1,
-      "type": "PG",
-      "narrative": "Bima membantu ayah membuka buku catatan penjualan toko sembako di akhir pekan.",
-      "prompt": "Data penjualan telur ayam (dalam kg) selama 5 hari berturut-turut adalah 12, 15, 10, 18, dan 15 kg. Berapakah rata-rata (mean) penjualan telur per hari?",
-      "options": [
-        {"key": "A", "text": "13 kg"},
-        {"key": "B", "text": "14 kg"},
-        {"key": "C", "text": "15 kg"},
-        {"key": "D", "text": "16 kg"}
-      ],
-      "correct_answer": "B"
+      "prompt": "Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Mean (rata-rata) penjualan cokelat pada 5 hari pertama adalah ... pcs.",
+      "type": "PG"
     },
     {
-      "id": "L1-P2",
+      "correct_answer": "SALAH",
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T1-TF",
       "level": 1,
-      "point_index": 2,
-      "type": "TF",
-      "narrative": "Ayah menunjukkan ringkasan omzet beras selama 4 hari pertama minggu ini.",
-      "prompt": "Jika total hasil penjualan beras toko ayah selama 4 hari adalah Rp 800.000, maka rata-rata pendapatan penjualan beras per hari adalah Rp 200.000.",
-      "correct_answer": "BENAR"
-    },
-    {
-      "id": "L1-P3",
-      "level": 1,
-      "point_index": 3,
-      "type": "Isian",
-      "narrative": "Bima diminta menghitung rata-rata pengeluaran stok gula pasir toko.",
-      "prompt": "Penjualan gula pasir selama 4 hari berturut-turut adalah 20 kg, 25 kg, 30 kg, dan 25 kg. Rata-rata penjualan gula pasir per hari adalah ... kg.",
-      "correct_answer": "25",
-      "accepted_answers": ["25", "25,0", "25.0"]
-    },
-    {
-      "id": "L1-P4",
-      "level": 1,
-      "point_index": 4,
-      "type": "Prosedur",
-      "narrative": "Ayah ingin Bima memahami alur baku sebelum memasukkan data ke tabel laporan penjualan.",
-      "prompt": "Urutkan tahapan yang benar untuk menghitung rata-rata (mean) penjualan mingguan toko ayah:",
-      "procedure_items": [
-        {"id": "step_1", "text": "Catat angka penjualan harian dari hari Senin sampai Sabtu."},
-        {"id": "step_2", "text": "Jumlahkan seluruh hasil penjualan harian tersebut."},
-        {"id": "step_3", "text": "Hitung banyaknya hari pencatatan (6 hari)."},
-        {"id": "step_4", "text": "Bagi jumlah total penjualan dengan banyaknya hari (6)."}
-      ],
-      "correct_order": ["step_1", "step_2", "step_3", "step_4"]
-    },
-    {
-      "id": "L1-P5",
-      "level": 1,
-      "point_index": 5,
-      "type": "PG",
-      "narrative": "Sebagai penutup laporan Level 1, Bima merangkum data penjualan minyak goreng kemasan.",
-      "prompt": "Penjualan minyak goreng kemasan selama 6 hari adalah 8, 12, 10, 15, 9, dan 12 liter. Berapakah rata-rata volume minyak goreng yang terjual setiap hari?",
-      "options": [
-        {"key": "A", "text": "10 liter"},
-        {"key": "B", "text": "11 liter"},
-        {"key": "C", "text": "12 liter"},
-        {"key": "D", "text": "13 liter"}
-      ],
-      "correct_answer": "B"
-    },
-    {
-      "id": "L2-P1",
-      "level": 2,
+      "narrative": "Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.",
       "point_index": 1,
-      "type": "PG",
-      "narrative": "Ayah menjelaskan bahwa nilai tengah (median) berguna agar angka penjualan tidak mudah terpengaruh oleh hari yang terlalu sepi atau terlalu ramai.",
-      "prompt": "Data penjualan karung beras selama 5 hari yang sudah dicatat Bima adalah: 7, 9, 12, 15, dan 18 karung. Berapakah nilai median dari data penjualan tersebut?",
-      "options": [
-        {"key": "A", "text": "9 karung"},
-        {"key": "B", "text": "12 karung"},
-        {"key": "C", "text": "14 karung"},
-        {"key": "D", "text": "15 karung"}
-      ],
-      "correct_answer": "B"
+      "prompt": "Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Pernyataan: mean penjualan cokelat pada 5 hari pertama adalah 16 pcs.",
+      "type": "TF"
     },
     {
-      "id": "L2-P2",
-      "level": 2,
-      "point_index": 2,
-      "type": "Prosedur",
-      "narrative": "Bima menyusun prosedur kerja agar pencarian median data harian selalu tepat dan konsisten.",
-      "prompt": "Urutkan langkah-langkah yang benar untuk menentukan median dari sekumpulan data penjualan harian:",
+      "accepted_answers": [
+        "15,8",
+        "15.8"
+      ],
+      "correct_answer": "15,8",
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T1-ISI",
+      "level": 1,
+      "narrative": "Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.",
+      "point_index": 1,
+      "prompt": "Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Mean penjualan cokelat pada 5 hari pertama adalah ... pcs.",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T1-PRO",
+      "level": 1,
+      "narrative": "Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.",
+      "point_index": 1,
       "procedure_items": [
-        {"id": "step_1", "text": "Kumpulkan dan periksa kembali seluruh data angka penjualan harian."},
-        {"id": "step_2", "text": "Urutkan seluruh data penjualan dari nilai terkecil ke nilai terbesar."},
-        {"id": "step_3", "text": "Periksa apakah banyaknya data (n) bernilai ganjil atau genap."},
-        {"id": "step_4", "text": "Tentukan posisi dan ambil nilai data yang berada tepat di tengah."}
+        {
+          "id": "step_1",
+          "text": "Jumlahkan seluruh data: 12 + 15 + 18 + 14 + 20 = 79"
+        },
+        {
+          "id": "step_2",
+          "text": "Hitung banyaknya data: ada 5 hari"
+        },
+        {
+          "id": "step_3",
+          "text": "Bagi jumlah data dengan banyaknya data: 79 ÷ 5"
+        },
+        {
+          "id": "step_4",
+          "text": "Tuliskan hasilnya: mean = 15,8 pcs"
+        }
       ],
-      "correct_order": ["step_1", "step_2", "step_3", "step_4"]
+      "prompt": "Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Urutkan langkah menghitung mean penjualan cokelat pada 5 hari pertama.",
+      "type": "Prosedur"
     },
     {
-      "id": "L2-P3",
-      "level": 2,
-      "point_index": 3,
-      "type": "TF",
-      "narrative": "Ayah menanyakan konsep perhitungan nilai tengah apabila jumlah hari pencatatan data genap.",
-      "prompt": "Jika banyaknya data penjualan genap (misalnya 6 hari), maka nilai median diperoleh dengan menjumlahkan dua data di posisi tengah lalu membaginya dengan dua.",
-      "correct_answer": "BENAR"
+      "correct_answer": "A",
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T2-PG",
+      "level": 1,
+      "narrative": "Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.",
+      "options": [
+        {
+          "key": "A",
+          "text": "15"
+        },
+        {
+          "key": "B",
+          "text": "13"
+        },
+        {
+          "key": "C",
+          "text": "14"
+        },
+        {
+          "key": "D",
+          "text": "17"
+        }
+      ],
+      "point_index": 2,
+      "prompt": "Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Penjualan hari ke-6 sampai ke-9 berturut-turut adalah 16, 13, 17, dan 19 pcs. Penjualan cokelat pada hari ke-10 adalah ... pcs.",
+      "type": "PG"
     },
     {
-      "id": "L2-P4",
-      "level": 2,
-      "point_index": 4,
-      "type": "Isian",
-      "narrative": "Bima menganalisis catatan penjualan tepung terigu selama 6 hari untuk menutup Level 2.",
-      "prompt": "Data penjualan tepung terigu (kg) selama 6 hari berturut-turut adalah 10, 14, 12, 18, 16, dan 20 kg. Nilai median dari penjualan tepung terigu tersebut adalah ... kg.",
+      "correct_answer": "BENAR",
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T2-TF",
+      "level": 1,
+      "narrative": "Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.",
+      "point_index": 2,
+      "prompt": "Pernyataan: jika mean penjualan selama 5 hari adalah 16 pcs, maka jumlah penjualan selama 5 hari tersebut adalah 80 pcs.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "15"
+      ],
       "correct_answer": "15",
-      "accepted_answers": ["15", "15,0", "15.0"]
-    },
-    {
-      "id": "L3-P1",
-      "level": 3,
-      "point_index": 1,
-      "type": "PG",
-      "narrative": "Masuk ke Level 3, Bima dan ayah membandingkan mean dan median untuk memeriksa kestabilan penjualan toko.",
-      "prompt": "Penjualan mie instan (dus) selama 5 hari adalah 5, 8, 10, 12, dan 15 dus. Berapakah selisih antara nilai rata-rata (mean) dan nilai tengah (median) data penjualan tersebut?",
-      "options": [
-        {"key": "A", "text": "0"},
-        {"key": "B", "text": "1"},
-        {"key": "C", "text": "2"},
-        {"key": "D", "text": "3"}
-      ],
-      "correct_answer": "A"
-    },
-    {
-      "id": "L3-P2",
-      "level": 3,
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T2-ISI",
+      "level": 1,
+      "narrative": "Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.",
       "point_index": 2,
-      "type": "Isian",
-      "narrative": "Suatu hari toko mendapat pesanan borongan (pencilan/outlier) dari hajatan warga, sehingga data penjualan sabun mandi selama 5 hari adalah 4, 5, 5, 6, dan 30 kotak.",
-      "prompt": "Berapakah nilai median dari data penjualan sabun mandi tersebut? (Ketik angkanya)",
-      "correct_answer": "5",
-      "accepted_answers": ["5", "5,0", "5.0"]
+      "prompt": "Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Penjualan hari ke-6 sampai ke-9 berturut-turut adalah 16, 13, 17, dan 19 pcs. Penjualan cokelat pada hari ke-10 adalah ... pcs.",
+      "type": "Isian"
     },
     {
-      "id": "L3-P3",
-      "level": 3,
-      "point_index": 3,
-      "type": "Prosedur",
-      "narrative": "Sebagai tahap akhir pembukuan toko, Bima menyusun alur evaluasi komparasi antara mean dan median.",
-      "prompt": "Urutkan tahapan analisis laporan penjualan untuk mendeteksi apakah rata-rata toko dipengaruhi oleh pesanan borongan mendadak (pencilan):",
-      "procedure_items": [
-        {"id": "step_1", "text": "Hitung nilai rata-rata (mean) penjualan produk."},
-        {"id": "step_2", "text": "Hitung nilai tengah (median) penjualan produk."},
-        {"id": "step_3", "text": "Bandingkan selisih nilai mean terhadap nilai median."},
-        {"id": "step_4", "text": "Tentukan apakah mean bergeser jauh akibat adanya nilai penjualan ekstrem."}
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
       ],
-      "correct_order": ["step_1", "step_2", "step_3", "step_4"]
+      "data_used": "Data mentah Level 1, hari ke-1 s.d. ke-10",
+      "id": "L1-T2-PRO",
+      "level": 1,
+      "narrative": "Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.",
+      "point_index": 2,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Hitung jumlah seluruh data dari mean: 16 × 5 = 80"
+        },
+        {
+          "id": "step_2",
+          "text": "Jumlahkan empat data yang diketahui: 16 + 13 + 17 + 19 = 65"
+        },
+        {
+          "id": "step_3",
+          "text": "Kurangkan: 80 − 65"
+        },
+        {
+          "id": "step_4",
+          "text": "Tuliskan hasilnya: penjualan hari ke-10 adalah 15 pcs"
+        }
+      ],
+      "prompt": "Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Penjualan hari ke-6 sampai ke-9 berturut-turut adalah 16, 13, 17, dan 19 pcs. Urutkan langkah menentukan penjualan cokelat pada hari ke-10.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "D",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T3-PG",
+      "level": 1,
+      "narrative": "Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.",
+      "options": [
+        {
+          "key": "A",
+          "text": "16"
+        },
+        {
+          "key": "B",
+          "text": "17"
+        },
+        {
+          "key": "C",
+          "text": "33"
+        },
+        {
+          "key": "D",
+          "text": "16,5"
+        }
+      ],
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan cokelat, titik tengah kelas 16–17 adalah ...",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "BENAR",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T3-TF",
+      "level": 1,
+      "narrative": "Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.",
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan cokelat, pernyataan: titik tengah kelas 22–23 adalah 22,5.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "18,5",
+        "18.5"
+      ],
+      "correct_answer": "18,5",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T3-ISI",
+      "level": 1,
+      "narrative": "Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.",
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan cokelat, titik tengah kelas 18–19 adalah ...",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T3-PRO",
+      "level": 1,
+      "narrative": "Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.",
+      "point_index": 3,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tentukan batas bawah (14) dan batas atas (15) kelas 14–15"
+        },
+        {
+          "id": "step_2",
+          "text": "Jumlahkan kedua batas: 14 + 15 = 29"
+        },
+        {
+          "id": "step_3",
+          "text": "Bagi hasilnya dengan 2: 29 ÷ 2, sehingga titik tengah = 14,5"
+        }
+      ],
+      "prompt": "Urutkan langkah menentukan titik tengah kelas 14–15 pada tabel penjualan cokelat.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "B",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T4-PG",
+      "level": 1,
+      "narrative": "Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.",
+      "options": [
+        {
+          "key": "A",
+          "text": "25,5"
+        },
+        {
+          "key": "B",
+          "text": "129,5"
+        },
+        {
+          "key": "C",
+          "text": "126"
+        },
+        {
+          "key": "D",
+          "text": "133"
+        }
+      ],
+      "point_index": 4,
+      "prompt": "Berdasarkan tabel penjualan cokelat, hasil kali frekuensi dan titik tengah (f · x) untuk kelas 18–19 adalah ...",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "SALAH",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T4-TF",
+      "level": 1,
+      "narrative": "Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.",
+      "point_index": 4,
+      "prompt": "Berdasarkan tabel penjualan cokelat, pernyataan: untuk kelas 18–19, hasil kali f · x adalah 7 × 18 = 126.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "101,5",
+        "101.5"
+      ],
+      "correct_answer": "101,5",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T4-ISI",
+      "level": 1,
+      "narrative": "Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.",
+      "point_index": 4,
+      "prompt": "Berdasarkan tabel penjualan cokelat, hasil kali frekuensi dan titik tengah (f · x) untuk kelas 14–15 adalah ...",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T4-PRO",
+      "level": 1,
+      "narrative": "Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.",
+      "point_index": 4,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tentukan titik tengah tiap kelas: 12,5; 14,5; 16,5; 18,5; 20,5; 22,5"
+        },
+        {
+          "id": "step_2",
+          "text": "Kalikan frekuensi tiap kelas dengan titik tengahnya"
+        },
+        {
+          "id": "step_3",
+          "text": "Tuliskan hasil kali (f · x): 37,5; 101,5; 99; 129,5; 102,5; 45"
+        },
+        {
+          "id": "step_4",
+          "text": "Jumlahkan seluruh hasil kali: Σ f · x = 515"
+        }
+      ],
+      "prompt": "Urutkan langkah menentukan Σ f · x pada tabel penjualan cokelat.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "A",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T5-PG",
+      "level": 1,
+      "narrative": "Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.",
+      "options": [
+        {
+          "key": "A",
+          "text": "17,17"
+        },
+        {
+          "key": "B",
+          "text": "16,5"
+        },
+        {
+          "key": "C",
+          "text": "17,5"
+        },
+        {
+          "key": "D",
+          "text": "18,5"
+        }
+      ],
+      "point_index": 5,
+      "prompt": "Berdasarkan tabel penjualan cokelat, mean penjualan per hari (dibulatkan dua angka desimal) adalah ... pcs.",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "BENAR",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T5-TF",
+      "level": 1,
+      "narrative": "Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.",
+      "point_index": 5,
+      "prompt": "Berdasarkan tabel penjualan cokelat, pernyataan: mean penjualan cokelat per hari adalah sekitar 17,17 pcs.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "17,17",
+        "17.17"
+      ],
+      "correct_answer": "17,17",
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T5-ISI",
+      "level": 1,
+      "narrative": "Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.",
+      "point_index": 5,
+      "prompt": "Berdasarkan tabel penjualan cokelat, mean penjualan per hari (dibulatkan dua angka desimal) adalah ... pcs.",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4, step_5",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "data_used": "Tabel Level 1 (cokelat)",
+      "id": "L1-T5-PRO",
+      "level": 1,
+      "narrative": "Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.",
+      "point_index": 5,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tentukan titik tengah (x) tiap kelas"
+        },
+        {
+          "id": "step_2",
+          "text": "Hitung hasil kali frekuensi dan titik tengah (f · x) tiap kelas"
+        },
+        {
+          "id": "step_3",
+          "text": "Jumlahkan: Σ f · x = 515 dan Σ f = 30"
+        },
+        {
+          "id": "step_4",
+          "text": "Bagi Σ f · x dengan Σ f: 515 ÷ 30"
+        },
+        {
+          "id": "step_5",
+          "text": "Tuliskan hasilnya: mean ≈ 17,17 pcs"
+        }
+      ],
+      "prompt": "Urutkan langkah menghitung mean penjualan cokelat dari tabel berkelompok.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "D",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T1-PG",
+      "level": 2,
+      "narrative": "Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.",
+      "options": [
+        {
+          "key": "A",
+          "text": "5"
+        },
+        {
+          "key": "B",
+          "text": "11"
+        },
+        {
+          "key": "C",
+          "text": "21"
+        },
+        {
+          "key": "D",
+          "text": "16"
+        }
+      ],
+      "point_index": 1,
+      "prompt": "Berdasarkan tabel penjualan permen, frekuensi kumulatif kelas 3,2–3,5 adalah ...",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "SALAH",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T1-TF",
+      "level": 2,
+      "narrative": "Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.",
+      "point_index": 1,
+      "prompt": "Berdasarkan tabel penjualan permen, pernyataan: frekuensi kumulatif kelas 2,8–3,1 adalah 6.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "27"
+      ],
+      "correct_answer": "27",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T1-ISI",
+      "level": 2,
+      "narrative": "Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.",
+      "point_index": 1,
+      "prompt": "Berdasarkan tabel penjualan permen, frekuensi kumulatif kelas 4,0–4,3 adalah ...",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T1-PRO",
+      "level": 2,
+      "narrative": "Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.",
+      "point_index": 1,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tuliskan frekuensi tiap kelas: 5, 6, 5, 5, 6, 3"
+        },
+        {
+          "id": "step_2",
+          "text": "Frekuensi kumulatif kelas pertama sama dengan frekuensinya: 5"
+        },
+        {
+          "id": "step_3",
+          "text": "Tambahkan frekuensi kelas berikutnya secara berurutan: 5 + 6 = 11, 11 + 5 = 16, 16 + 5 = 21, 21 + 6 = 27, 27 + 3 = 30"
+        },
+        {
+          "id": "step_4",
+          "text": "Periksa bahwa frekuensi kumulatif terakhir sama dengan jumlah seluruh frekuensi, yaitu 30"
+        }
+      ],
+      "prompt": "Urutkan langkah menyusun kolom frekuensi kumulatif pada tabel penjualan permen.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "B",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T2-PG",
+      "level": 2,
+      "narrative": "Ayah bertanya, \"Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?\" Bima mencari kelas mediannya.",
+      "options": [
+        {
+          "key": "A",
+          "text": "2,8–3,1"
+        },
+        {
+          "key": "B",
+          "text": "3,2–3,5"
+        },
+        {
+          "key": "C",
+          "text": "3,6–3,9"
+        },
+        {
+          "key": "D",
+          "text": "4,0–4,3"
+        }
+      ],
+      "point_index": 2,
+      "prompt": "Berdasarkan tabel penjualan permen, banyak data n = 30, sehingga posisi median adalah n/2 = 15. Kelas median adalah ...",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "SALAH",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T2-TF",
+      "level": 2,
+      "narrative": "Ayah bertanya, \"Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?\" Bima mencari kelas mediannya.",
+      "point_index": 2,
+      "prompt": "Berdasarkan tabel penjualan permen, pernyataan: kelas median adalah 3,6–3,9 karena frekuensi kumulatifnya 21, yaitu lebih dari 15.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "15"
+      ],
+      "correct_answer": "15",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T2-ISI",
+      "level": 2,
+      "narrative": "Ayah bertanya, \"Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?\" Bima mencari kelas mediannya.",
+      "point_index": 2,
+      "prompt": "Berdasarkan tabel penjualan permen, nilai n/2, yaitu posisi median, adalah ...",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T2-PRO",
+      "level": 2,
+      "narrative": "Ayah bertanya, \"Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?\" Bima mencari kelas mediannya.",
+      "point_index": 2,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Hitung banyak seluruh data: n = Σ f = 30"
+        },
+        {
+          "id": "step_2",
+          "text": "Hitung posisi median: n/2 = 15"
+        },
+        {
+          "id": "step_3",
+          "text": "Susun kolom frekuensi kumulatif: 5, 11, 16, 21, 27, 30"
+        },
+        {
+          "id": "step_4",
+          "text": "Cari kelas pertama yang frekuensi kumulatifnya ≥ 15: kelas 3,2–3,5 (fk = 16), sehingga itulah kelas median"
+        }
+      ],
+      "prompt": "Urutkan langkah menentukan kelas median pada tabel penjualan permen.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "C",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T3-PG",
+      "level": 2,
+      "narrative": "Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.",
+      "options": [
+        {
+          "key": "A",
+          "text": "3,10"
+        },
+        {
+          "key": "B",
+          "text": "3,20"
+        },
+        {
+          "key": "C",
+          "text": "3,15"
+        },
+        {
+          "key": "D",
+          "text": "3,25"
+        }
+      ],
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan permen. Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05. Tepi bawah kelas median (L) adalah ...",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "BENAR",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T3-TF",
+      "level": 2,
+      "narrative": "Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.",
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan permen. Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05. Pernyataan: panjang kelas (p), yaitu tepi atas dikurangi tepi bawah, adalah 0,4.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "11"
+      ],
+      "correct_answer": "11",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T3-ISI",
+      "level": 2,
+      "narrative": "Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.",
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan permen, frekuensi kumulatif sebelum kelas median (F) adalah ...",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T3-PRO",
+      "level": 2,
+      "narrative": "Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.",
+      "point_index": 3,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tentukan kelas median, yaitu 3,2–3,5"
+        },
+        {
+          "id": "step_2",
+          "text": "Tentukan tepi bawah kelas median: L = 3,2 − 0,05 = 3,15"
+        },
+        {
+          "id": "step_3",
+          "text": "Tentukan frekuensi kumulatif sebelum kelas median: F = 11"
+        },
+        {
+          "id": "step_4",
+          "text": "Tentukan frekuensi kelas median dan panjang kelas: fm = 5 dan p = 0,4"
+        }
+      ],
+      "prompt": "Urutkan langkah menentukan unsur-unsur rumus median pada tabel penjualan permen, sesuai urutan penulisan pada rumus (L, F, fm, lalu p). Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "A",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T4-PG",
+      "level": 2,
+      "narrative": "Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.",
+      "options": [
+        {
+          "key": "A",
+          "text": "3,47"
+        },
+        {
+          "key": "B",
+          "text": "3,07"
+        },
+        {
+          "key": "C",
+          "text": "3,52"
+        },
+        {
+          "key": "D",
+          "text": "3,55"
+        }
+      ],
+      "point_index": 4,
+      "prompt": "Berdasarkan tabel penjualan permen, median berat permen terjual per hari adalah ... kg.",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "BENAR",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T4-TF",
+      "level": 2,
+      "narrative": "Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.",
+      "point_index": 4,
+      "prompt": "Berdasarkan tabel penjualan permen, pernyataan: median berat permen terjual per hari adalah 3,47 kg.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "3,47",
+        "3.47"
+      ],
+      "correct_answer": "3,47",
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T4-ISI",
+      "level": 2,
+      "narrative": "Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.",
+      "point_index": 4,
+      "prompt": "Berdasarkan tabel penjualan permen, median berat permen terjual per hari adalah ... kg.",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4, step_5",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "data_used": "Tabel Level 2 (permen)",
+      "id": "L2-T4-PRO",
+      "level": 2,
+      "narrative": "Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.",
+      "point_index": 4,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tuliskan rumus: Me = L + ((n/2 − F) / fm) × p"
+        },
+        {
+          "id": "step_2",
+          "text": "Substitusikan nilainya: Me = 3,15 + ((15 − 11) / 5) × 0,4"
+        },
+        {
+          "id": "step_3",
+          "text": "Hitung bagian dalam kurung: 4 / 5 = 0,8"
+        },
+        {
+          "id": "step_4",
+          "text": "Kalikan dengan panjang kelas: 0,8 × 0,4 = 0,32"
+        },
+        {
+          "id": "step_5",
+          "text": "Jumlahkan dengan tepi bawah: 3,15 + 0,32 = 3,47 kg"
+        }
+      ],
+      "prompt": "Urutkan langkah menghitung median penjualan permen.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "B",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T1-PG",
+      "level": 3,
+      "narrative": "Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.",
+      "options": [
+        {
+          "key": "A",
+          "text": "44,5"
+        },
+        {
+          "key": "B",
+          "text": "46,3"
+        },
+        {
+          "key": "C",
+          "text": "46,5"
+        },
+        {
+          "key": "D",
+          "text": "48,5"
+        }
+      ],
+      "point_index": 1,
+      "prompt": "Berdasarkan tabel penjualan mi instan, mean penjualan per hari adalah ... bungkus.",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "BENAR",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T1-TF",
+      "level": 3,
+      "narrative": "Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.",
+      "point_index": 1,
+      "prompt": "Berdasarkan tabel penjualan mi instan, pernyataan: mean penjualan mi instan per hari adalah 46,3 bungkus.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "46,3",
+        "46.3"
+      ],
+      "correct_answer": "46,3",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T1-ISI",
+      "level": 3,
+      "narrative": "Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.",
+      "point_index": 1,
+      "prompt": "Berdasarkan tabel penjualan mi instan, mean penjualan per hari adalah ... bungkus.",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T1-PRO",
+      "level": 3,
+      "narrative": "Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.",
+      "point_index": 1,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Tentukan titik tengah tiap kelas: 28; 37; 46; 55; 64; 73"
+        },
+        {
+          "id": "step_2",
+          "text": "Hitung hasil kali f · x tiap kelas: 140; 296; 276; 275; 256; 146"
+        },
+        {
+          "id": "step_3",
+          "text": "Jumlahkan: Σ f · x = 1389 dan Σ f = 30"
+        },
+        {
+          "id": "step_4",
+          "text": "Bagi: 1389 ÷ 30 = 46,3 bungkus"
+        }
+      ],
+      "prompt": "Urutkan langkah menghitung mean penjualan mi instan dari tabel berkelompok.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "D",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T2-PG",
+      "level": 3,
+      "narrative": "Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.",
+      "options": [
+        {
+          "key": "A",
+          "text": "41,5"
+        },
+        {
+          "key": "B",
+          "text": "46,3"
+        },
+        {
+          "key": "C",
+          "text": "50,5"
+        },
+        {
+          "key": "D",
+          "text": "44,5"
+        }
+      ],
+      "point_index": 2,
+      "prompt": "Berdasarkan tabel penjualan mi instan, median penjualan per hari adalah ... bungkus.",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "SALAH",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T2-TF",
+      "level": 3,
+      "narrative": "Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.",
+      "point_index": 2,
+      "prompt": "Berdasarkan tabel penjualan mi instan, pernyataan: kelas median adalah 33–41.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "44,5",
+        "44.5"
+      ],
+      "correct_answer": "44,5",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T2-ISI",
+      "level": 3,
+      "narrative": "Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.",
+      "point_index": 2,
+      "prompt": "Berdasarkan tabel penjualan mi instan, median penjualan per hari adalah ... bungkus.",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4, step_5",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T2-PRO",
+      "level": 3,
+      "narrative": "Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.",
+      "point_index": 2,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Susun frekuensi kumulatif: 5, 13, 19, 24, 28, 30"
+        },
+        {
+          "id": "step_2",
+          "text": "Hitung n/2 = 15, lalu tentukan kelas median: 42–50 (fk = 19 ≥ 15)"
+        },
+        {
+          "id": "step_3",
+          "text": "Tentukan unsur rumus: L = 41,5; F = 13; fm = 6; p = 9"
+        },
+        {
+          "id": "step_4",
+          "text": "Substitusikan: Me = 41,5 + ((15 − 13) / 6) × 9"
+        },
+        {
+          "id": "step_5",
+          "text": "Hitung: Me = 41,5 + 3 = 44,5 bungkus"
+        }
+      ],
+      "prompt": "Urutkan langkah menghitung median penjualan mi instan.",
+      "type": "Prosedur"
+    },
+    {
+      "correct_answer": "C",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T3-PG",
+      "level": 3,
+      "narrative": "Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Median lebih besar daripada mean, dengan selisih 1,8 bungkus"
+        },
+        {
+          "key": "B",
+          "text": "Mean sama dengan median"
+        },
+        {
+          "key": "C",
+          "text": "Mean lebih besar daripada median, dengan selisih 1,8 bungkus"
+        },
+        {
+          "key": "D",
+          "text": "Mean lebih besar daripada median, dengan selisih 18 bungkus"
+        }
+      ],
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan mi instan, Bima menghitung mean dan median penjualan per hari. Pernyataan yang benar adalah ...",
+      "type": "PG"
+    },
+    {
+      "correct_answer": "SALAH",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T3-TF",
+      "level": 3,
+      "narrative": "Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.",
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan mi instan, pernyataan: median penjualan per hari lebih besar daripada mean-nya.",
+      "type": "TF"
+    },
+    {
+      "accepted_answers": [
+        "1,8",
+        "1.8"
+      ],
+      "correct_answer": "1,8",
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T3-ISI",
+      "level": 3,
+      "narrative": "Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.",
+      "point_index": 3,
+      "prompt": "Berdasarkan tabel penjualan mi instan, selisih antara mean dan median penjualan per hari (mean − median) adalah ... bungkus.",
+      "type": "Isian"
+    },
+    {
+      "correct_answer": "step_1, step_2, step_3, step_4, step_5",
+      "correct_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "data_used": "Tabel Level 3 (mi instan)",
+      "id": "L3-T3-PRO",
+      "level": 3,
+      "narrative": "Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.",
+      "point_index": 3,
+      "procedure_items": [
+        {
+          "id": "step_1",
+          "text": "Hitung titik tengah, f · x, Σ f · x, dan Σ f untuk mean"
+        },
+        {
+          "id": "step_2",
+          "text": "Hitung mean = Σ f · x ÷ Σ f = 46,3"
+        },
+        {
+          "id": "step_3",
+          "text": "Susun frekuensi kumulatif dan tentukan kelas median 42–50"
+        },
+        {
+          "id": "step_4",
+          "text": "Hitung median dengan rumus: Me = 41,5 + ((15 − 13) / 6) × 9 = 44,5"
+        },
+        {
+          "id": "step_5",
+          "text": "Bandingkan: mean − median = 46,3 − 44,5 = 1,8, sehingga mean lebih besar daripada median"
+        }
+      ],
+      "prompt": "Bima ingin membandingkan mean dan median penjualan mi instan. Ia menghitung mean terlebih dahulu, kemudian median, lalu membandingkannya. Urutkan langkah-langkahnya.",
+      "type": "Prosedur"
     }
-  ]
+  ],
+  "total": 48
 }

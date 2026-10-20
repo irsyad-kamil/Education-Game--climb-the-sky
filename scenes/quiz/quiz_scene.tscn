@@ -1,6 +1,209 @@
-[gd_scene load_steps=2 format=3 uid="uid://quizscene001"]
+[gd_scene load_steps=18 format=3 uid="uid://quizscene001"]
 
 [ext_resource type="Script" path="res://scenes/quiz/quiz_scene.gd" id="1_quiz"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_TopBar"]
+bg_color = Color(1, 1, 1, 0.98)
+border_width_bottom = 2
+border_color = Color(0.84, 0.88, 0.94, 1)
+shadow_color = Color(0.08, 0.14, 0.24, 0.06)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_TopBtnNormal"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.84, 0.88, 0.94, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_TopBtnHover"]
+bg_color = Color(0.92, 0.96, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.43, 0.92, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_PrimaryBtn"]
+bg_color = Color(0.12, 0.43, 0.92, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08, 0.32, 0.72, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.43, 0.92, 0.25)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_PrimaryBtnHover"]
+bg_color = Color(0.2, 0.52, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.43, 0.92, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.43, 0.92, 0.4)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_PillPapan"]
+bg_color = Color(0.95, 0.97, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Card"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.08, 0.14, 0.24, 0.08)
+shadow_size = 10
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_QuestionCard"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.54, 0.24, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.08, 0.14, 0.24, 0.08)
+shadow_size = 10
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_AvatarFrame"]
+bg_color = Color(0.92, 0.96, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_SpeakerBadge"]
+bg_color = Color(0.92, 0.96, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.75, 0.85, 0.98, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Feedback"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.08, 0.14, 0.24, 0.08)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Input"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.84, 0.88, 0.94, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_InputFocus"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.43, 0.92, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.43, 0.92, 0.2)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ModalPanel"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.06, 0.1, 0.18, 0.25)
+shadow_size = 20
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ModalHeader"]
+bg_color = Color(0.92, 0.96, 1, 1)
+border_width_bottom = 2
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_RawData"]
+bg_color = Color(0.94, 0.97, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="QuizScene" type="Control"]
 layout_mode = 3
@@ -18,14 +221,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08, 0.10, 0.15, 1.0)
+color = Color(0.918, 0.965, 1, 1)
+
+[node name="BackgroundArt" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.15)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="TopBar" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 72)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBox_TopBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="TopBar"]
 layout_mode = 1
@@ -39,51 +254,132 @@ theme_override_constants/margin_right = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopBar/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
 
 [node name="BtnMap" type="Button" parent="TopBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(110, 44)
+custom_minimum_size = Vector2(110, 46)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_normal_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/icon_hover_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_pressed_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_focus_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 16
-text = "🗺️ Peta"
+theme_override_styles/hover = SubResource("StyleBox_TopBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_TopBtnNormal")
+text = "Peta"
+alignment = 1
 
-[node name="StageLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer"]
+[node name="BtnMenu" type="Button" parent="TopBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(110, 46)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_normal_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/icon_hover_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_pressed_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_focus_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/hover = SubResource("StyleBox_TopBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_TopBtnNormal")
+text = "Menu"
+alignment = 1
+
+[node name="StageContainer" type="PanelContainer" parent="TopBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
-theme_override_font_sizes/font_size = 20
-text = "Level 1 • Titik 1 dari 5"
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBox_PillPapan")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/MarginContainer/HBoxContainer/StageContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/MarginContainer/HBoxContainer/StageContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LevelBadge" type="PanelContainer" parent="TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BadgeMargin" type="MarginContainer" parent="TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/LevelBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="BadgeLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/LevelBadge/BadgeMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "LEVEL 1"
+
+[node name="StageLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 17
+text = "Konsep Rata-rata (Mean) • Titik 1 dari 5"
 vertical_alignment = 1
 
 [node name="BtnFrequencyTable" type="Button" parent="TopBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 44)
+custom_minimum_size = Vector2(170, 46)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
-text = "📊 Tabel Data"
+theme_override_styles/hover = SubResource("StyleBox_PrimaryBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_PrimaryBtn")
+text = "Tabel Data"
+alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer"]
+[node name="ScoreContainer" type="PanelContainer" parent="TopBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 1.0, 0.6, 1)
-theme_override_font_sizes/font_size = 20
-text = "⭐ Skor: 0"
-horizontal_alignment = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBox_PillPapan")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/MarginContainer/HBoxContainer/ScoreContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/MarginContainer/HBoxContainer/ScoreContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StarIcon" type="TextureRect" parent="TopBar/MarginContainer/HBoxContainer/ScoreContainer/Margin/HBox"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer/ScoreContainer/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 17
+text = "Skor: 0"
 vertical_alignment = 1
-
-[node name="BtnMenu" type="Button" parent="TopBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(110, 44)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
-text = "🏠 Menu"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 70.0
+offset_top = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -94,50 +390,115 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MainContent" type="VBoxContainer" parent="ScrollContainer/CenterContainer"]
-custom_minimum_size = Vector2(1300, 0)
+custom_minimum_size = Vector2(1240, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="StoryPanel" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Card")
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_bottom = 18
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="StoreIcon" type="Label" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer"]
+[node name="AvatarFrame" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(88, 88)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "🏪"
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBox_AvatarFrame")
 
-[node name="NarrativeLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer"]
+[node name="Margin" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/AvatarFrame"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="BimaAvatar" type="TextureRect" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/AvatarFrame/Margin"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextVBox" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.9, 0.92, 0.95, 1)
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="SpeakerBadge" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBox_SpeakerBadge")
+
+[node name="Margin" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox/SpeakerBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
+
+[node name="SpeakerLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox/SpeakerBadge/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_font_sizes/font_size = 13
+text = "BIMA • TOKO SEMBAKO"
+
+[node name="NarrativeLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 18
 text = "Bima membantu ayah membuka buku catatan penjualan toko sembako..."
 autowrap_mode = 2
 
 [node name="QuestionPanel" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_QuestionCard")
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 22
 
-[node name="PromptLabel" type="RichTextLabel" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer"]
+[node name="VBox" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer"]
 layout_mode = 2
-theme_override_colors/default_color = Color(1, 0.95, 0.8, 1)
+theme_override_constants/separation = 12
+
+[node name="HeaderHBox" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PointChip" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox/HeaderHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBox_SpeakerBadge")
+
+[node name="Margin" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox/HeaderHBox/PointChip"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
+
+[node name="PointChipLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox/HeaderHBox/PointChip/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_font_sizes/font_size = 13
+text = "PERTANYAAN TITIK 1"
+
+[node name="PromptLabel" type="RichTextLabel" parent="ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "Data penjualan telur ayam selama 5 hari..."
@@ -146,19 +507,51 @@ fit_content = true
 [node name="FeedbackPanel" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent"]
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Feedback")
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 12
+theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_bottom = 14
 
-[node name="FeedbackLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer"]
+[node name="HBox" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="FeedbackIcon" type="TextureRect" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FeedbackLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 18
 text = "Umpan balik..."
-horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FeedbackBadge" type="PanelContainer" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBox_TopBtnNormal")
+
+[node name="Margin" type="MarginContainer" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox/FeedbackBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="BadgeLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox/FeedbackBadge/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 16
+text = "+100"
 
 [node name="Panels" type="CenterContainer" parent="ScrollContainer/CenterContainer/MainContent"]
 layout_mode = 2
@@ -166,39 +559,48 @@ layout_mode = 2
 [node name="MultipleChoicePanel" type="GridContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
 layout_mode = 2
-theme_override_constants/h_separation = 32
+theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 16
 columns = 2
 
 [node name="TrueFalsePanel" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 32
 
 [node name="ShortAnswerPanel" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
 [node name="InputRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="InputIsian" type="LineEdit" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/InputRow"]
-custom_minimum_size = Vector2(480, 56)
+custom_minimum_size = Vector2(480, 58)
 layout_mode = 2
+theme_override_colors/caret_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/font_placeholder_color = Color(0.55, 0.62, 0.72, 1)
 theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("StyleBox_InputFocus")
+theme_override_styles/normal = SubResource("StyleBox_Input")
 placeholder_text = "Ketik jawaban angka (contoh: 25 atau 7,5)..."
 
 [node name="BtnSubmitIsian" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel/InputRow"]
-custom_minimum_size = Vector2(160, 56)
+custom_minimum_size = Vector2(160, 58)
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBox_PrimaryBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_PrimaryBtn")
 text = "KIRIM"
 
 [node name="HelperLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/Panels/ShortAnswerPanel"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/font_color = Color(0.35, 0.42, 0.55, 1)
 theme_override_font_sizes/font_size = 15
 text = "* Gunakan koma (,) atau titik (.) untuk bilangan desimal."
 horizontal_alignment = 1
@@ -214,10 +616,14 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="BtnCheckProcedure" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel"]
-custom_minimum_size = Vector2(260, 50)
+custom_minimum_size = Vector2(260, 52)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBox_PrimaryBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_PrimaryBtn")
 text = "PERIKSA URUTAN"
 
 [node name="MatchingPanel" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
@@ -228,14 +634,14 @@ theme_override_constants/separation = 16
 
 [node name="InstructionLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
+theme_override_colors/font_color = Color(0.25, 0.35, 0.5, 1)
 theme_override_font_sizes/font_size = 16
 text = "Klik sebuah kartu di kolom kiri, lalu klik pasangannya di kolom kanan."
 horizontal_alignment = 1
 
 [node name="Columns" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 36
 
 [node name="LeftCol" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/Columns"]
 layout_mode = 2
@@ -249,7 +655,7 @@ theme_override_constants/separation = 14
 
 [node name="MatchingStatusLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 16
 text = "Terpasang: 0 dari 3 pasangan"
 horizontal_alignment = 1
@@ -260,28 +666,44 @@ alignment = 1
 theme_override_constants/separation = 20
 
 [node name="BtnResetMatching" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow"]
-custom_minimum_size = Vector2(180, 48)
+custom_minimum_size = Vector2(180, 50)
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_normal_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/icon_hover_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_pressed_color = Color(0.12, 0.43, 0.92, 1)
+theme_override_colors/icon_focus_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 16
+theme_override_styles/hover = SubResource("StyleBox_TopBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_TopBtnNormal")
 text = "Reset Pasangan"
 
 [node name="BtnCheckMatching" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow"]
-custom_minimum_size = Vector2(240, 48)
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBox_PrimaryBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_PrimaryBtn")
 text = "PERIKSA PASANGAN"
 
 [node name="ActionArea" type="CenterContainer" parent="ScrollContainer/CenterContainer/MainContent"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
 [node name="BtnNextPoint" type="Button" parent="ScrollContainer/CenterContainer/MainContent/ActionArea"]
 visible = false
-custom_minimum_size = Vector2(400, 60)
+custom_minimum_size = Vector2(420, 64)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
-text = "Lanjut ke Titik Berikutnya ➡️"
+theme_override_styles/hover = SubResource("StyleBox_PrimaryBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_PrimaryBtn")
+text = "Lanjut ke Titik Berikutnya"
 
 [node name="Popups" type="CanvasLayer" parent="."]
 
@@ -306,7 +728,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.05, 0.08, 0.8)
+color = Color(0.06, 0.09, 0.16, 0.7)
 
 [node name="CenterContainer" type="CenterContainer" parent="Popups/TableModal"]
 layout_mode = 1
@@ -317,15 +739,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="PanelContainer" parent="Popups/TableModal/CenterContainer"]
-custom_minimum_size = Vector2(850, 640)
+custom_minimum_size = Vector2(880, 660)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_ModalPanel")
 
 [node name="Margin" type="MarginContainer" parent="Popups/TableModal/CenterContainer/Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 24
+theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_bottom = 28
 
 [node name="VBox" type="VBoxContainer" parent="Popups/TableModal/CenterContainer/Panel/Margin"]
 layout_mode = 2
@@ -333,35 +756,50 @@ theme_override_constants/separation = 16
 
 [node name="HeaderHBox" type="HBoxContainer" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderIcon" type="TextureRect" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Title" type="Label" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 22
-text = "📊 TABEL DISTRIBUSI FREKUENSI"
+text = "TABEL DISTRIBUSI FREKUENSI"
+vertical_alignment = 1
 
 [node name="BtnCloseX" type="Button" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_colors/font_hover_color = Color(0.9, 0.2, 0.2, 1)
 theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBox_TopBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_TopBtnNormal")
 text = "✕"
 
 [node name="Subtitle" type="Label" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.9, 1.0, 1)
-theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.25, 0.35, 0.5, 1)
+theme_override_font_sizes/font_size = 16
 text = "Level 1 - Mean: Data Penjualan Cokelat dalam Sebulan"
 
 [node name="RawDataPanel" type="PanelContainer" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_RawData")
 
 [node name="Margin" type="MarginContainer" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
 
 [node name="VBox" type="VBoxContainer" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin"]
 layout_mode = 2
@@ -369,19 +807,19 @@ theme_override_constants/separation = 4
 
 [node name="RawTitle" type="Label" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.75, 0.85, 1)
+theme_override_colors/font_color = Color(0.25, 0.35, 0.5, 1)
 theme_override_font_sizes/font_size = 14
 text = "Data Mentah Selama 30 Hari:"
 
 [node name="RawText" type="Label" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 15
 text = "12, 15, 18, 14, 20..."
 autowrap_mode = 2
 
 [node name="TableScroll" type="ScrollContainer" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox"]
-custom_minimum_size = Vector2(0, 260)
+custom_minimum_size = Vector2(0, 270)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -392,8 +830,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
 [node name="BtnCloseBottom" type="Button" parent="Popups/TableModal/CenterContainer/Panel/Margin/VBox"]
-custom_minimum_size = Vector2(180, 46)
+custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBox_PrimaryBtnHover")
+theme_override_styles/normal = SubResource("StyleBox_PrimaryBtn")
 text = "Tutup Tabel"

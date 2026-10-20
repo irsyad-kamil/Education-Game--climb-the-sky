@@ -80,6 +80,20 @@ func get_level_bg(level: int) -> Texture2D:
 			return tex
 	return null
 
+# Mengambil avatar ekspresi Bima ("normal", "senang", "bingung")
+func get_bima_avatar(expression: String = "normal") -> Texture2D:
+	var cache_key = "bima_%s" % expression
+	if _icon_cache.has(cache_key):
+		return _icon_cache[cache_key]
+	var path = "res://assets/images/bima/%s.jpg" % expression
+	if FileAccess.file_exists(path):
+		var img = Image.load_from_file(path)
+		if img:
+			var tex = ImageTexture.create_from_image(img)
+			_icon_cache[cache_key] = tex
+			return tex
+	return null
+
 # Helper membuat StyleBox kartu putih dengan rounded corners & shadow
 func create_card_style(bg_color: Color = COLOR_CARD_WHITE, corner_radius: int = 18, border_color: Color = Color(0.85, 0.90, 0.96)) -> StyleBoxFlat:
 	var sb = StyleBoxFlat.new()

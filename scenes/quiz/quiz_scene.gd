@@ -1,25 +1,48 @@
 extends Control
 class_name QuizScene
 
-# QuizScene v1.0 (GDD v1.0 Architecture)
-# Mengelola interaksi kuis pembelajaran statistika berbasis konteks toko sembako
-# Mendukung 4 tipe soal: PG, TF, Isian Singkat, dan Prosedur (Urutan Langkah)
-# Dilengkapi fitur pop-up Tabel Distribusi Frekuensi per level
-# Mendukung bank 48 soal (4 varian per titik dengan peluang merata 25%)
+# QuizScene v2.0 (Modern, Bright, & Central Palette desain.md)
+# Mengelola interaksi kuis pembelajaran statistika berbasis konteks toko sembako keluarga Bima
+# Mendukung 4 tipe soal: PG, TF, Isian Singkat, dan Matching (3 pasangan dengan socket UX 48px)
+# Terintegrasi avatar ekspresi Bima (normal, senang, bingung), tema terpusat ThemeManager,
+# serta pop-up Tabel Distribusi Frekuensi modern dengan ikon flat vector SVG bebas emoji.
 
-@onready var stage_label: Label = $TopBar/MarginContainer/HBoxContainer/StageLabel
-@onready var score_label: Label = $TopBar/MarginContainer/HBoxContainer/ScoreLabel
+# --- TOP BAR & HUD ---
+@onready var top_bar: Panel = $TopBar
+@onready var stage_label: Label = $TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/StageLabel
+@onready var level_badge: PanelContainer = $TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/LevelBadge
+@onready var level_badge_label: Label = $TopBar/MarginContainer/HBoxContainer/StageContainer/Margin/HBox/LevelBadge/BadgeMargin/BadgeLabel
+@onready var score_label: Label = $TopBar/MarginContainer/HBoxContainer/ScoreContainer/Margin/HBox/ScoreLabel
+@onready var star_icon: TextureRect = $TopBar/MarginContainer/HBoxContainer/ScoreContainer/Margin/HBox/StarIcon
 @onready var btn_frequency_table: Button = $TopBar/MarginContainer/HBoxContainer/BtnFrequencyTable
 @onready var btn_map: Button = $TopBar/MarginContainer/HBoxContainer/BtnMap
 @onready var btn_menu: Button = $TopBar/MarginContainer/HBoxContainer/BtnMenu
 
-@onready var narrative_label: Label = $ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/NarrativeLabel
-@onready var prompt_label: RichTextLabel = $ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/PromptLabel
+# --- BACKGROUND ---
+@onready var background_rect: ColorRect = $Background
+@onready var background_art: TextureRect = $BackgroundArt
 
+# --- STORY PANEL (BIMA AVATAR & DIALOG) ---
+@onready var story_panel: PanelContainer = $ScrollContainer/CenterContainer/MainContent/StoryPanel
+@onready var bima_avatar: TextureRect = $ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/AvatarFrame/Margin/BimaAvatar
+@onready var speaker_badge: PanelContainer = $ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox/SpeakerBadge
+@onready var speaker_label: Label = $ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox/SpeakerBadge/Margin/SpeakerLabel
+@onready var narrative_label: Label = $ScrollContainer/CenterContainer/MainContent/StoryPanel/MarginContainer/HBoxContainer/TextVBox/NarrativeLabel
+
+# --- QUESTION PANEL ---
+@onready var question_panel: PanelContainer = $ScrollContainer/CenterContainer/MainContent/QuestionPanel
+@onready var point_chip: PanelContainer = $ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox/HeaderHBox/PointChip
+@onready var point_chip_label: Label = $ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox/HeaderHBox/PointChip/Margin/PointChipLabel
+@onready var prompt_label: RichTextLabel = $ScrollContainer/CenterContainer/MainContent/QuestionPanel/MarginContainer/VBox/PromptLabel
+
+# --- FEEDBACK PANEL ---
 @onready var feedback_panel: PanelContainer = $ScrollContainer/CenterContainer/MainContent/FeedbackPanel
-@onready var feedback_label: Label = $ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/FeedbackLabel
+@onready var feedback_icon: TextureRect = $ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox/FeedbackIcon
+@onready var feedback_label: Label = $ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox/FeedbackLabel
+@onready var feedback_badge: PanelContainer = $ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox/FeedbackBadge
+@onready var feedback_badge_label: Label = $ScrollContainer/CenterContainer/MainContent/FeedbackPanel/MarginContainer/HBox/FeedbackBadge/Margin/BadgeLabel
 
-# Panels Soal
+# --- SOAL PANELS ---
 @onready var panel_pg: GridContainer = $ScrollContainer/CenterContainer/MainContent/Panels/MultipleChoicePanel
 @onready var panel_tf: HBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/TrueFalsePanel
 
@@ -39,21 +62,24 @@ class_name QuizScene
 @onready var btn_reset_matching: Button = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow/BtnResetMatching
 @onready var btn_check_matching: Button = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow/BtnCheckMatching
 
+# --- ACTION AREA ---
 @onready var btn_next_point: Button = $ScrollContainer/CenterContainer/MainContent/ActionArea/BtnNextPoint
 @onready var level_complete_modal: AcceptDialog = $Popups/LevelCompleteModal
 
-# Modal Tabel Distribusi Frekuensi
+# --- MODAL TABEL DISTRIBUSI FREKUENSI ---
 @onready var table_modal: Control = $Popups/TableModal
 @onready var modal_subtitle: Label = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/Subtitle
 @onready var raw_data_label: Label = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox/RawText
 @onready var table_rows_container: VBoxContainer = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/TableScroll/TableRows
+@onready var table_header_icon: TextureRect = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox/HeaderIcon
 @onready var btn_close_x: Button = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox/BtnCloseX
 @onready var btn_close_bottom: Button = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/BtnCloseBottom
 
+# Warna pasangan matching sesuai palet desain.md (Biru, Oranye, Pink)
 const PAIR_COLORS = [
-	Color(0.25, 0.82, 1.0, 1.0),   # Biru Muda / Cyan
-	Color(1.0, 0.82, 0.28, 1.0),   # Kuning Amber
-	Color(0.88, 0.45, 1.0, 1.0)    # Ungu / Magenta
+	Color("#1F6FEB"), # Pasangan 1: Biru Utama
+	Color("#FF8A3D"), # Pasangan 2: Oranye Level 1
+	Color("#FF6FAE")  # Pasangan 3: Pink Level 2
 ]
 
 var current_question: Dictionary = {}
@@ -64,6 +90,8 @@ var shuffled_right_items: Array = []
 var is_solved: bool = false
 
 func _ready() -> void:
+	_setup_visual_theme()
+
 	btn_map.pressed.connect(_on_map_pressed)
 	btn_menu.pressed.connect(_on_menu_pressed)
 	btn_frequency_table.pressed.connect(_show_frequency_table_modal)
@@ -84,6 +112,41 @@ func _ready() -> void:
 
 	_load_current_point_question()
 
+func _setup_visual_theme() -> void:
+	var tm = _get_tm()
+	if not tm:
+		return
+
+	# Terapkan palet latar utama
+	background_rect.color = tm.COLOR_BG_MAIN
+
+	# Pasang icon flat vector SVG bebas emoji
+	btn_map.icon = tm.get_icon("map")
+	btn_menu.icon = tm.get_icon("arrow_left")
+	btn_frequency_table.icon = tm.get_icon("table")
+	star_icon.texture = tm.get_icon("star")
+	star_icon.modulate = Color("#FFC93C") # Emas / Kuning
+	table_header_icon.texture = tm.get_icon("table")
+	table_header_icon.modulate = tm.COLOR_BTN_PRIMARY
+	btn_reset_matching.icon = tm.get_icon("reset")
+
+	# Kontras tinggi untuk ikon tombol sekunder (Navy di atas shape putih)
+	for btn in [btn_map, btn_menu, btn_reset_matching]:
+		btn.add_theme_color_override("icon_normal_color", tm.COLOR_TEXT_NAVY)
+		btn.add_theme_color_override("icon_hover_color", tm.COLOR_BTN_PRIMARY)
+		btn.add_theme_color_override("icon_pressed_color", tm.COLOR_BTN_PRIMARY)
+		btn.add_theme_color_override("icon_focus_color", tm.COLOR_TEXT_NAVY)
+
+	# Pasang avatar Bima ekspresi netral awal
+	_set_bima_avatar("normal")
+
+func _set_bima_avatar(expression: String) -> void:
+	var tm = _get_tm()
+	if tm:
+		var tex = tm.get_bima_avatar(expression)
+		if tex:
+			bima_avatar.texture = tex
+
 func _get_gs() -> Node:
 	if is_inside_tree() and has_node("/root/GameState"):
 		return get_node("/root/GameState")
@@ -100,22 +163,63 @@ func _get_dm() -> Node:
 		return main_loop.root.get_node("DataManager")
 	return null
 
+func _get_tm() -> Node:
+	if is_inside_tree() and has_node("/root/ThemeManager"):
+		return get_node("/root/ThemeManager")
+	var main_loop = Engine.get_main_loop()
+	if main_loop and main_loop is SceneTree and main_loop.root.has_node("ThemeManager"):
+		return main_loop.root.get_node("ThemeManager")
+	return null
+
 func _update_top_bar() -> void:
 	var gs = _get_gs()
 	var dm = _get_dm()
+	var tm = _get_tm()
 	var lvl = gs.current_level if gs else 1
 	var pt = gs.current_point_index if gs else 1
 	var total_pts = dm.get_total_points(lvl) if dm else 5
 	var score = gs.level_score if gs else 0
 
 	var level_titles = {
-		1: "Level 1: Konsep Rata-rata (Mean)",
-		2: "Level 2: Konsep Nilai Tengah (Median)",
-		3: "Level 3: Evaluasi Komparatif Mean & Median"
+		1: "Konsep Rata-rata (Mean)",
+		2: "Konsep Nilai Tengah (Median)",
+		3: "Evaluasi Komparatif Mean & Median"
 	}
 
+	# Label & Badge level
+	level_badge_label.text = "LEVEL %d" % lvl
 	stage_label.text = "%s • Titik %d dari %d" % [level_titles.get(lvl, "Level %d" % lvl), pt, total_pts]
-	score_label.text = "⭐ Skor: %d" % score
+	score_label.text = "Skor: %d" % score
+
+	# Warnai badge level & border soal sesuai warna aksen level (desain.md)
+	if tm:
+		var lvl_color = tm.get_level_color(lvl)
+		var b_style = StyleBoxFlat.new()
+		b_style.bg_color = lvl_color
+		b_style.set_corner_radius_all(10)
+		level_badge.add_theme_stylebox_override("panel", b_style)
+
+		# Point chip styling
+		var chip_style = StyleBoxFlat.new()
+		chip_style.bg_color = lvl_color
+		chip_style.set_corner_radius_all(8)
+		point_chip.add_theme_stylebox_override("panel", chip_style)
+		point_chip_label.text = "TITIK %d DARI %d" % [pt, total_pts]
+		point_chip_label.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if lvl == 3 else Color(1, 1, 1, 1))
+
+		# Left border question card
+		var q_style = tm.create_card_style(tm.COLOR_CARD_WHITE, 18, Color(0.85, 0.90, 0.96))
+		q_style.border_width_left = 6
+		q_style.border_color = lvl_color
+		question_panel.add_theme_stylebox_override("panel", q_style)
+
+		# Wallpaper background halus tematik per level
+		var bg_tex = tm.get_level_bg(lvl)
+		if bg_tex:
+			background_art.texture = bg_tex
+			background_art.visible = true
+		else:
+			background_art.visible = false
 
 func _load_current_point_question() -> void:
 	var gs = _get_gs()
@@ -128,6 +232,7 @@ func _load_current_point_question() -> void:
 	btn_next_point.visible = false
 	table_modal.visible = false
 
+	_set_bima_avatar("normal")
 	_update_top_bar()
 
 	current_question = gs.get_current_question()
@@ -138,10 +243,10 @@ func _load_current_point_question() -> void:
 		prompt_label.text = "Soal tidak ditemukan untuk level dan titik ini."
 		return
 
-	narrative_label.text = current_question.get("narrative", "Bima mencatat transaksi harian toko sembako.")
+	narrative_label.text = current_question.get("narrative", "Bima membantu ayah membuka buku catatan penjualan toko sembako...")
 	prompt_label.text = current_question.get("prompt", "")
 
-	# Sembunyikan semua subpanel
+	# Sembunyikan semua subpanel sebelum mengaktifkan yang sesuai
 	panel_pg.visible = false
 	panel_tf.visible = false
 	panel_isian.visible = false
@@ -176,6 +281,7 @@ func _show_frequency_table_modal() -> void:
 	raw_data_label.text = tbl_data.get("raw_data", "")
 
 	for child in table_rows_container.get_children():
+		table_rows_container.remove_child(child)
 		child.queue_free()
 
 	# Baris Header
@@ -185,10 +291,11 @@ func _show_frequency_table_modal() -> void:
 
 	# Baris Data Kelas Interval
 	var rows: Array = tbl_data.get("rows", [])
-	for r in rows:
+	for i in range(rows.size()):
+		var r = rows[i]
 		var interval_str = str(r.get("interval", ""))
 		var freq_str = str(r.get("frequency", ""))
-		table_rows_container.add_child(_create_table_row(interval_str, freq_str, false, false))
+		table_rows_container.add_child(_create_table_row(interval_str, freq_str, false, false, i % 2 == 1))
 
 	# Baris Total / Jumlah
 	var total_freq = str(tbl_data.get("total_frequency", 30))
@@ -199,16 +306,14 @@ func _show_frequency_table_modal() -> void:
 func _hide_frequency_table_modal() -> void:
 	table_modal.visible = false
 
-func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bool) -> PanelContainer:
+func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bool, is_zebra: bool = false) -> PanelContainer:
+	var tm = _get_tm()
 	var panel = PanelContainer.new()
-	var margin = MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 16)
-	margin.add_theme_constant_override("margin_right", 16)
-	margin.add_theme_constant_override("margin_top", 8)
-	margin.add_theme_constant_override("margin_bottom", 8)
+	var style = StyleBoxFlat.new()
+	style.set_corner_radius_all(8)
+	style.set_content_margin_all(10)
 
 	var hbox = HBoxContainer.new()
-
 	var lbl1 = Label.new()
 	lbl1.text = col1
 	lbl1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -221,22 +326,26 @@ func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bo
 	lbl2.add_theme_font_size_override("font_size", 16)
 
 	if is_header:
-		panel.self_modulate = Color(0.2, 0.28, 0.42, 1.0)
-		lbl1.add_theme_color_override("font_color", Color(1.0, 0.88, 0.35))
-		lbl2.add_theme_color_override("font_color", Color(1.0, 0.88, 0.35))
+		style.bg_color = tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A")
+		lbl1.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+		lbl2.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	elif is_total:
-		panel.self_modulate = Color(0.18, 0.32, 0.24, 1.0)
-		lbl1.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6))
-		lbl2.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6))
+		style.bg_color = Color("#EAF6FF")
+		style.border_color = tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB")
+		style.set_border_width_all(2)
+		lbl1.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+		lbl2.add_theme_color_override("font_color", tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB"))
 	else:
-		panel.self_modulate = Color(0.15, 0.17, 0.22, 0.8)
-		lbl1.add_theme_color_override("font_color", Color(0.9, 0.92, 0.95))
-		lbl2.add_theme_color_override("font_color", Color(0.9, 0.92, 0.95))
+		style.bg_color = Color("#F4F9FF") if is_zebra else Color("#FFFFFF")
+		style.border_color = Color("#E2E9F2")
+		style.set_border_width_all(1)
+		lbl1.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+		lbl2.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
 
+	panel.add_theme_stylebox_override("panel", style)
 	hbox.add_child(lbl1)
 	hbox.add_child(lbl2)
-	margin.add_child(hbox)
-	panel.add_child(margin)
+	panel.add_child(hbox)
 	return panel
 
 # --- TIPE 1: PILIHAN GANDA (PG) ---
@@ -246,13 +355,24 @@ func _setup_multiple_choice() -> void:
 		panel_pg.remove_child(child)
 		child.queue_free()
 
+	var tm = _get_tm()
 	var options: Array = current_question.get("options", [])
 	for opt in options:
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(480, 58)
-		btn.text = "  %s. %s" % [opt.get("key", ""), opt.get("text", "")]
+		btn.custom_minimum_size = Vector2(560, 64)
+		btn.text = "   %s.  %s" % [opt.get("key", ""), opt.get("text", "")]
 		btn.add_theme_font_size_override("font_size", 18)
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+		# Styling Card Putih Bersih
+		var norm_style = tm.create_card_style(tm.COLOR_CARD_WHITE, 14, Color(0.84, 0.88, 0.94)) if tm else StyleBoxFlat.new()
+		var hov_style = tm.create_card_style(Color("#EAF6FF"), 14, tm.COLOR_BTN_PRIMARY) if tm else StyleBoxFlat.new()
+		btn.add_theme_stylebox_override("normal", norm_style)
+		btn.add_theme_stylebox_override("hover", hov_style)
+		btn.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+		btn.add_theme_color_override("font_hover_color", tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB"))
+
 		btn.pressed.connect(func(): _on_pg_selected(opt.get("key", ""), btn))
 		panel_pg.add_child(btn)
 
@@ -264,9 +384,19 @@ func _on_pg_selected(chosen_key: String, btn: Button) -> void:
 		correct_key = current_question.get("correct_key", "")
 
 	var is_correct = (chosen_key.to_upper() == correct_key.to_upper())
+	var tm = _get_tm()
+
 	if not is_correct:
 		btn.disabled = true
-		btn.self_modulate = Color(0.5, 0.5, 0.5, 0.6)
+		if tm:
+			var wrong_style = tm.create_card_style(Color("#FFF0F0"), 14, tm.COLOR_WRONG_RED)
+			btn.add_theme_stylebox_override("disabled", wrong_style)
+			btn.add_theme_color_override("font_disabled_color", Color("#C53030"))
+	else:
+		if tm:
+			var corr_style = tm.create_card_style(Color("#E8FAF2"), 14, tm.COLOR_CORRECT_GREEN)
+			btn.add_theme_stylebox_override("normal", corr_style)
+			btn.add_theme_color_override("font_color", Color("#15803D"))
 
 	_process_answer_result(is_correct)
 
@@ -274,13 +404,24 @@ func _on_pg_selected(chosen_key: String, btn: Button) -> void:
 func _setup_true_false() -> void:
 	panel_tf.visible = true
 	for child in panel_tf.get_children():
+		panel_tf.remove_child(child)
 		child.queue_free()
 
+	var tm = _get_tm()
 	for val in ["BENAR", "SALAH"]:
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(260, 64)
+		btn.custom_minimum_size = Vector2(280, 64)
 		btn.text = val
-		btn.add_theme_font_size_override("font_size", 22)
+		btn.add_theme_font_size_override("font_size", 20)
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+		var norm_style = tm.create_card_style(tm.COLOR_CARD_WHITE, 16, Color(0.84, 0.88, 0.94)) if tm else StyleBoxFlat.new()
+		var hov_style = tm.create_card_style(Color("#EAF6FF"), 16, tm.COLOR_BTN_PRIMARY) if tm else StyleBoxFlat.new()
+		btn.add_theme_stylebox_override("normal", norm_style)
+		btn.add_theme_stylebox_override("hover", hov_style)
+		btn.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+		btn.add_theme_color_override("font_hover_color", tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB"))
+
 		btn.pressed.connect(func(): _on_tf_selected(val, btn))
 		panel_tf.add_child(btn)
 
@@ -289,10 +430,19 @@ func _on_tf_selected(chosen_val: String, btn: Button) -> void:
 		return
 	var correct_val = current_question.get("correct_answer", "")
 	var is_correct = (chosen_val.to_upper() == correct_val.to_upper())
+	var tm = _get_tm()
 
 	if not is_correct:
 		btn.disabled = true
-		btn.self_modulate = Color(0.5, 0.5, 0.5, 0.6)
+		if tm:
+			var wrong_style = tm.create_card_style(Color("#FFF0F0"), 16, tm.COLOR_WRONG_RED)
+			btn.add_theme_stylebox_override("disabled", wrong_style)
+			btn.add_theme_color_override("font_disabled_color", Color("#C53030"))
+	else:
+		if tm:
+			var corr_style = tm.create_card_style(Color("#E8FAF2"), 16, tm.COLOR_CORRECT_GREEN)
+			btn.add_theme_stylebox_override("normal", corr_style)
+			btn.add_theme_color_override("font_color", Color("#15803D"))
 
 	_process_answer_result(is_correct)
 
@@ -332,12 +482,10 @@ func _check_isian_correctness(user_input: String) -> bool:
 		if u_normalized == v_str or u_comma == v_comma or u_dot == v_dot:
 			return true
 
-		# Evaluasi nilai numerik/desimal jika memungkinkan
 		if u_dot.is_valid_float() and v_dot.is_valid_float():
 			if is_equal_approx(u_dot.to_float(), v_dot.to_float()):
 				return true
 
-		# Evaluasi pecahan sederhana (misal 1/2 == 0.5)
 		if "/" in u_normalized and not "/" in v_dot and v_dot.is_valid_float():
 			var parts = u_normalized.split("/")
 			if parts.size() == 2 and parts[0].is_valid_float() and parts[1].is_valid_float():
@@ -355,7 +503,6 @@ func _setup_procedure() -> void:
 	btn_check_procedure.disabled = false
 
 	procedure_order_list = current_question.get("procedure_items", []).duplicate()
-	# Acak urutan awal saat ditampilkan agar pemain yang mengurutkannya
 	procedure_order_list.shuffle()
 	var correct_order: Array = current_question.get("correct_order", [])
 	if _is_procedure_matching(correct_order) and procedure_order_list.size() > 1:
@@ -372,17 +519,23 @@ func _is_procedure_matching(correct_order: Array) -> bool:
 
 func _render_procedure_items() -> void:
 	for child in procedure_items_list.get_children():
+		procedure_items_list.remove_child(child)
 		child.queue_free()
 
+	var tm = _get_tm()
 	for i in range(procedure_order_list.size()):
 		var item = procedure_order_list[i]
 		var card = PanelContainer.new()
+		var c_style = tm.create_card_style(tm.COLOR_CARD_WHITE, 14, Color(0.85, 0.90, 0.96)) if tm else StyleBoxFlat.new()
+		c_style.set_content_margin_all(14)
+		card.add_theme_stylebox_override("panel", c_style)
+
 		var hbox = HBoxContainer.new()
-		hbox.add_theme_constant_override("separation", 14)
+		hbox.add_theme_constant_override("separation", 16)
 
 		var lbl_num = Label.new()
-		lbl_num.text = " Langkah %d " % (i + 1)
-		lbl_num.add_theme_color_override("font_color", Color(1.0, 0.85, 0.35))
+		lbl_num.text = "Langkah %d" % (i + 1)
+		lbl_num.add_theme_color_override("font_color", tm.COLOR_BTN_PRIMARY if tm else Color("#1F6FEB"))
 		lbl_num.add_theme_font_size_override("font_size", 16)
 		hbox.add_child(lbl_num)
 
@@ -390,21 +543,20 @@ func _render_procedure_items() -> void:
 		lbl_text.text = item.get("text", "")
 		lbl_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		lbl_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl_text.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
 		lbl_text.add_theme_font_size_override("font_size", 16)
 		hbox.add_child(lbl_text)
 
-		# Tombol ⬆️
 		var btn_up = Button.new()
-		btn_up.text = "⬆️"
+		btn_up.text = "▲"
 		btn_up.custom_minimum_size = Vector2(44, 40)
 		btn_up.disabled = (i == 0 or is_solved)
 		var curr_idx = i
 		btn_up.pressed.connect(func(): _move_procedure_item(curr_idx, -1))
 		hbox.add_child(btn_up)
 
-		# Tombol ⬇️
 		var btn_down = Button.new()
-		btn_down.text = "⬇️"
+		btn_down.text = "▼"
 		btn_down.custom_minimum_size = Vector2(44, 40)
 		btn_down.disabled = (i == procedure_order_list.size() - 1 or is_solved)
 		btn_down.pressed.connect(func(): _move_procedure_item(curr_idx, 1))
@@ -432,7 +584,7 @@ func _on_check_procedure() -> void:
 	var is_correct = _is_procedure_matching(correct_order)
 	_process_answer_result(is_correct)
 
-# --- TIPE 5: MATCHING / MENJODOHKAN DUA KOLOM ---
+# --- TIPE 5: MATCHING / MENJODOHKAN DUA KOLOM DENGAN SOCKET UX 48px ---
 func _setup_matching() -> void:
 	panel_matching.visible = true
 	btn_check_matching.disabled = false
@@ -443,7 +595,6 @@ func _setup_matching() -> void:
 	var left_items: Array = current_question.get("left_items", [])
 	var right_items: Array = current_question.get("right_items", []).duplicate()
 
-	# Acak urutan kanan agar pemain yang menjodohkan
 	if right_items.size() > 1:
 		right_items.shuffle()
 		var is_sequential = true
@@ -465,6 +616,7 @@ func _render_matching_ui() -> void:
 		matching_right_col.remove_child(child)
 		child.queue_free()
 
+	var tm = _get_tm()
 	var left_items: Array = current_question.get("left_items", [])
 	var right_map: Dictionary = {}
 	for r in shuffled_right_items:
@@ -487,26 +639,90 @@ func _render_matching_ui() -> void:
 		var l_id = item.get("id", "")
 		var l_text = item.get("text", "")
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(0, 68)
+		btn.custom_minimum_size = Vector2(0, 72)
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		btn.add_theme_font_size_override("font_size", 16)
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 		var color_idx = i % PAIR_COLORS.size()
 		var p_color = PAIR_COLORS[color_idx]
+		var is_paired = user_pairs.has(l_id)
+		var is_selected = (selected_left_id == l_id)
 
-		if user_pairs.has(l_id):
+		# StyleBox Card Kiri
+		var card_bg = Color("#FFFFFF")
+		var border_c = Color(0.85, 0.90, 0.96)
+		if is_paired:
+			card_bg = Color("#F8FCFF")
+			border_c = p_color
+		elif is_selected:
+			card_bg = Color("#FFFDF0")
+			border_c = Color("#FFC93C")
+
+		var b_style = tm.create_card_style(card_bg, 14, border_c) if tm else StyleBoxFlat.new()
+		b_style.border_width_left = 3
+		b_style.border_width_top = 3
+		b_style.border_width_right = 3
+		b_style.border_width_bottom = 3
+		btn.add_theme_stylebox_override("normal", b_style)
+		btn.add_theme_stylebox_override("hover", b_style)
+
+		# Kontainer Isi: Teks di kiri, Bulatan (Socket 48px) di kanan
+		var hbox = HBoxContainer.new()
+		hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		hbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		hbox.add_theme_constant_override("separation", 14)
+
+		# Spacer kiri kecil
+		var pad_left = Control.new()
+		pad_left.custom_minimum_size = Vector2(12, 0)
+		hbox.add_child(pad_left)
+
+		# Label Teks Kiri
+		var lbl = Label.new()
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.add_theme_font_size_override("font_size", 16)
+		lbl.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+
+		if is_paired:
 			var r_id = user_pairs[l_id]
-			var r_val = right_map.get(r_id, r_id)
-			btn.text = "  [%d] %s   ➔   [%s]" % [i + 1, l_text, r_val]
-			btn.self_modulate = p_color
-		elif selected_left_id == l_id:
-			btn.text = "  [%d] %s   👉 [PILIH PASANGAN DI KANAN]" % [i + 1, l_text]
-			btn.self_modulate = Color(1.0, 1.0, 0.4, 1.0)
+			lbl.text = "[%d] %s  ➔  [%s]" % [i + 1, l_text, right_map.get(r_id, r_id)]
 		else:
-			btn.text = "  [%d] %s" % [i + 1, l_text]
-			btn.self_modulate = Color(0.9, 0.92, 0.96, 1.0)
+			lbl.text = "[%d] %s" % [i + 1, l_text]
+		hbox.add_child(lbl)
+
+		# Bulatan Socket UX 48px di sisi kanan kartu
+		var socket = Panel.new()
+		socket.custom_minimum_size = Vector2(48, 48)
+		socket.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		var s_style = tm.create_socket_style(is_paired, p_color) if tm else StyleBoxFlat.new()
+		if is_selected and not is_paired:
+			s_style.border_color = Color("#FFC93C")
+			s_style.border_width_left = 4
+			s_style.border_width_top = 4
+			s_style.border_width_right = 4
+			s_style.border_width_bottom = 4
+		socket.add_theme_stylebox_override("panel", s_style)
+
+		# Indikator nomor pasangan di dalam socket jika terhubung
+		if is_paired:
+			var s_lbl = Label.new()
+			s_lbl.text = "✓"
+			s_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			s_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			s_lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			s_lbl.add_theme_font_size_override("font_size", 18)
+			s_lbl.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+			socket.add_child(s_lbl)
+
+		hbox.add_child(socket)
+
+		# Spacer kanan
+		var pad_right = Control.new()
+		pad_right.custom_minimum_size = Vector2(12, 0)
+		hbox.add_child(pad_right)
+
+		btn.add_child(hbox)
 
 		if is_solved:
 			btn.disabled = true
@@ -522,11 +738,9 @@ func _render_matching_ui() -> void:
 		var r_id = r_item.get("id", "")
 		var r_text = r_item.get("text", "")
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(0, 68)
+		btn.custom_minimum_size = Vector2(0, 72)
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		btn.add_theme_font_size_override("font_size", 16)
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 		var paired_left_index = -1
 		for i in range(left_items.size()):
@@ -535,13 +749,71 @@ func _render_matching_ui() -> void:
 				paired_left_index = i
 				break
 
-		if paired_left_index != -1:
-			var color_idx = paired_left_index % PAIR_COLORS.size()
-			btn.self_modulate = PAIR_COLORS[color_idx]
-			btn.text = "  %s   ⬅ [Pasangan %d]" % [r_text, paired_left_index + 1]
+		var is_paired = (paired_left_index != -1)
+		var p_color = PAIR_COLORS[paired_left_index % PAIR_COLORS.size()] if is_paired else tm.COLOR_BTN_PRIMARY
+
+		var card_bg = Color("#FFFFFF")
+		var border_c = Color(0.85, 0.90, 0.96)
+		if is_paired:
+			card_bg = Color("#F8FCFF")
+			border_c = p_color
+
+		var b_style = tm.create_card_style(card_bg, 14, border_c) if tm else StyleBoxFlat.new()
+		b_style.border_width_left = 3
+		b_style.border_width_top = 3
+		b_style.border_width_right = 3
+		b_style.border_width_bottom = 3
+		btn.add_theme_stylebox_override("normal", b_style)
+		btn.add_theme_stylebox_override("hover", b_style)
+
+		# Kontainer Isi: Bulatan (Socket 48px) di kiri, Teks di kanan
+		var hbox = HBoxContainer.new()
+		hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		hbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		hbox.add_theme_constant_override("separation", 14)
+
+		# Spacer kiri
+		var pad_left = Control.new()
+		pad_left.custom_minimum_size = Vector2(12, 0)
+		hbox.add_child(pad_left)
+
+		# Bulatan Socket UX 48px di sisi kiri kartu
+		var socket = Panel.new()
+		socket.custom_minimum_size = Vector2(48, 48)
+		socket.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		var s_style = tm.create_socket_style(is_paired, p_color) if tm else StyleBoxFlat.new()
+		socket.add_theme_stylebox_override("panel", s_style)
+
+		if is_paired:
+			var s_lbl = Label.new()
+			s_lbl.text = "✓"
+			s_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			s_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			s_lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			s_lbl.add_theme_font_size_override("font_size", 18)
+			s_lbl.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+			socket.add_child(s_lbl)
+
+		hbox.add_child(socket)
+
+		# Label Teks Kanan
+		var lbl = Label.new()
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.add_theme_font_size_override("font_size", 16)
+		lbl.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+
+		if is_paired:
+			lbl.text = "%s  (Pasangan %d)" % [r_text, paired_left_index + 1]
 		else:
-			btn.self_modulate = Color(0.9, 0.92, 0.96, 1.0)
-			btn.text = "  %s" % r_text
+			lbl.text = r_text
+		hbox.add_child(lbl)
+
+		var pad_right = Control.new()
+		pad_right.custom_minimum_size = Vector2(12, 0)
+		hbox.add_child(pad_right)
+
+		btn.add_child(hbox)
 
 		if is_solved:
 			btn.disabled = true
@@ -595,9 +867,9 @@ func _on_check_matching() -> void:
 	var left_items: Array = current_question.get("left_items", [])
 	if user_pairs.size() < left_items.size():
 		feedback_panel.visible = true
-		feedback_panel.self_modulate = Color(0.9, 0.6, 0.2, 1.0)
-		feedback_label.text = "⚠️ Hubungkan ketiga pasangan terlebih dahulu sebelum memeriksa!"
-		feedback_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
+		var tm = _get_tm()
+		_style_feedback_panel(tm.COLOR_WRONG_RED if tm else Color("#FF7A7A"), "cross", "-0")
+		feedback_label.text = "Hubungkan ketiga pasangan terlebih dahulu sebelum memeriksa!"
 		return
 
 	var valid_pairs: Dictionary = current_question.get("valid_pairs", {})
@@ -609,10 +881,28 @@ func _on_check_matching() -> void:
 
 	_process_answer_result(is_correct)
 
-# --- SISTEM SKOR & HASIL EVALUASI ---
+# --- SISTEM SKOR & HASIL EVALUASI DENGAN INDIKATOR FLAT & AVATAR BIMA ---
+func _style_feedback_panel(accent_color: Color, icon_name: String, badge_text: String) -> void:
+	var tm = _get_tm()
+	var fb_style = StyleBoxFlat.new()
+	fb_style.bg_color = accent_color
+	fb_style.set_corner_radius_all(14)
+	fb_style.set_content_margin_all(14)
+	fb_style.border_color = Color(1, 1, 1, 0.6)
+	fb_style.set_border_width_all(2)
+	feedback_panel.add_theme_stylebox_override("panel", fb_style)
+
+	if tm:
+		feedback_icon.texture = tm.get_icon(icon_name)
+		feedback_icon.modulate = tm.COLOR_TEXT_NAVY
+
+	feedback_badge_label.text = badge_text
+	feedback_label.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if tm else Color("#1E2A4A"))
+
 func _process_answer_result(is_correct: bool) -> void:
 	var gs = _get_gs()
 	var dm = _get_dm()
+	var tm = _get_tm()
 	if not gs:
 		return
 
@@ -623,9 +913,11 @@ func _process_answer_result(is_correct: bool) -> void:
 
 	if is_correct:
 		is_solved = true
-		feedback_panel.self_modulate = Color(0.2, 0.85, 0.35, 1.0)
-		feedback_label.text = "🎉 Jawaban Benar! (+%d Skor)" % res["delta"]
-		feedback_label.add_theme_color_override("font_color", Color(0.2, 1.0, 0.4))
+		_set_bima_avatar("senang")
+
+		var corr_col = tm.COLOR_CORRECT_GREEN if tm else Color("#3DDC97")
+		_style_feedback_panel(corr_col, "check", "+%d" % res["delta"])
+		feedback_label.text = "Jawaban Benar! Selamat, kamu memperoleh +%d Skor." % res["delta"]
 
 		_lock_current_inputs()
 
@@ -634,20 +926,27 @@ func _process_answer_result(is_correct: bool) -> void:
 		if gs.current_point_index >= total_pts:
 			btn_next_point.text = "Selesaikan Level 🎉"
 		else:
-			btn_next_point.text = "Lanjut ke Titik Berikutnya ➡️"
+			btn_next_point.text = "Lanjut ke Titik Berikutnya"
 		btn_next_point.visible = true
 	else:
-		feedback_panel.self_modulate = Color(0.9, 0.25, 0.25, 1.0)
+		_set_bima_avatar("bingung")
+
+		var wrong_col = tm.COLOR_WRONG_RED if tm else Color("#FF7A7A")
 		var sa_cfg = dm.get_short_answer_settings() if dm else {}
 		var max_att = int(sa_cfg.get("max_wrong_attempts_before_reveal", 6))
-		feedback_label.text = "❌ Jawaban Kurang Tepat! (%d Skor) [Percobaan Salah: %d / %d]" % [
+		_style_feedback_panel(wrong_col, "cross", "%d" % res["delta"])
+		feedback_label.text = "Jawaban Kurang Tepat (%d Skor). Coba teliti kembali! [Percobaan: %d/%d]" % [
 			res["delta"], res["attempts"], max_att
 		]
-		feedback_label.add_theme_color_override("font_color", Color(1.0, 0.4, 0.4))
 
 func _on_answer_revealed(_point_idx: int, ans_str: String) -> void:
+	var tm = _get_tm()
 	feedback_panel.visible = true
-	feedback_panel.self_modulate = Color(0.95, 0.8, 0.2, 1.0)
+	_set_bima_avatar("normal")
+
+	var help_col = tm.COLOR_LVL3_YELLOW if tm else Color("#FFC93C")
+	_style_feedback_panel(help_col, "info", "KUNCI")
+
 	var reveal_text = ans_str
 	if current_question.get("type") == "Matching":
 		var valid_pairs = current_question.get("valid_pairs", {})
@@ -657,16 +956,15 @@ func _on_answer_revealed(_point_idx: int, ans_str: String) -> void:
 		var right_map = {}
 		for item in current_question.get("right_items", []):
 			right_map[item["id"]] = item["text"]
-		
+
 		var lines = []
 		for l_id in valid_pairs.keys():
 			var r_id = valid_pairs[l_id]
 			lines.append("• %s  ➔  %s" % [left_map.get(l_id, l_id), right_map.get(r_id, r_id)])
 		reveal_text = "\n" + "\n".join(lines)
 
-	feedback_label.text = "💡 Catatan Bantuan: Kunci jawaban yang benar adalah: %s" % reveal_text
-	feedback_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
-	btn_next_point.text = "Lanjut ke Titik Berikutnya ➡️"
+	feedback_label.text = "Catatan Bantuan: Kunci jawaban yang benar adalah: %s" % reveal_text
+	btn_next_point.text = "Lanjut ke Titik Berikutnya"
 	btn_next_point.visible = true
 
 func _lock_current_inputs() -> void:

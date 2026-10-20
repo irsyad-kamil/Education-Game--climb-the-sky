@@ -56,14 +56,14 @@ theme_override_constants/margin_right = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopHUD/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 20
 
 [node name="BtnMenu" type="Button" parent="TopHUD/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(140, 48)
+custom_minimum_size = Vector2(130, 48)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 16
-text = "🏠 Menu Utama"
+text = "🏠 Menu"
 
 [node name="StageLabel" type="Label" parent="TopHUD/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -79,6 +79,13 @@ theme_override_colors/font_color = Color(0.7, 0.9, 1.0, 1)
 theme_override_font_sizes/font_size = 18
 text = "Titik 1 dari 5"
 vertical_alignment = 1
+
+[node name="BtnFrequencyTable" type="Button" parent="TopHUD/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+text = "📊 Tabel Data"
 
 [node name="ScoreLabel" type="Label" parent="TopHUD/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -128,5 +135,113 @@ custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Tutup"
+
+[node name="TableModal" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="TableModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.8)
+
+[node name="CenterContainer" type="CenterContainer" parent="TableModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="TableModal/CenterContainer"]
+custom_minimum_size = Vector2(850, 640)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="TableModal/CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="TableModal/CenterContainer/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderHBox" type="HBoxContainer" parent="TableModal/CenterContainer/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 22
+text = "📊 TABEL DISTRIBUSI FREKUENSI"
+
+[node name="BtnCloseX" type="Button" parent="TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "✕"
+
+[node name="Subtitle" type="Label" parent="TableModal/CenterContainer/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1.0, 1)
+theme_override_font_sizes/font_size = 17
+text = "Level 1 - Mean: Data Penjualan Cokelat dalam Sebulan"
+
+[node name="RawDataPanel" type="PanelContainer" parent="TableModal/CenterContainer/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RawTitle" type="Label" parent="TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 14
+text = "Data Mentah Selama 30 Hari:"
+
+[node name="RawText" type="Label" parent="TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 15
+text = "12, 15, 18, 14, 20..."
+autowrap_mode = 2
+
+[node name="TableScroll" type="ScrollContainer" parent="TableModal/CenterContainer/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TableRows" type="VBoxContainer" parent="TableModal/CenterContainer/Panel/Margin/VBox/TableScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="BtnCloseBottom" type="Button" parent="TableModal/CenterContainer/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Tutup Tabel"
 
 [connection signal="pressed" from="InfoPanel/MarginContainer/VBoxContainer/BtnCloseInfo" to="InfoPanel" method="hide"]

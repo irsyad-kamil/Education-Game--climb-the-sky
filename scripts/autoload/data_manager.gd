@@ -1,10 +1,11 @@
 extends Node
 
 # Data Manager v1.0 (GDD v1.0 Architecture)
-# Mengelola konfigurasi permainan dan database 12 soal tetap per level dan titik
+# Mengelola konfigurasi permainan, tabel distribusi frekuensi, dan database soal tetap
 
 var game_config: Dictionary = {}
 var levels_config: Dictionary = {} # level (int) -> Dictionary
+var frequency_tables: Dictionary = {} # level (int) -> Dictionary
 var questions_by_level: Dictionary = {
 	1: {},
 	2: {},
@@ -13,11 +14,14 @@ var questions_by_level: Dictionary = {
 
 func _init() -> void:
 	load_game_config("res://data/game_config.json")
+	load_frequency_tables("res://data/frequency_tables.json")
 	load_questions("res://data/questions.json")
 
 func _ready() -> void:
 	if game_config.is_empty():
 		load_game_config("res://data/game_config.json")
+	if frequency_tables.is_empty():
+		load_frequency_tables("res://data/frequency_tables.json")
 	if questions_by_level[1].is_empty():
 		load_questions("res://data/questions.json")
 
@@ -43,6 +47,37 @@ func load_game_config(file_path: String) -> void:
 		levels_config[l_num] = lvl
 
 	print("DataManager: Berhasil memuat game_config.json (Versi %s)" % game_config.get("version", "1.0"))
+
+func load_frequency_tables(file_path: String) -> void:
+	if not FileAccess.file_exists(file_path):
+		push_warning("DataManager: File tabel frekuensi tidak ditemukan: " + file_path)
+		return
+
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var json_string = file.get_as_text()
+	file.close()
+
+	var json = JSON.new()
+	var error = json.parse(json_string)
+	if error != OK:
+		push_error("DataManager: Gagal membaca frequency_tables.json: " + json.get_error_message())
+		return
+
+	var data = json.get_data()
+	var tbl_dict: Dictionary = data.get("tables", {})
+	for k in tbl_dict.keys():
+		var lvl = int(k)
+		frequency_tables[lvl] = tbl_dict[k]
+
+	print("DataManager: Berhasil memuat %d tabel distribusi frekuensi (Level 1, 2, 3)." % frequency_tables.size())
+
+func get_frequency_table(level: int) -> Dictionary:
+	if frequency_tables.has(level):
+		return frequency_tables[level]
+	if frequency_tables.has(str(level)):
+		return frequency_tables[str(level)]
+	push_warning("DataManager: Tabel frekuensi untuk Level %d tidak ditemukan!" % level)
+	return {}
 
 func load_questions(file_path: String) -> void:
 	if not FileAccess.file_exists(file_path):

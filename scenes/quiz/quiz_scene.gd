@@ -4,9 +4,11 @@ class_name QuizScene
 # QuizScene v1.0 (GDD v1.0 Architecture)
 # Mengelola interaksi kuis pembelajaran statistika berbasis konteks toko sembako
 # Mendukung 4 tipe soal: PG, TF, Isian Singkat, dan Prosedur (Urutan Langkah)
+# Dilengkapi fitur pop-up Tabel Distribusi Frekuensi per level
 
 @onready var stage_label: Label = $TopBar/MarginContainer/HBoxContainer/StageLabel
 @onready var score_label: Label = $TopBar/MarginContainer/HBoxContainer/ScoreLabel
+@onready var btn_frequency_table: Button = $TopBar/MarginContainer/HBoxContainer/BtnFrequencyTable
 @onready var btn_map: Button = $TopBar/MarginContainer/HBoxContainer/BtnMap
 @onready var btn_menu: Button = $TopBar/MarginContainer/HBoxContainer/BtnMenu
 
@@ -31,6 +33,14 @@ class_name QuizScene
 @onready var btn_next_point: Button = $ScrollContainer/CenterContainer/MainContent/ActionArea/BtnNextPoint
 @onready var level_complete_modal: AcceptDialog = $Popups/LevelCompleteModal
 
+# Modal Tabel Distribusi Frekuensi
+@onready var table_modal: Control = $Popups/TableModal
+@onready var modal_subtitle: Label = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/Subtitle
+@onready var raw_data_label: Label = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/RawDataPanel/Margin/VBox/RawText
+@onready var table_rows_container: VBoxContainer = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/TableScroll/TableRows
+@onready var btn_close_x: Button = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox/BtnCloseX
+@onready var btn_close_bottom: Button = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/BtnCloseBottom
+
 var current_question: Dictionary = {}
 var procedure_order_list: Array = []
 var is_solved: bool = false
@@ -38,6 +48,10 @@ var is_solved: bool = false
 func _ready() -> void:
 	btn_map.pressed.connect(_on_map_pressed)
 	btn_menu.pressed.connect(_on_menu_pressed)
+	btn_frequency_table.pressed.connect(_show_frequency_table_modal)
+	btn_close_x.pressed.connect(_hide_frequency_table_modal)
+	btn_close_bottom.pressed.connect(_hide_frequency_table_modal)
+
 	btn_submit_isian.pressed.connect(_on_submit_isian)
 	input_isian.text_submitted.connect(func(_t): _on_submit_isian())
 	btn_check_procedure.pressed.connect(_on_check_procedure)
@@ -92,6 +106,7 @@ func _load_current_point_question() -> void:
 	is_solved = false
 	feedback_panel.visible = false
 	btn_next_point.visible = false
+	table_modal.visible = false
 
 	_update_top_bar()
 
@@ -119,6 +134,84 @@ func _load_current_point_question() -> void:
 			_setup_short_answer()
 		"Prosedur":
 			_setup_procedure()
+
+# --- MODAL TABEL DISTRIBUSI FREKUENSI ---
+func _show_frequency_table_modal() -> void:
+	var gs = _get_gs()
+	var dm = _get_dm()
+	var lvl = gs.current_level if gs else 1
+	var tbl_data = dm.get_frequency_table(lvl) if dm else {}
+	if tbl_data.is_empty():
+		return
+
+	modal_subtitle.text = "Level %d - %s: %s" % [
+		lvl, tbl_data.get("topic", ""), tbl_data.get("title", "")
+	]
+	raw_data_label.text = tbl_data.get("raw_data", "")
+
+	for child in table_rows_container.get_children():
+		child.queue_free()
+
+	# Baris Header
+	var col_int = tbl_data.get("column_interval", "Interval")
+	var col_freq = tbl_data.get("column_frequency", "Frekuensi")
+	table_rows_container.add_child(_create_table_row(col_int, col_freq, true, false))
+
+	# Baris Data Kelas Interval
+	var rows: Array = tbl_data.get("rows", [])
+	for r in rows:
+		var interval_str = str(r.get("interval", ""))
+		var freq_str = str(r.get("frequency", ""))
+		table_rows_container.add_child(_create_table_row(interval_str, freq_str, false, false))
+
+	# Baris Total / Jumlah
+	var total_freq = str(tbl_data.get("total_frequency", 30))
+	table_rows_container.add_child(_create_table_row("Jumlah", total_freq, false, true))
+
+	table_modal.visible = true
+
+func _hide_frequency_table_modal() -> void:
+	table_modal.visible = false
+
+func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bool) -> PanelContainer:
+	var panel = PanelContainer.new()
+	var margin = MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 16)
+	margin.add_theme_constant_override("margin_right", 16)
+	margin.add_theme_constant_override("margin_top", 8)
+	margin.add_theme_constant_override("margin_bottom", 8)
+
+	var hbox = HBoxContainer.new()
+
+	var lbl1 = Label.new()
+	lbl1.text = col1
+	lbl1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lbl1.add_theme_font_size_override("font_size", 16)
+
+	var lbl2 = Label.new()
+	lbl2.text = col2
+	lbl2.custom_minimum_size = Vector2(160, 0)
+	lbl2.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl2.add_theme_font_size_override("font_size", 16)
+
+	if is_header:
+		panel.self_modulate = Color(0.2, 0.28, 0.42, 1.0)
+		lbl1.add_theme_color_override("font_color", Color(1.0, 0.88, 0.35))
+		lbl2.add_theme_color_override("font_color", Color(1.0, 0.88, 0.35))
+	elif is_total:
+		panel.self_modulate = Color(0.18, 0.32, 0.24, 1.0)
+		lbl1.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6))
+		lbl2.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6))
+	else:
+		panel.self_modulate = Color(0.15, 0.17, 0.22, 0.8)
+		lbl1.add_theme_color_override("font_color", Color(0.9, 0.92, 0.95))
+		lbl2.add_theme_color_override("font_color", Color(0.9, 0.92, 0.95))
+
+	hbox.add_child(lbl1)
+	hbox.add_child(lbl2)
+	margin.add_child(hbox)
+	panel.add_child(margin)
+	return panel
 
 # --- TIPE 1: PILIHAN GANDA (PG) ---
 func _setup_multiple_choice() -> void:
@@ -349,7 +442,6 @@ func _on_answer_revealed(_point_idx: int, ans_str: String) -> void:
 	feedback_panel.self_modulate = Color(0.95, 0.8, 0.2, 1.0)
 	feedback_label.text = "💡 Catatan Bantuan: Kunci jawaban yang benar adalah: %s" % ans_str
 	feedback_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
-	# Tampilkan tombol lanjut agar pemain tidak terjebak jika menemui kesulitan berulang
 	btn_next_point.text = "Lanjut ke Titik Berikutnya ➡️"
 	btn_next_point.visible = true
 
@@ -382,7 +474,6 @@ func _on_next_point_pressed() -> void:
 		) % [lvl, gs.level_score, best]
 		level_complete_modal.popup_centered()
 	else:
-		# Kembali ke peta linear untuk melanjutkan pendakian
 		get_tree().change_scene_to_file("res://scenes/map/map_scene.tscn")
 
 func _on_level_complete_confirmed() -> void:

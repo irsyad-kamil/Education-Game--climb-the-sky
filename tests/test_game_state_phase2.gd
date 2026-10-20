@@ -64,7 +64,8 @@ func _init() -> void:
 	var res_final = gs.register_answer(false)
 	assert(res_final["revealed"] == true, "Attempt 6 should reveal answer")
 	assert(test_state["answer_revealed"] == true, "Signal answer_revealed should have fired")
-	assert(test_state["revealed_ans"] == "B", "Revealed answer for L1-P1 should be 'B'")
+	var expected_answer = str(gs.get_current_question().get("correct_answer"))
+	assert(test_state["revealed_ans"] == expected_answer, "Revealed answer for L1-P1 should match active question answer")
 	print("[PASS] Reveal threshold (6 wrong attempts) verified. Answer revealed: %s" % test_state["revealed_ans"])
 	
 	# 5. Test Linear Point Progression & Level Completion

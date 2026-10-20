@@ -14,8 +14,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Climb the Sky"
-config/description="Game edukasi roguelike matematika ukuran pemusatan data untuk siswa kelas X"
+config/name="Bima's Grocery Challenges"
+config/description="Game edukasi matematika ukuran pemusatan data untuk siswa kelas X"
 config/version="0.3.0"
 run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")

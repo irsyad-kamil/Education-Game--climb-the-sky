@@ -243,6 +243,7 @@ func _create_table_row(col1: String, col2: String, is_header: bool, is_total: bo
 func _setup_multiple_choice() -> void:
 	panel_pg.visible = true
 	for child in panel_pg.get_children():
+		panel_pg.remove_child(child)
 		child.queue_free()
 
 	var options: Array = current_question.get("options", [])
@@ -458,8 +459,10 @@ func _setup_matching() -> void:
 
 func _render_matching_ui() -> void:
 	for child in matching_left_col.get_children():
+		matching_left_col.remove_child(child)
 		child.queue_free()
 	for child in matching_right_col.get_children():
+		matching_right_col.remove_child(child)
 		child.queue_free()
 
 	var left_items: Array = current_question.get("left_items", [])

@@ -1,87 +1,134 @@
-[gd_scene load_steps=10 format=3 uid="uid://mainmenu001"]
+[gd_scene load_steps=12 format=3 uid="uid://mainmenu001"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_menu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBox_PlayNormal"]
-bg_color = Color(0.97, 0.97, 0.97, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.24, 0.26, 0.29, 1)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+[sub_resource type="StyleBoxEmpty" id="StyleBox_BtnEmpty"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_PlayHover"]
-bg_color = Color(0.9, 0.94, 0.98, 1)
+bg_color = Color(1, 1, 1, 0.2)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.15, 0.45, 0.85, 1)
+border_color = Color(1, 1, 1, 0.7)
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
+shadow_color = Color(1, 1, 1, 0.25)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_PlayPressed"]
+bg_color = Color(0, 0, 0, 0.25)
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ExitHover"]
+bg_color = Color(1, 1, 1, 0.2)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(1, 1, 1, 0.2)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ExitPressed"]
+bg_color = Color(0, 0, 0, 0.25)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Card"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.08, 0.14, 0.24, 0.16)
+shadow_size = 14
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_CardHover"]
+bg_color = Color(1, 1, 1, 0.05)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.15, 0.5, 1, 0.95)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_BackCircle"]
+bg_color = Color(0.98, 0.65, 0.15, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+shadow_color = Color(0.1, 0.1, 0.1, 0.3)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Ribbon"]
+bg_color = Color(0.88, 0.24, 0.22, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.85, 0.3, 1)
 corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
-
-[sub_resource type="StyleBoxFlat" id="StyleBox_ExitNormal"]
-bg_color = Color(0.97, 0.97, 0.97, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.35, 0.38, 0.42, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBox_ExitHover"]
-bg_color = Color(0.92, 0.92, 0.94, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.2, 0.22, 0.25, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBox_CardHover"]
-bg_color = Color(1, 1, 1, 0.08)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0.92, 0.4, 0.95)
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
-
-[sub_resource type="StyleBoxFlat" id="StyleBox_CardNormal"]
-bg_color = Color(1, 1, 1, 0)
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 10
+shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_Lock"]
-bg_color = Color(0.04, 0.06, 0.12, 0.84)
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
+bg_color = Color(0.06, 0.08, 0.16, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.84, 0.87, 0.91, 0.5)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
 
-[sub_resource type="StyleBoxFlat" id="StyleBox_CardInfo"]
-bg_color = Color(0.06, 0.1, 0.16, 0.8)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+[sub_resource type="StyleBoxFlat" id="StyleBox_StatusPill"]
+bg_color = Color(1, 1, 1, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.9, 0.96, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.12)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -107,52 +154,80 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.965, 0.965, 0.965, 1)
+color = Color(0.918, 0.965, 1, 1)
+
+[node name="BackgroundGraphic" type="TextureRect" parent="MainMenuView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="CurvedTitleContainer" type="Control" parent="MainMenuView"]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 450.0
 grow_horizontal = 2
 
-[node name="ButtonsBox" type="VBoxContainer" parent="MainMenuView"]
+[node name="ButtonsBox" type="Control" parent="MainMenuView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnPlay" type="Button" parent="MainMenuView/ButtonsBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -170.0
-offset_top = 50.0
-offset_right = 170.0
-offset_bottom = 270.0
+offset_left = -197.0
+offset_top = 78.0
+offset_right = 195.0
+offset_bottom = 216.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 24
-alignment = 1
-
-[node name="BtnPlay" type="Button" parent="MainMenuView/ButtonsBox"]
-custom_minimum_size = Vector2(340, 84)
-layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.22, 0.24, 0.27, 1)
-theme_override_colors/font_hover_color = Color(0.12, 0.14, 0.16, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBox_BtnEmpty")
 theme_override_styles/hover = SubResource("StyleBox_PlayHover")
-theme_override_styles/normal = SubResource("StyleBox_PlayNormal")
+theme_override_styles/pressed = SubResource("StyleBox_PlayPressed")
+theme_override_styles/normal = SubResource("StyleBox_BtnEmpty")
 text = "PLAY"
 
 [node name="BtnQuit" type="Button" parent="MainMenuView/ButtonsBox"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = 353.0
+offset_right = 105.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.35, 0.38, 0.42, 1)
-theme_override_colors/font_hover_color = Color(0.15, 0.17, 0.2, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBox_BtnEmpty")
 theme_override_styles/hover = SubResource("StyleBox_ExitHover")
-theme_override_styles/normal = SubResource("StyleBox_ExitNormal")
+theme_override_styles/pressed = SubResource("StyleBox_ExitPressed")
+theme_override_styles/normal = SubResource("StyleBox_BtnEmpty")
 text = "EXIT"
 
 [node name="LevelSelectView" type="Control" parent="."]
@@ -172,155 +247,242 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-stretch_mode = 0
+stretch_mode = 6
 
-[node name="BtnBack" type="Button" parent="LevelSelectView"]
+[node name="TopBar" type="Control" parent="LevelSelectView"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+
+[node name="BtnBack" type="Button" parent="LevelSelectView/TopBar"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 18.0
-offset_top = 22.0
-offset_right = 208.0
-offset_bottom = 212.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 120.0
 mouse_default_cursor_shape = 2
-flat = true
+theme_override_styles/hover = SubResource("StyleBox_BackCircle")
+theme_override_styles/normal = SubResource("StyleBox_BackCircle")
 
-[node name="Cards" type="Control" parent="LevelSelectView"]
+[node name="BackIcon" type="TextureRect" parent="LevelSelectView/TopBar/BtnBack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RibbonBanner" type="PanelContainer" parent="LevelSelectView/TopBar"]
+custom_minimum_size = Vector2(480, 72)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 40.0
+offset_right = 240.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBox_Ribbon")
+
+[node name="BannerLabel" type="Label" parent="LevelSelectView/TopBar/RibbonBanner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0.4, 0.05, 0.05, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "LEVEL SELECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsCenter" type="CenterContainer" parent="LevelSelectView"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 130.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
-[node name="Card1" type="Control" parent="LevelSelectView/Cards"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 255.0
-offset_right = 660.0
-offset_bottom = 845.0
-
-[node name="BtnStage1" type="Button" parent="LevelSelectView/Cards/Card1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/hover = SubResource("StyleBox_CardHover")
-theme_override_styles/normal = SubResource("StyleBox_CardNormal")
-flat = true
-
-[node name="InfoPanel" type="PanelContainer" parent="LevelSelectView/Cards/Card1"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -90.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBox_CardInfo")
-
-[node name="Margin" type="MarginContainer" parent="LevelSelectView/Cards/Card1/InfoPanel"]
+[node name="CardsHBox" type="HBoxContainer" parent="LevelSelectView/CardsCenter"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
-
-[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card1/InfoPanel/Margin"]
-layout_mode = 2
+theme_override_constants/separation = 40
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="LevelSelectView/Cards/Card1/InfoPanel/Margin/VBox"]
+[node name="Card1" type="PanelContainer" parent="LevelSelectView/CardsCenter/CardsHBox"]
+custom_minimum_size = Vector2(480, 680)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_styles/panel = SubResource("StyleBox_Card")
+
+[node name="Content" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card1"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PillMargin" type="MarginContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Pill" type="PanelContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content/PillMargin"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="PillLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content/PillMargin/Pill"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThumbClip" type="Control" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+
+[node name="Thumb" type="TextureRect" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content/ThumbClip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="InfoMargin" type="MarginContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content/InfoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content/InfoMargin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 20
 text = "Level 1 • Konsep Mean (Rata-rata)"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="LevelSelectView/Cards/Card1/InfoPanel/Margin/VBox"]
+[node name="ScoreLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card1/Content/InfoMargin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.35, 0.42, 0.55, 1)
+theme_override_font_sizes/font_size = 16
 text = "5 Titik Soal • Max Skor: 500"
 horizontal_alignment = 1
 
-[node name="Card2" type="Control" parent="LevelSelectView/Cards"]
-layout_mode = 0
-offset_left = 815.0
-offset_top = 255.0
-offset_right = 1335.0
-offset_bottom = 845.0
+[node name="BtnStage1" type="Button" parent="LevelSelectView/CardsCenter/CardsHBox/Card1"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/hover = SubResource("StyleBox_CardHover")
+flat = true
 
-[node name="BtnStage2" type="Button" parent="LevelSelectView/Cards/Card2"]
+[node name="Card2" type="PanelContainer" parent="LevelSelectView/CardsCenter/CardsHBox"]
+custom_minimum_size = Vector2(480, 680)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Card")
+
+[node name="Content" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PillMargin" type="MarginContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Pill" type="PanelContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content/PillMargin"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="PillLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content/PillMargin/Pill"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Level 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThumbClip" type="Control" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+
+[node name="Thumb" type="TextureRect" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content/ThumbClip"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/hover = SubResource("StyleBox_CardHover")
-theme_override_styles/normal = SubResource("StyleBox_CardNormal")
-flat = true
+expand_mode = 1
+stretch_mode = 6
 
-[node name="InfoPanel" type="PanelContainer" parent="LevelSelectView/Cards/Card2"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -90.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBox_CardInfo")
-
-[node name="Margin" type="MarginContainer" parent="LevelSelectView/Cards/Card2/InfoPanel"]
+[node name="InfoMargin" type="MarginContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card2/InfoPanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content/InfoMargin"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = 6
 
-[node name="TitleLabel" type="Label" parent="LevelSelectView/Cards/Card2/InfoPanel/Margin/VBox"]
+[node name="TitleLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content/InfoMargin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 20
 text = "Level 2 • Konsep Median (Nilai Tengah)"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="LevelSelectView/Cards/Card2/InfoPanel/Margin/VBox"]
+[node name="ScoreLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/Content/InfoMargin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.35, 0.42, 0.55, 1)
+theme_override_font_sizes/font_size = 16
 text = "4 Titik Soal • Max Skor: 400"
 horizontal_alignment = 1
 
-[node name="LockOverlay" type="Panel" parent="LevelSelectView/Cards/Card2"]
+[node name="BtnStage2" type="Button" parent="LevelSelectView/CardsCenter/CardsHBox/Card2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/hover = SubResource("StyleBox_CardHover")
+flat = true
+
+[node name="LockOverlay" type="Panel" parent="LevelSelectView/CardsCenter/CardsHBox/Card2"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_Lock")
 
-[node name="Center" type="CenterContainer" parent="LevelSelectView/Cards/Card2/LockOverlay"]
+[node name="Center" type="CenterContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/LockOverlay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,101 +490,115 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card2/LockOverlay/Center"]
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/LockOverlay/Center"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 alignment = 1
 
-[node name="LockIcon" type="Label" parent="LevelSelectView/Cards/Card2/LockOverlay/Center/VBox"]
+[node name="LockIcon" type="TextureRect" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/LockOverlay/Center/VBox"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "🔒"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
 
-[node name="LockText" type="Label" parent="LevelSelectView/Cards/Card2/LockOverlay/Center/VBox"]
+[node name="LockText" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/LockOverlay/Center/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
 theme_override_font_sizes/font_size = 26
 text = "TERKUNCI"
 horizontal_alignment = 1
 
-[node name="LockHint" type="Label" parent="LevelSelectView/Cards/Card2/LockOverlay/Center/VBox"]
+[node name="LockHint" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card2/LockOverlay/Center/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.85, 0.9, 0.8)
+theme_override_colors/font_color = Color(0.85, 0.88, 0.94, 0.85)
 theme_override_font_sizes/font_size = 16
 text = "Selesaikan Level 1 Terlebih Dahulu"
 horizontal_alignment = 1
 
-[node name="Card3" type="Control" parent="LevelSelectView/Cards"]
-layout_mode = 0
-offset_left = 1495.0
-offset_top = 255.0
-offset_right = 1910.0
-offset_bottom = 845.0
+[node name="Card3" type="PanelContainer" parent="LevelSelectView/CardsCenter/CardsHBox"]
+custom_minimum_size = Vector2(480, 680)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Card")
 
-[node name="BtnStage3" type="Button" parent="LevelSelectView/Cards/Card3"]
+[node name="Content" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PillMargin" type="MarginContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Pill" type="PanelContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content/PillMargin"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="PillLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content/PillMargin/Pill"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 20
+text = "Level 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThumbClip" type="Control" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+
+[node name="Thumb" type="TextureRect" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content/ThumbClip"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/hover = SubResource("StyleBox_CardHover")
-theme_override_styles/normal = SubResource("StyleBox_CardNormal")
-flat = true
+expand_mode = 1
+stretch_mode = 6
 
-[node name="InfoPanel" type="PanelContainer" parent="LevelSelectView/Cards/Card3"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -90.0
-offset_right = -10.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBox_CardInfo")
-
-[node name="Margin" type="MarginContainer" parent="LevelSelectView/Cards/Card3/InfoPanel"]
+[node name="InfoMargin" type="MarginContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card3/InfoPanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content/InfoMargin"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = 6
 
-[node name="TitleLabel" type="Label" parent="LevelSelectView/Cards/Card3/InfoPanel/Margin/VBox"]
+[node name="TitleLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content/InfoMargin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
-theme_override_font_sizes/font_size = 17
-text = "Level 3 • Evaluasi Komparatif"
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
+theme_override_font_sizes/font_size = 20
+text = "Level 3 • Evaluasi Mean & Median"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="LevelSelectView/Cards/Card3/InfoPanel/Margin/VBox"]
+[node name="ScoreLabel" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/Content/InfoMargin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.35, 0.42, 0.55, 1)
+theme_override_font_sizes/font_size = 16
 text = "3 Titik Soal • Max Skor: 300"
 horizontal_alignment = 1
 
-[node name="LockOverlay" type="Panel" parent="LevelSelectView/Cards/Card3"]
+[node name="BtnStage3" type="Button" parent="LevelSelectView/CardsCenter/CardsHBox/Card3"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/hover = SubResource("StyleBox_CardHover")
+flat = true
+
+[node name="LockOverlay" type="Panel" parent="LevelSelectView/CardsCenter/CardsHBox/Card3"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_Lock")
 
-[node name="Center" type="CenterContainer" parent="LevelSelectView/Cards/Card3/LockOverlay"]
+[node name="Center" type="CenterContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/LockOverlay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -430,45 +606,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="LevelSelectView/Cards/Card3/LockOverlay/Center"]
+[node name="VBox" type="VBoxContainer" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/LockOverlay/Center"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 alignment = 1
 
-[node name="LockIcon" type="Label" parent="LevelSelectView/Cards/Card3/LockOverlay/Center/VBox"]
+[node name="LockIcon" type="TextureRect" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/LockOverlay/Center/VBox"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "🔒"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
 
-[node name="LockText" type="Label" parent="LevelSelectView/Cards/Card3/LockOverlay/Center/VBox"]
+[node name="LockText" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/LockOverlay/Center/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
 theme_override_font_sizes/font_size = 26
 text = "TERKUNCI"
 horizontal_alignment = 1
 
-[node name="LockHint" type="Label" parent="LevelSelectView/Cards/Card3/LockOverlay/Center/VBox"]
+[node name="LockHint" type="Label" parent="LevelSelectView/CardsCenter/CardsHBox/Card3/LockOverlay/Center/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.85, 0.9, 0.8)
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.85, 0.88, 0.94, 0.85)
+theme_override_font_sizes/font_size = 16
 text = "Selesaikan Level 2 Terlebih Dahulu"
 horizontal_alignment = 1
 
-[node name="StatusLabel" type="Label" parent="LevelSelectView"]
+[node name="StatusContainer" type="CenterContainer" parent="LevelSelectView"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -60.0
-offset_bottom = -20.0
+offset_top = -90.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 0.95)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+
+[node name="StatusPill" type="PanelContainer" parent="LevelSelectView/StatusContainer"]
+custom_minimum_size = Vector2(760, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_StatusPill")
+
+[node name="Margin" type="MarginContainer" parent="LevelSelectView/StatusContainer/StatusPill"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="StatusLabel" type="Label" parent="LevelSelectView/StatusContainer/StatusPill/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.16, 0.29, 1)
 theme_override_font_sizes/font_size = 18
 text = "Pemain Baru: Memulai Petualangan di Level 1 (Mean)"
 horizontal_alignment = 1

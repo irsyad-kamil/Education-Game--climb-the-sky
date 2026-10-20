@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cscrulkqwf5oc"
+
+[deps]
+
+files=["res://data/bank_soal_48.Level (1/2/3).translation", "res://data/bank_soal_48.Titik.translation", "res://data/bank_soal_48.Bentuk (PG/TF/Isian/Matching).translation", "res://data/bank_soal_48.Narasi Konteks Bima (Optional).translation", "res://data/bank_soal_48.Teks Soal.translation", "res://data/bank_soal_48.Data yang Dipakai.translation", "res://data/bank_soal_48.Pilihan Jawaban / Pasangan.translation", "res://data/bank_soal_48.Kunci Jawaban.translation"]
+
+source_file="res://data/bank_soal_48.csv"
+dest_files=["res://data/bank_soal_48.Level (1/2/3).translation", "res://data/bank_soal_48.Titik.translation", "res://data/bank_soal_48.Bentuk (PG/TF/Isian/Matching).translation", "res://data/bank_soal_48.Narasi Konteks Bima (Optional).translation", "res://data/bank_soal_48.Teks Soal.translation", "res://data/bank_soal_48.Data yang Dipakai.translation", "res://data/bank_soal_48.Pilihan Jawaban / Pasangan.translation", "res://data/bank_soal_48.Kunci Jawaban.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

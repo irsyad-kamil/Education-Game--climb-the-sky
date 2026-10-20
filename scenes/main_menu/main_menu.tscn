@@ -55,14 +55,14 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "[ Materi: Ukuran Pemusatan Data — Matematika Kelas X ]"
+text = "[ Materi: Ukuran Pemusatan Data (Mean & Median) — Matematika Kelas X ]"
 horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.8, 0.75, 1)
 theme_override_font_sizes/font_size = 16
-text = "Status: Memulai dari Tahap 1"
+text = "Status: Memulai dari Level 1"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
@@ -85,7 +85,7 @@ text = "▶ MULAI PERJALANAN"
 custom_minimum_size = Vector2(380, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "🗺️ PILIH TAHAP"
+text = "🗺️ PILIH LEVEL"
 
 [node name="BtnStorySTEAM" type="Button" parent="CenterContainer/VBoxContainer/MenuButtons"]
 custom_minimum_size = Vector2(380, 50)
@@ -110,21 +110,21 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.5, 0.55, 0.65, 1)
 theme_override_font_sizes/font_size = 14
-text = "Game Edukasi Media Storytelling STEAM • Climb the Sky v0.3"
+text = "Game Edukasi Media Pembelajaran STEAM • Climb the Sky v1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Popups" type="CanvasLayer" parent="."]
 
 [node name="StageSelectModal" type="PopupPanel" parent="Popups"]
-title = "Pilih Tahap Permainan"
-size = Vector2i(540, 360)
+title = "Pilih Level Permainan"
+size = Vector2i(640, 420)
 
 [node name="MarginContainer" type="MarginContainer" parent="Popups/StageSelectModal"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 536.0
-offset_bottom = 356.0
+offset_right = 636.0
+offset_bottom = 416.0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
@@ -137,35 +137,38 @@ theme_override_constants/separation = 16
 [node name="Title" type="Label" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Pilih Titik Awal Pendakian:"
+text = "Pilih Titik Awal Level:"
 horizontal_alignment = 1
 
 [node name="BtnStage1" type="Button" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "Tahap 1: Lulus SMA (Tutorial & Data Tunggal)"
+text = "Level 1: Konsep & Perhitungan Rata-rata (Mean)
+5 Titik Soal • Skor Maks: 500"
 
 [node name="BtnStage2" type="Button" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "Tahap 2: Lulus Kuliah (Tabel Frekuensi & Outlier)"
+text = "Level 2: Konsep & Penentuan Nilai Tengah (Median)
+4 Titik Soal • Skor Maks: 400"
 
 [node name="BtnStage3" type="Button" parent="Popups/StageSelectModal/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 disabled = true
-text = "Tahap 3: Masa Depan (Hanya dari Bos Tahap 2)"
+text = "Level 3: Evaluasi Komparatif Mean & Median
+3 Titik Soal • Skor Maks: 300"
 
 [node name="AboutModal" type="AcceptDialog" parent="Popups"]
 title = "Tentang Climb the Sky & STEAM"
-size = Vector2i(700, 480)
+size = Vector2i(720, 500)
 dialog_text = "KISAH BIMA:
-Bima adalah anak yatim yang bertekad mengubah nasib keluarganya setelah melihat daftar utang ibunya di meja makan. Melalui ketekunan belajar statistika, ia mendaki dari lulus SMA, kuliah, hingga meraih karier profesional.
+Bima membantu ayahnya mengelola pembukuan dan analisis data penjualan di toko sembako keluarga. Melalui pemahaman konsep statistika (Mean dan Median), Bima membantu toko membuat keputusan stok dan penjualan yang akurat.
 
 INTEGRASI STEAM:
-• Science: Analisis beban ekonomi & kondisi nyata kehidupan.
-• Technology: Game interaktif berbasis Godot Engine.
-• Engineering: Manajemen risiko rute & strategi HP roguelike.
-• Art: Storytelling emosional & estetika pendakian langit.
-• Mathematics: Ukuran Pemusatan Data (Mean, Median, Modus)."
+• Science: Analisis data empiris dan fluktuasi penjualan kebutuhan pokok.
+• Technology: Media simulasi edukatif interaktif berbasis Godot Engine.
+• Engineering: Alur logika sistematis dan tahapan komputasi bertahap.
+• Art: Storytelling kontekstual toko sembako dan visual pendakian langit.
+• Mathematics: Ukuran Pemusatan Data — Mean (Rata-rata) & Median (Nilai Tengah)."
 dialog_autowrap = true

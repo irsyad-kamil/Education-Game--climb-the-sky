@@ -1,0 +1,109 @@
+{
+  "events": [
+    {
+      "stage": 1,
+      "outcome": "hp_plus",
+      "title": "Nasi Kotak dari Ibu Kantin",
+      "story": "Saat Bima sedang belajar di koridor sekolah sepulang kelas, ibu kantin yang melihat ketekunannya tersenyum dan memberikan sisa nasi kotak bersih: 'Makan dulu, Bima. Semangat belajarnya ya.' Perhatian tulus itu menghangatkan hati Bima.",
+      "flavor_result": "Semangat Bima bangkit kembali! Daya tahan bertambah."
+    },
+    {
+      "stage": 1,
+      "outcome": "hp_minus",
+      "title": "Sepatu Usang yang Jebol",
+      "story": "Hujan deras mengguyur saat Bima berjalan kaki pulang. Sepatu satu-satunya yang sudah tipis akhirnya jebol terendam air. Bima harus berjalan pincang menahan dingin di tengah rasa cemas akan biaya perbaikan.",
+      "flavor_result": "Kelelahan fisik dan pikiran membebani Bima. Daya tahan berkurang."
+    },
+    {
+      "stage": 1,
+      "outcome": "normal_enemy",
+      "title": "Pertanyaan Spontan Guru Matematika",
+      "story": "Di perpustakaan sekolah, guru matematika berpapasan dengan Bima: 'Bagus sekali kamu mulai sering ke sini, Bima. Coba jawab satu pertanyaan ini untuk pemanasan.'",
+      "flavor_result": "Bima menghadapi tantangan latihan mendadak!"
+    },
+    {
+      "stage": 1,
+      "outcome": "elite_enemy",
+      "title": "Tantangan Kuis Kilat Antarkelas",
+      "story": "Teman-teman kelas sebelah menantang Bima dalam kuis kilat berbatas waktu. Ini kesempatan membuktikan bahwa perubahan dirinya bukanlah omong kosong belaka.",
+      "flavor_result": "Bima harus berpikir cepat di bawah tekanan!"
+    },
+    {
+      "stage": 1,
+      "outcome": "neutral",
+      "title": "Menatap Awan di Atap Sekolah",
+      "story": "Bima berdiri sejenak di atap sekolah saat jam istirahat. Langit biru membentang luas. Ia teringat janjinya pada ibu untuk mendaki setinggi mungkin melampaui keterbatasan nasibnya.",
+      "flavor_result": "Pikiran Bima tenang dan jernih. Perjalanan berlanjut."
+    },
+    {
+      "stage": 2,
+      "outcome": "hp_plus",
+      "title": "Tips Tambahan dari Pelanggan Kafe",
+      "story": "Bekerja paruh waktu di kafe hingga larut malam memang melelahkan, tetapi keramahan Bima membuat seorang pelanggan tetap memberikan tips lebih dan menyelipkan ucapan: 'Sukses kuliahnya ya, Dek.'",
+      "flavor_result": "Beban finansial terasa sedikit lebih ringan. Daya tahan bertambah!"
+    },
+    {
+      "stage": 2,
+      "outcome": "hp_minus",
+      "title": "Laptop Tua yang Mati Mendadak",
+      "story": "Menjelang tengah malam, laptop pinjaman yang Bima pakai untuk mengerjakan tugas statistik mendadak mati total akibat baterai drop. Bima panik dan harus begadang mencari pinjaman charger.",
+      "flavor_result": "Stres dan kurang tidur menguras tenaga Bima. Daya tahan berkurang."
+    },
+    {
+      "stage": 2,
+      "outcome": "normal_enemy",
+      "title": "Diskusi Tak Terduga di Koridor Kampus",
+      "story": "Dosen asisten laboratorium memanggil Bima: 'Bima, kebetulan kamu lewat. Ada satu data survei mahasiswa yang perlu diverifikasi rata-ratanya sekarang.'",
+      "flavor_result": "Bima diuji untuk menghitung data tersebut!"
+    },
+    {
+      "stage": 2,
+      "outcome": "elite_enemy",
+      "title": "Tenggat Waktu Proposal Beasiswa",
+      "story": "Sistem portal beasiswa akan ditutup tepat dalam beberapa menit! Bima harus menyelesaikan verifikasi data nilai sebelum gerbang kesempatan tertutup.",
+      "flavor_result": "Tantangan darurat berbatas waktu!"
+    },
+    {
+      "stage": 2,
+      "outcome": "neutral",
+      "title": "Secangkir Kopi Hitam di Sudut Perpustakaan",
+      "story": "Aroma kopi hangat menemani heningnya malam di perpustakaan. Bima menghela napas, bersyukur masih diberi kekuatan untuk bertahan hingga semester ini.",
+      "flavor_result": "Hati Bima teguh. Tidak ada perubahan status."
+    },
+    {
+      "stage": 3,
+      "outcome": "hp_plus",
+      "title": "Apresiasi dari Rekan Kerja",
+      "story": "Analisis data yang Bima susun berhasil membantu tim menemukan solusi efisiensi anggaran proyek. Manajer divisi memuji ketelitian Bima di depan seluruh tim.",
+      "flavor_result": "Rasa percaya diri Bima semakin kokoh! Daya tahan bertambah."
+    },
+    {
+      "stage": 3,
+      "outcome": "hp_minus",
+      "title": "Kabar Kenaikan Bunga Pinjaman Lama",
+      "story": "Bima menerima surat pemberitahuan denda tunggakan utang masa lalu yang belum tuntas. Ia memejamkan mata, sadar bahwa perjuangannya belum boleh berhenti di sini.",
+      "flavor_result": "Tekanan mental yang berat. Daya tahan berkurang."
+    },
+    {
+      "stage": 3,
+      "outcome": "normal_enemy",
+      "title": "Verifikasi Data Audit",
+      "story": "Tim audit internal meminta Bima memeriksa satu lembar rekapitulasi nilai sebelum diserahkan ke direksi.",
+      "flavor_result": "Bima menghadapi soal latihan profesional!"
+    },
+    {
+      "stage": 3,
+      "outcome": "elite_enemy",
+      "title": "Krisis Perhitungan Menjelang Rapat Direksi",
+      "story": "Hanya tersisa waktu singkat sebelum rapat dimulai, ditemukan anomali data yang harus dipecahkan secepat kilat!",
+      "flavor_result": "Tantangan profesional berbatas waktu!"
+    },
+    {
+      "stage": 3,
+      "outcome": "neutral",
+      "title": "Panggilan Telepon Singkat dari Ibu",
+      "story": "'Bima, jangan lupa makan ya, Nak. Ibu selalu mendoakanmu dari rumah.' Suara lembut ibu di telepon adalah kompas terbaik dalam setiap langkah hidupnya.",
+      "flavor_result": "Tekad Bima tak tergoyahkan. Perjalanan berlanjut."
+    }
+  ]
+}

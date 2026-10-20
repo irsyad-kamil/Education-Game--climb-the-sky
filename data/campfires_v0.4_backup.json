@@ -1,0 +1,108 @@
+{
+  "campfires": [
+    {
+      "stage": 1,
+      "row": 1,
+      "title": "Kamar Belajar Bima — Menemukan Titik Keseimbangan",
+      "flavor_intro": "Malam semakin larut. Di meja belajar sederhananya, Bima memandangi secarik catatan kecil yang ditinggalkan ibunya bersama secangkir teh hangat: 'Ibu selalu percaya kamu bisa, Nak.'",
+      "slides": [
+        {
+          "heading": "Mengapa Kita Perlu Ukuran Pemusatan?",
+          "body": "Bima menyadari, untuk mengetahui apakah nilai sekolahnya cukup baik untuk lulus dan meraih beasiswa, ia tidak bisa hanya melihat satu nilai terbaik atau terburuk.\n\nIa membutuhkan satu nilai representatif (wakil) yang menggambarkan keseluruhan kumpulan datanya."
+        },
+        {
+          "heading": "Tiga Ukuran Pemusatan Data Tunggal",
+          "body": "1. Mean (Rata-rata Hitung):\n   Jumlah seluruh nilai dibagi banyak data. Ini adalah titik keseimbangan matematis.\n\n2. Median (Nilai Tengah):\n   Nilai yang berada tepat di tengah SETELAH data diurutkan dari terkecil ke terbesar.\n\n3. Modus (Nilai Paling Sering):\n   Nilai atau angka yang memiliki frekuensi kemunculan terbanyak."
+        },
+        {
+          "heading": "Tips Menjawab untuk Bima",
+          "body": "• Untuk mencari Median: Selalu urutkan data terlebih dahulu!\n• Jika banyak data genap, median adalah rata-rata dari dua nilai di tengah.\n• Modus bisa lebih dari satu (bimodus/multimodus), atau bahkan tidak ada jika semua data muncul sama seringnya."
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "row": 1,
+      "title": "Pojok Perpustakaan Kampus — Tabel Frekuensi & Bobot Nilai",
+      "flavor_intro": "Tahun pertama kuliah terasa berat. Bima harus membagi waktu antara jadwal kuliah dan shift kerja paruh waktu di kafe.",
+      "slides": [
+        {
+          "heading": "Data Berfrekuensi (Tabel Distribusi Tunggal)",
+          "body": "Ketika data semakin banyak, kita menyajikannya dalam tabel frekuensi (Nilai vs Frekuensi).\n\nRumus Mean:\nMean = Σ(x · f) / Σf\n(Kalikan tiap nilai dengan frekuensinya, jumlahkan semuanya, lalu bagi dengan total frekuensi)."
+        },
+        {
+          "heading": "Mencari Median pada Tabel Frekuensi",
+          "body": "1. Hitung total frekuensi (N = Σf).\n2. Tentukan posisi tengah (N / 2).\n3. Gunakan frekuensi kumulatif untuk menemukan pada nilai keberapakah letak data tengah tersebut."
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "row": 4,
+      "title": "Kantin Malam — Fenomena Nilai Ekstrem (Pencilan / Outlier)",
+      "flavor_intro": "Bima beristirahat sejenak sambil memeriksa catatan pengeluaran bulanan. Segelas air dingin memulihkan tenaganya (+5 HP).",
+      "slides": [
+        {
+          "heading": "Apa itu Nilai Ekstrem (Outlier)?",
+          "body": "Nilai ekstrem adalah angka yang nilainya jauh melompat lebih besar atau lebih kecil dibanding data lainnya dalam satu kelompok.\n\nContoh: Nilai ulangan 70, 75, 75, 80, dan satu orang mendapat nilai 10."
+        },
+        {
+          "heading": "Mean vs Median terhadap Outlier",
+          "body": "• Mean SANGAT rentan terpengaruh nilai ekstrem. Satu nilai yang anjlok atau melompat tinggi akan menarik rata-rata secara signifikan.\n\n• Median KEBAL (resisten) terhadap nilai ekstrem, karena median hanya bergantung pada urutan posisi tengah, bukan besar nilai di ujung data."
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "row": 7,
+      "title": "Ruang Diskusi Mahasiswa — Rata-Rata Gabungan",
+      "flavor_intro": "Menjelang semester akhir. Bima belajar bersama rekan sekelompoknya. Semangat mereka kembali pulih (+5 HP).",
+      "slides": [
+        {
+          "heading": "Konsep Rata-Rata Gabungan",
+          "body": "Jika Kelompok A (banyak siswa n₁, rata-rata x̄₁) digabung dengan Kelompok B (banyak siswa n₂, rata-rata x̄₂):\n\nMean Gabungan = (n₁ · x̄₁ + n₂ · x̄₂) / (n₁ + n₂)\n\nIngat: Jangan langsung merata-ratakan kedua rata-rata jika jumlah anggotanya berbeda!"
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "row": 1,
+      "title": "Ruang Kerja Baru — Data Kelompok & Dunia Industri",
+      "flavor_intro": "Bima kini memasuki dunia profesional. Di mejanya terdapat laporan survei gaji dan tren pasar.",
+      "slides": [
+        {
+          "heading": "Memahami Data Berkelompok (Interval Kelas)",
+          "body": "Pada data besar, angka dikelompokkan ke dalam interval (contoh: 51–60, 61–70).\n\nUntuk menghitung perkiraan Mean:\n1. Tentukan titik tengah tiap kelas (xᵢ = [Batas Bawah + Batas Atas] / 2).\n2. Kalikan titik tengah dengan frekuensinya (xᵢ · fᵢ).\n3. Jumlahkan dan bagi dengan total frekuensi."
+        },
+        {
+          "heading": "Memilih Ukuran Pemusatan yang Bijak",
+          "body": "Dalam dunia nyata:\n• Gunakan Mean untuk data yang tersebar merata tanpa nilai ekstrem.\n• Gunakan Median untuk data yang timpang (seperti penghasilan penduduk atau harga rumah).\n• Gunakan Modus untuk menentukan inventaris barang (seperti ukuran pakaian atau sepatu yang paling laris)."
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "row": 4,
+      "title": "Balkon Gedung Kantor — Refleksi Perjalanan Bima",
+      "flavor_intro": "Melihat gemerlap lampu kota dari ketinggian. Beban utang keluarga telah berkurang drastis berkat ketekunannya (+5 HP).",
+      "slides": [
+        {
+          "heading": "Sifat Transformasi Data",
+          "body": "Jika setiap data dikali c lalu ditambah d:\n• Mean baru = (c · Mean lama) + d\n• Median baru = (c · Median lama) + d\n• Modus baru = (c · Modus lama) + d\n\nSeluruh ukuran pemusatan mengalami perubahan yang sama persis mengikuti operasi perkalian dan penjumlahan tersebut."
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "row": 7,
+      "title": "Malam Menjelang Presentasi Penentu — Tekad Terakhir",
+      "flavor_intro": "Besok adalah presentasi di hadapan dewan direksi. Bima menarik napas panjang dengan rasa percaya diri penuh (+5 HP).",
+      "slides": [
+        {
+          "heading": "Persiapan Evaluasi Akhir",
+          "body": "Bima telah menguasai seluruh konsep dari data tunggal, frekuensi, nilai ekstrem, hingga data kelompok.\n\nKini saatnya membuktikan bahwa kerja keras, kejujuran pada ilmu, dan bakti kepada keluarga mampu mengubah takdir seseorang."
+        }
+      ]
+    }
+  ]
+}

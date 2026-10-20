@@ -1,17 +1,48 @@
 extends Node
 
-# Database pertanyaan terindeks: questions_by_stage[tahap][kategori]
-var questions_by_stage: Dictionary = {
-	1: {"Normal": [], "Elite": [], "Boss": {}},
-	2: {"Normal": [], "Elite": [], "Boss": {}},
-	3: {"Normal": [], "Elite": [], "Boss": {}}
+# Data Manager v1.0 (GDD v1.0 Architecture)
+# Mengelola konfigurasi permainan dan database 12 soal tetap per level dan titik
+
+var game_config: Dictionary = {}
+var levels_config: Dictionary = {} # level (int) -> Dictionary
+var questions_by_level: Dictionary = {
+	1: {},
+	2: {},
+	3: {}
 }
 
-# Riwayat ID soal yang sudah pernah ditampilkan dalam sesi permainan
-var used_question_ids: Array = []
+func _init() -> void:
+	load_game_config("res://data/game_config.json")
+	load_questions("res://data/questions.json")
 
 func _ready() -> void:
-	load_questions("res://data/questions.json")
+	if game_config.is_empty():
+		load_game_config("res://data/game_config.json")
+	if questions_by_level[1].is_empty():
+		load_questions("res://data/questions.json")
+
+func load_game_config(file_path: String) -> void:
+	if not FileAccess.file_exists(file_path):
+		push_error("DataManager: File konfigurasi tidak ditemukan: " + file_path)
+		return
+
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var json_string = file.get_as_text()
+	file.close()
+
+	var json = JSON.new()
+	var error = json.parse(json_string)
+	if error != OK:
+		push_error("DataManager: Gagal membaca game_config.json: " + json.get_error_message())
+		return
+
+	game_config = json.get_data()
+	var lvl_list = game_config.get("levels", [])
+	for lvl in lvl_list:
+		var l_num = int(lvl.get("level", 1))
+		levels_config[l_num] = lvl
+
+	print("DataManager: Berhasil memuat game_config.json (Versi %s)" % game_config.get("version", "1.0"))
 
 func load_questions(file_path: String) -> void:
 	if not FileAccess.file_exists(file_path):
@@ -31,66 +62,62 @@ func load_questions(file_path: String) -> void:
 	var data = json.get_data()
 	var questions_list: Array = data.get("questions", [])
 
+	for l in range(1, 4):
+		questions_by_level[l] = {}
+
 	for q in questions_list:
-		var stage = int(q.get("stage", 1))
-		var cat = q.get("category", "Normal")
+		var lvl = int(q.get("level", 1))
+		var pt = int(q.get("point_index", 1))
+		if questions_by_level.has(lvl):
+			questions_by_level[lvl][pt] = q
 
-		if cat == "Boss":
-			var b_type = q.get("boss_type", "A")
-			if not questions_by_stage[stage]["Boss"].has(b_type):
-				questions_by_stage[stage]["Boss"][b_type] = []
-			questions_by_stage[stage]["Boss"][b_type].append(q)
-		else:
-			if questions_by_stage[stage].has(cat):
-				questions_by_stage[stage][cat].append(q)
+	print("DataManager: Berhasil memuat %d soal tetap (Level 1: %d, Level 2: %d, Level 3: %d)." % [
+		questions_list.size(),
+		questions_by_level[1].size(),
+		questions_by_level[2].size(),
+		questions_by_level[3].size()
+	])
 
-	print("DataManager: Berhasil memuat %d soal ke dalam database." % questions_list.size())
+# Mengambil 1 soal spesifik berdasarkan level dan nomor titik (1-based)
+func get_question(level: int, point_index: int) -> Dictionary:
+	if questions_by_level.has(level) and questions_by_level[level].has(point_index):
+		return questions_by_level[level][point_index]
+	push_warning("DataManager: Soal untuk Level %d Titik %d tidak ditemukan!" % [level, point_index])
+	return {}
 
-# Mengambil 1 soal Normal Enemy
-func get_normal_question(stage: int) -> Dictionary:
-	var pool: Array = questions_by_stage[stage]["Normal"]
-	return _pick_unseen_question(pool)
+# Mengambil daftar seluruh soal di level tertentu
+func get_questions_for_level(level: int) -> Array:
+	var list: Array = []
+	if questions_by_level.has(level):
+		var keys = questions_by_level[level].keys()
+		keys.sort()
+		for k in keys:
+			list.append(questions_by_level[level][k])
+	return list
 
-# Mengambil 1 soal Elite Enemy
-func get_elite_question(stage: int) -> Dictionary:
-	var pool: Array = questions_by_stage[stage]["Elite"]
-	return _pick_unseen_question(pool)
+# Mengambil konfigurasi spesifik level (total points, max score, dll.)
+func get_level_config(level: int) -> Dictionary:
+	return levels_config.get(level, {})
 
-# Mengambil 5 pertanyaan Boss sesuai aturan GDD 4.4:
-# Diacak dari jenis A-E, jenis boleh berulang, tetapi MINIMAL 3 jenis berbeda
-func get_boss_questions(stage: int) -> Array:
-	var boss_pools: Dictionary = questions_by_stage[stage]["Boss"]
-	var all_types = ["A", "B", "C", "D", "E"]
-	var selected_questions: Array = []
+func get_total_points(level: int) -> int:
+	var cfg = get_level_config(level)
+	return int(cfg.get("total_points", 0))
 
-	var chosen_types: Array = []
-	while true:
-		chosen_types.clear()
-		for i in range(5):
-			chosen_types.append(all_types.pick_random())
+func get_max_score(level: int) -> int:
+	var cfg = get_level_config(level)
+	return int(cfg.get("max_score", 0))
 
-		var unique_map = {}
-		for t in chosen_types:
-			unique_map[t] = true
+func get_scoring_rules() -> Dictionary:
+	return game_config.get("scoring", {
+		"correct_score": 100,
+		"wrong_score": -25,
+		"allow_negative_score": true
+	})
 
-		if unique_map.size() >= 3:
-			break # Syarat minimal 3 jenis berbeda terpenuhi
-
-	for b_type in chosen_types:
-		var sub_pool: Array = boss_pools.get(b_type, [])
-		if sub_pool.size() > 0:
-			selected_questions.append(sub_pool.pick_random())
-
-	return selected_questions
-
-func _pick_unseen_question(pool: Array) -> Dictionary:
-	if pool.is_empty():
-		return {}
-
-	var available = pool.filter(func(q): return not used_question_ids.has(q["id"]))
-	if available.is_empty():
-		available = pool # Reset penggunaan bila seluruh pool sudah pernah keluar
-
-	var chosen = available.pick_random()
-	used_question_ids.append(chosen["id"])
-	return chosen
+func get_short_answer_settings() -> Dictionary:
+	return game_config.get("short_answer_settings", {
+		"max_wrong_attempts_before_reveal": 6,
+		"decimal_separator": ",",
+		"allow_dot_decimal": true,
+		"allow_fraction": true
+	})

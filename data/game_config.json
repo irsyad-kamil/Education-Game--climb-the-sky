@@ -1,0 +1,44 @@
+{
+  "game_title": "Climb the Sky",
+  "version": "1.0",
+  "theme": "Bima membantu ayahnya mengolah data penjualan toko keluarga",
+  "scoring": {
+    "correct_score": 100,
+    "wrong_score": -25,
+    "allow_negative_score": true,
+    "per_level_scoring": true,
+    "has_cumulative_score": false
+  },
+  "short_answer_settings": {
+    "max_wrong_attempts_before_reveal": 6,
+    "decimal_separator": ",",
+    "allow_dot_decimal": true,
+    "allow_fraction": true
+  },
+  "levels": [
+    {
+      "level": 1,
+      "title": "Level 1: Menghitung Rata-Rata Penjualan",
+      "topic": "Mean",
+      "total_points": 5,
+      "max_score": 500,
+      "description": "Bima membantu ayah menghitung rata-rata (mean) penjualan harian dan mingguan toko sembako keluarga."
+    },
+    {
+      "level": 2,
+      "title": "Level 2: Menentukan Nilai Tengah Penjualan",
+      "topic": "Median",
+      "total_points": 4,
+      "max_score": 400,
+      "description": "Bima menyusun urutan data penjualan untuk menemukan nilai tengah (median) penjualan produk."
+    },
+    {
+      "level": 3,
+      "title": "Level 3: Analisis Laporan Penjualan Lengkap",
+      "topic": "Mean dan Median",
+      "total_points": 3,
+      "max_score": 300,
+      "description": "Bima menggabungkan analisis mean dan median untuk mengevaluasi data penjualan dan mendeteksi pengaruh pencilan."
+    }
+  ]
+}

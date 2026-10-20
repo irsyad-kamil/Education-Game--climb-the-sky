@@ -31,6 +31,14 @@ class_name QuizScene
 @onready var procedure_items_list: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel/ItemsList
 @onready var btn_check_procedure: Button = $ScrollContainer/CenterContainer/MainContent/Panels/ProcedurePanel/BtnCheckProcedure
 
+@onready var panel_matching: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel
+@onready var matching_instruction: Label = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/InstructionLabel
+@onready var matching_left_col: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/Columns/LeftCol
+@onready var matching_right_col: VBoxContainer = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/Columns/RightCol
+@onready var matching_status_label: Label = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingStatusLabel
+@onready var btn_reset_matching: Button = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow/BtnResetMatching
+@onready var btn_check_matching: Button = $ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow/BtnCheckMatching
+
 @onready var btn_next_point: Button = $ScrollContainer/CenterContainer/MainContent/ActionArea/BtnNextPoint
 @onready var level_complete_modal: AcceptDialog = $Popups/LevelCompleteModal
 
@@ -42,8 +50,17 @@ class_name QuizScene
 @onready var btn_close_x: Button = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/HeaderHBox/BtnCloseX
 @onready var btn_close_bottom: Button = $Popups/TableModal/CenterContainer/Panel/Margin/VBox/BtnCloseBottom
 
+const PAIR_COLORS = [
+	Color(0.25, 0.82, 1.0, 1.0),   # Biru Muda / Cyan
+	Color(1.0, 0.82, 0.28, 1.0),   # Kuning Amber
+	Color(0.88, 0.45, 1.0, 1.0)    # Ungu / Magenta
+]
+
 var current_question: Dictionary = {}
 var procedure_order_list: Array = []
+var user_pairs: Dictionary = {}       # left_id -> right_id
+var selected_left_id: String = ""
+var shuffled_right_items: Array = []
 var is_solved: bool = false
 
 func _ready() -> void:
@@ -56,6 +73,8 @@ func _ready() -> void:
 	btn_submit_isian.pressed.connect(_on_submit_isian)
 	input_isian.text_submitted.connect(func(_t): _on_submit_isian())
 	btn_check_procedure.pressed.connect(_on_check_procedure)
+	btn_reset_matching.pressed.connect(_on_reset_matching)
+	btn_check_matching.pressed.connect(_on_check_matching)
 	btn_next_point.pressed.connect(_on_next_point_pressed)
 	level_complete_modal.confirmed.connect(_on_level_complete_confirmed)
 
@@ -127,6 +146,7 @@ func _load_current_point_question() -> void:
 	panel_tf.visible = false
 	panel_isian.visible = false
 	panel_procedure.visible = false
+	panel_matching.visible = false
 
 	var q_type = current_question.get("type", "")
 	match q_type:
@@ -138,6 +158,8 @@ func _load_current_point_question() -> void:
 			_setup_short_answer()
 		"Prosedur":
 			_setup_procedure()
+		"Matching":
+			_setup_matching()
 
 # --- MODAL TABEL DISTRIBUSI FREKUENSI ---
 func _show_frequency_table_modal() -> void:
@@ -409,6 +431,181 @@ func _on_check_procedure() -> void:
 	var is_correct = _is_procedure_matching(correct_order)
 	_process_answer_result(is_correct)
 
+# --- TIPE 5: MATCHING / MENJODOHKAN DUA KOLOM ---
+func _setup_matching() -> void:
+	panel_matching.visible = true
+	btn_check_matching.disabled = false
+	btn_reset_matching.disabled = false
+	user_pairs.clear()
+	selected_left_id = ""
+
+	var left_items: Array = current_question.get("left_items", [])
+	var right_items: Array = current_question.get("right_items", []).duplicate()
+
+	# Acak urutan kanan agar pemain yang menjodohkan
+	if right_items.size() > 1:
+		right_items.shuffle()
+		var is_sequential = true
+		for i in range(right_items.size()):
+			if right_items[i].get("id") != "R%d" % (i + 1):
+				is_sequential = false
+				break
+		if is_sequential:
+			right_items.reverse()
+
+	shuffled_right_items = right_items
+	_render_matching_ui()
+
+func _render_matching_ui() -> void:
+	for child in matching_left_col.get_children():
+		child.queue_free()
+	for child in matching_right_col.get_children():
+		child.queue_free()
+
+	var left_items: Array = current_question.get("left_items", [])
+	var right_map: Dictionary = {}
+	for r in shuffled_right_items:
+		right_map[r.get("id")] = r.get("text", "")
+
+	# Status Label
+	var paired_count = user_pairs.size()
+	matching_status_label.text = "Terpasang: %d dari %d pasangan" % [paired_count, left_items.size()]
+	if not selected_left_id.is_empty():
+		var sel_idx = -1
+		for i in range(left_items.size()):
+			if left_items[i].get("id") == selected_left_id:
+				sel_idx = i
+				break
+		matching_status_label.text += "  •  [Item %d Dipilih] 👉 Klik pasangannya di kolom kanan" % (sel_idx + 1)
+
+	# Render Left Column
+	for i in range(left_items.size()):
+		var item = left_items[i]
+		var l_id = item.get("id", "")
+		var l_text = item.get("text", "")
+		var btn = Button.new()
+		btn.custom_minimum_size = Vector2(0, 68)
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.add_theme_font_size_override("font_size", 16)
+
+		var color_idx = i % PAIR_COLORS.size()
+		var p_color = PAIR_COLORS[color_idx]
+
+		if user_pairs.has(l_id):
+			var r_id = user_pairs[l_id]
+			var r_val = right_map.get(r_id, r_id)
+			btn.text = "  [%d] %s   ➔   [%s]" % [i + 1, l_text, r_val]
+			btn.self_modulate = p_color
+		elif selected_left_id == l_id:
+			btn.text = "  [%d] %s   👉 [PILIH PASANGAN DI KANAN]" % [i + 1, l_text]
+			btn.self_modulate = Color(1.0, 1.0, 0.4, 1.0)
+		else:
+			btn.text = "  [%d] %s" % [i + 1, l_text]
+			btn.self_modulate = Color(0.9, 0.92, 0.96, 1.0)
+
+		if is_solved:
+			btn.disabled = true
+		else:
+			var curr_lid = l_id
+			btn.pressed.connect(func(): _on_left_item_pressed(curr_lid))
+
+		matching_left_col.add_child(btn)
+
+	# Render Right Column
+	for j in range(shuffled_right_items.size()):
+		var r_item = shuffled_right_items[j]
+		var r_id = r_item.get("id", "")
+		var r_text = r_item.get("text", "")
+		var btn = Button.new()
+		btn.custom_minimum_size = Vector2(0, 68)
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.add_theme_font_size_override("font_size", 16)
+
+		var paired_left_index = -1
+		for i in range(left_items.size()):
+			var lid = left_items[i].get("id", "")
+			if user_pairs.get(lid) == r_id:
+				paired_left_index = i
+				break
+
+		if paired_left_index != -1:
+			var color_idx = paired_left_index % PAIR_COLORS.size()
+			btn.self_modulate = PAIR_COLORS[color_idx]
+			btn.text = "  %s   ⬅ [Pasangan %d]" % [r_text, paired_left_index + 1]
+		else:
+			btn.self_modulate = Color(0.9, 0.92, 0.96, 1.0)
+			btn.text = "  %s" % r_text
+
+		if is_solved:
+			btn.disabled = true
+		else:
+			var curr_rid = r_id
+			btn.pressed.connect(func(): _on_right_item_pressed(curr_rid))
+
+		matching_right_col.add_child(btn)
+
+func _on_left_item_pressed(left_id: String) -> void:
+	if is_solved:
+		return
+	if selected_left_id == left_id:
+		selected_left_id = ""
+	else:
+		selected_left_id = left_id
+	_render_matching_ui()
+
+func _on_right_item_pressed(right_id: String) -> void:
+	if is_solved:
+		return
+	if not selected_left_id.is_empty():
+		for k in user_pairs.keys():
+			if user_pairs[k] == right_id:
+				user_pairs.erase(k)
+		user_pairs[selected_left_id] = right_id
+		selected_left_id = ""
+		_render_matching_ui()
+	else:
+		var unp = false
+		for k in user_pairs.keys():
+			if user_pairs[k] == right_id:
+				user_pairs.erase(k)
+				unp = true
+				break
+		if unp:
+			_render_matching_ui()
+		else:
+			matching_status_label.text = "💡 Pilih item di kolom kiri terlebih dahulu!"
+
+func _on_reset_matching() -> void:
+	if is_solved:
+		return
+	user_pairs.clear()
+	selected_left_id = ""
+	_render_matching_ui()
+
+func _on_check_matching() -> void:
+	if is_solved:
+		return
+	var left_items: Array = current_question.get("left_items", [])
+	if user_pairs.size() < left_items.size():
+		feedback_panel.visible = true
+		feedback_panel.self_modulate = Color(0.9, 0.6, 0.2, 1.0)
+		feedback_label.text = "⚠️ Hubungkan ketiga pasangan terlebih dahulu sebelum memeriksa!"
+		feedback_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
+		return
+
+	var valid_pairs: Dictionary = current_question.get("valid_pairs", {})
+	var is_correct = true
+	for l_id in valid_pairs.keys():
+		if user_pairs.get(l_id) != valid_pairs[l_id]:
+			is_correct = false
+			break
+
+	_process_answer_result(is_correct)
+
 # --- SISTEM SKOR & HASIL EVALUASI ---
 func _process_answer_result(is_correct: bool) -> void:
 	var gs = _get_gs()
@@ -448,7 +645,23 @@ func _process_answer_result(is_correct: bool) -> void:
 func _on_answer_revealed(_point_idx: int, ans_str: String) -> void:
 	feedback_panel.visible = true
 	feedback_panel.self_modulate = Color(0.95, 0.8, 0.2, 1.0)
-	feedback_label.text = "💡 Catatan Bantuan: Kunci jawaban yang benar adalah: %s" % ans_str
+	var reveal_text = ans_str
+	if current_question.get("type") == "Matching":
+		var valid_pairs = current_question.get("valid_pairs", {})
+		var left_map = {}
+		for item in current_question.get("left_items", []):
+			left_map[item["id"]] = item["text"]
+		var right_map = {}
+		for item in current_question.get("right_items", []):
+			right_map[item["id"]] = item["text"]
+		
+		var lines = []
+		for l_id in valid_pairs.keys():
+			var r_id = valid_pairs[l_id]
+			lines.append("• %s  ➔  %s" % [left_map.get(l_id, l_id), right_map.get(r_id, r_id)])
+		reveal_text = "\n" + "\n".join(lines)
+
+	feedback_label.text = "💡 Catatan Bantuan: Kunci jawaban yang benar adalah: %s" % reveal_text
 	feedback_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
 	btn_next_point.text = "Lanjut ke Titik Berikutnya ➡️"
 	btn_next_point.visible = true
@@ -463,7 +676,10 @@ func _lock_current_inputs() -> void:
 	input_isian.editable = false
 	btn_submit_isian.disabled = true
 	btn_check_procedure.disabled = true
+	btn_check_matching.disabled = true
+	btn_reset_matching.disabled = true
 	_render_procedure_items()
+	_render_matching_ui()
 
 func _on_next_point_pressed() -> void:
 	var gs = _get_gs()

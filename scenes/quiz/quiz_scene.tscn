@@ -220,6 +220,57 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
 text = "PERIKSA URUTAN"
 
+[node name="MatchingPanel" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels"]
+visible = false
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="InstructionLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Klik sebuah kartu di kolom kiri, lalu klik pasangannya di kolom kanan."
+horizontal_alignment = 1
+
+[node name="Columns" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="LeftCol" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="RightCol" type="VBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="MatchingStatusLabel" type="Label" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "Terpasang: 0 dari 3 pasangan"
+horizontal_alignment = 1
+
+[node name="MatchingActionRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="BtnResetMatching" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Reset Pasangan"
+
+[node name="BtnCheckMatching" type="Button" parent="ScrollContainer/CenterContainer/MainContent/Panels/MatchingPanel/MatchingActionRow"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "PERIKSA PASANGAN"
+
 [node name="ActionArea" type="CenterContainer" parent="ScrollContainer/CenterContainer/MainContent"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2

@@ -37,21 +37,23 @@ func _init() -> void:
 	for lvl in range(1, 4):
 		var total_pts = dm.get_total_points(lvl)
 		var q_list = dm.get_questions_for_level(lvl)
-		assert(q_list.size() == total_pts, "Jumlah soal level %d harus sesuai total points" % lvl)
+		assert(q_list.size() == total_pts * 4, "Jumlah soal level %d harus sesuai total points * 4" % lvl)
 		total_q += q_list.size()
-		print("  ✓ Level %d: %d soal terindeks dengan benar (Max skor: %d)" % [
-			lvl, total_pts, dm.get_max_score(lvl)
+		print("  ✓ Level %d: %d titik terindeks (%d varian soal, Max skor: %d)" % [
+			lvl, total_pts, q_list.size(), dm.get_max_score(lvl)
 		])
 		
 		# Validasi kelengkapan struktur soal
 		for pt in range(1, total_pts + 1):
-			var q = dm.get_question(lvl, pt)
-			var has_ans = q.has("correct_answer") or q.has("correct_order")
-			assert(q.has("id") and q.has("type") and q.has("prompt") and has_ans,
-				"Soal Level %d Titik %d tidak lengkap" % [lvl, pt])
+			var variants = dm.get_question_variants(lvl, pt)
+			assert(variants.size() == 4, "Tiap titik harus memiliki 4 varian")
+			for q in variants:
+				var has_ans = q.has("correct_answer") or q.has("valid_pairs")
+				assert(q.has("id") and q.has("type") and q.has("prompt") and has_ans,
+					"Soal Level %d Titik %d (%s) tidak lengkap" % [lvl, pt, q.get("id")])
 	
-	assert(total_q == 12, "Total keseluruhan soal harus tepat 12")
-	print("  ✓ Total 12 soal tetap tervalidasi lengkap tanpa duplikasi/kekurangan")
+	assert(total_q == 48, "Total keseluruhan soal harus tepat 48")
+	print("  ✓ Total 48 soal tetap tervalidasi lengkap tanpa duplikasi/kekurangan")
 	
 	# 2. VERIFIKASI FASE 2: GAME STATE & SKOR
 	print("\n--- [2] PENGUJIAN FASE 2: GAME STATE & PERHITUNGAN SKOR ---")
@@ -91,7 +93,7 @@ func _init() -> void:
 		assert(r["revealed"] == false, "Sebelum 6 kali salah, revealed harus false")
 	var r_final = gs.register_answer(false)
 	assert(r_final["revealed"] == true and reveal_data["fired"] == true, "Percobaan ke-6 harus membuka jawaban")
-	assert(reveal_data["ans"] == "B", "Kunci jawaban L1-P1 harus 'B'")
+	assert(not reveal_data["ans"].is_empty(), "Kunci jawaban harus terbuka")
 	print("  ✓ Mekanisme threshold bantuan 6x salah terverifikasi (Kunci jawaban '%s' terbuka)" % reveal_data["ans"])
 	
 	# Selesaikan Level 1

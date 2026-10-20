@@ -1,4 +1,4 @@
-ID Soal,Level (1/2/3),Titik,Bentuk (PG/TF/Isian/Prosedur),Narasi Konteks Bima (Optional),Teks Soal,Data yang Dipakai,Pilihan Jawaban / Langkah,Kunci Jawaban
+ID Soal,Level (1/2/3),Titik,Bentuk (PG/TF/Isian/Matching),Narasi Konteks Bima (Optional),Teks Soal,Data yang Dipakai,Pilihan Jawaban / Pasangan,Kunci Jawaban
 L1-T1-PG,1,1,PG,"Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.","Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Mean (rata-rata) penjualan cokelat pada 5 hari pertama adalah ... pcs.","Data mentah Level 1, hari ke-1 s.d. ke-10","A. 15
 B. 16
 C. 15,8
@@ -6,11 +6,10 @@ D. 18",C
 L1-T1-TF,1,1,TF,"Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.","Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Pernyataan: mean penjualan cokelat pada 5 hari pertama adalah 16 pcs.","Data mentah Level 1, hari ke-1 s.d. ke-10","Benar
 Salah",Salah
 L1-T1-ISI,1,1,Isian,"Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.","Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Mean penjualan cokelat pada 5 hari pertama adalah ... pcs.","Data mentah Level 1, hari ke-1 s.d. ke-10",-,"15,8"
-L1-T1-PRO,1,1,Prosedur,"Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.","Penjualan cokelat pada 5 hari pertama (pcs): 12, 15, 18, 14, 20. Urutkan langkah menghitung mean penjualan cokelat pada 5 hari pertama.","Data mentah Level 1, hari ke-1 s.d. ke-10","LANGKAH (urutan benar; game mengacaknya):
-1. Jumlahkan seluruh data: 12 + 15 + 18 + 14 + 20 = 79
-2. Hitung banyaknya data: ada 5 hari
-3. Bagi jumlah data dengan banyaknya data: 79 ÷ 5
-4. Tuliskan hasilnya: mean = 15,8 pcs",1 → 2 → 3 → 4
+L1-T1-MP,1,1,Matching,"Ayah meminta Bima menyiapkan laporan penjualan cokelat bulan ini. Sebelum mengolah seluruh data, Bima memanaskan diri dengan data lima hari pertama.","Pasangkan setiap kelompok data penjualan cokelat (pcs) berikut dengan mean-nya. Data: hari ke-1 s.d. ke-5 adalah 12, 15, 18, 14, 20.","Data mentah Level 1, hari ke-1 s.d. ke-10","PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Mean hari ke-1 s.d. ke-3 (12, 15, 18)  ↔  15
+2. Mean hari ke-4 dan ke-5 (14, 20)  ↔  17
+3. Mean hari ke-1 dan ke-2 (12, 15)  ↔  13,5","1↔1, 2↔2, 3↔3"
 L1-T2-PG,1,2,PG,"Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.","Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Penjualan hari ke-6 sampai ke-9 berturut-turut adalah 16, 13, 17, dan 19 pcs. Penjualan cokelat pada hari ke-10 adalah ... pcs.","Data mentah Level 1, hari ke-1 s.d. ke-10","A. 15
 B. 13
 C. 14
@@ -18,11 +17,10 @@ D. 17",A
 L1-T2-TF,1,2,TF,"Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.","Pernyataan: jika mean penjualan selama 5 hari adalah 16 pcs, maka jumlah penjualan selama 5 hari tersebut adalah 80 pcs.","Data mentah Level 1, hari ke-1 s.d. ke-10","Benar
 Salah",Benar
 L1-T2-ISI,1,2,Isian,"Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.","Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Penjualan hari ke-6 sampai ke-9 berturut-turut adalah 16, 13, 17, dan 19 pcs. Penjualan cokelat pada hari ke-10 adalah ... pcs.","Data mentah Level 1, hari ke-1 s.d. ke-10",-,15
-L1-T2-PRO,1,2,Prosedur,"Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.","Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Penjualan hari ke-6 sampai ke-9 berturut-turut adalah 16, 13, 17, dan 19 pcs. Urutkan langkah menentukan penjualan cokelat pada hari ke-10.","Data mentah Level 1, hari ke-1 s.d. ke-10","LANGKAH (urutan benar; game mengacaknya):
-1. Hitung jumlah seluruh data dari mean: 16 × 5 = 80
-2. Jumlahkan empat data yang diketahui: 16 + 13 + 17 + 19 = 65
-3. Kurangkan: 80 − 65
-4. Tuliskan hasilnya: penjualan hari ke-10 adalah 15 pcs",1 → 2 → 3 → 4
+L1-T2-MP,1,2,Matching,"Catatan penjualan hari ke-10 di buku kasir Ayah tertutup noda tinta. Untungnya, rata-rata penjualan lima hari itu masih tercatat.","Mean penjualan cokelat pada hari ke-6 sampai ke-10 adalah 16 pcs. Pada tiap kasus berikut, satu hari tidak tercatat. Pasangkan kasus dengan penjualan hari yang hilang tersebut. Penjualan hari ke-6 s.d. ke-10 dicatat berturut-turut sebagai hari ke-6, 7, 8, 9, 10.","Data mentah Level 1, hari ke-1 s.d. ke-10","PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Hari ke-6 hilang; hari ke-7 s.d. ke-10: 13, 17, 19, 15  ↔  16 pcs
+2. Hari ke-7 hilang; hari ke-6, 8, 9, 10: 16, 17, 19, 15  ↔  13 pcs
+3. Hari ke-8 hilang; hari ke-6, 7, 9, 10: 16, 13, 19, 15  ↔  17 pcs","1↔1, 2↔2, 3↔3"
 L1-T3-PG,1,3,PG,Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.,"Berdasarkan tabel penjualan cokelat, titik tengah kelas 16–17 adalah ...",Tabel Level 1 (cokelat),"A. 16
 B. 17
 C. 33
@@ -30,10 +28,10 @@ D. 16,5",D
 L1-T3-TF,1,3,TF,Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.,"Berdasarkan tabel penjualan cokelat, pernyataan: titik tengah kelas 22–23 adalah 22,5.",Tabel Level 1 (cokelat),"Benar
 Salah",Benar
 L1-T3-ISI,1,3,Isian,Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.,"Berdasarkan tabel penjualan cokelat, titik tengah kelas 18–19 adalah ...",Tabel Level 1 (cokelat),-,"18,5"
-L1-T3-PRO,1,3,Prosedur,Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.,Urutkan langkah menentukan titik tengah kelas 14–15 pada tabel penjualan cokelat.,Tabel Level 1 (cokelat),"LANGKAH (urutan benar; game mengacaknya):
-1. Tentukan batas bawah (14) dan batas atas (15) kelas 14–15
-2. Jumlahkan kedua batas: 14 + 15 = 29
-3. Bagi hasilnya dengan 2: 29 ÷ 2, sehingga titik tengah = 14,5",1 → 2 → 3
+L1-T3-MP,1,3,Matching,Ayah menyerahkan tabel penjualan 30 hari yang sudah dikelompokkan. Bima perlu memahami nilai wakil dari tiap kelas.,"Berdasarkan tabel penjualan cokelat, pasangkan setiap hasil penjumlahan batas bawah dan batas atas kelas dengan titik tengah kelas tersebut.",Tabel Level 1 (cokelat),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Batas bawah + batas atas = 25  ↔  12,5
+2. Batas bawah + batas atas = 33  ↔  16,5
+3. Batas bawah + batas atas = 41  ↔  20,5","1↔1, 2↔2, 3↔3"
 L1-T4-PG,1,4,PG,Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.,"Berdasarkan tabel penjualan cokelat, hasil kali frekuensi dan titik tengah (f · x) untuk kelas 18–19 adalah ...",Tabel Level 1 (cokelat),"A. 25,5
 B. 129,5
 C. 126
@@ -41,11 +39,10 @@ D. 133",B
 L1-T4-TF,1,4,TF,Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.,"Berdasarkan tabel penjualan cokelat, pernyataan: untuk kelas 18–19, hasil kali f · x adalah 7 × 18 = 126.",Tabel Level 1 (cokelat),"Benar
 Salah",Salah
 L1-T4-ISI,1,4,Isian,Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.,"Berdasarkan tabel penjualan cokelat, hasil kali frekuensi dan titik tengah (f · x) untuk kelas 14–15 adalah ...",Tabel Level 1 (cokelat),-,"101,5"
-L1-T4-PRO,1,4,Prosedur,Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.,Urutkan langkah menentukan Σ f · x pada tabel penjualan cokelat.,Tabel Level 1 (cokelat),"LANGKAH (urutan benar; game mengacaknya):
-1. Tentukan titik tengah tiap kelas: 12,5; 14,5; 16,5; 18,5; 20,5; 22,5
-2. Kalikan frekuensi tiap kelas dengan titik tengahnya
-3. Tuliskan hasil kali (f · x): 37,5; 101,5; 99; 129,5; 102,5; 45
-4. Jumlahkan seluruh hasil kali: Σ f · x = 515",1 → 2 → 3 → 4
+L1-T4-MP,1,4,Matching,Bima menyiapkan kolom hasil kali agar rata-rata penjualan sebulan dapat dihitung.,"Berdasarkan tabel penjualan cokelat, pasangkan setiap kelas dengan hasil kali frekuensi dan titik tengahnya (f · x).",Tabel Level 1 (cokelat),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Kelas 14–15  ↔  101,5
+2. Kelas 18–19  ↔  129,5
+3. Kelas 20–21  ↔  102,5","1↔1, 2↔2, 3↔3"
 L1-T5-PG,1,5,PG,Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.,"Berdasarkan tabel penjualan cokelat, mean penjualan per hari (dibulatkan dua angka desimal) adalah ... pcs.",Tabel Level 1 (cokelat),"A. 17,17
 B. 16,5
 C. 17,5
@@ -53,12 +50,10 @@ D. 18,5",A
 L1-T5-TF,1,5,TF,Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.,"Berdasarkan tabel penjualan cokelat, pernyataan: mean penjualan cokelat per hari adalah sekitar 17,17 pcs.",Tabel Level 1 (cokelat),"Benar
 Salah",Benar
 L1-T5-ISI,1,5,Isian,Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.,"Berdasarkan tabel penjualan cokelat, mean penjualan per hari (dibulatkan dua angka desimal) adalah ... pcs.",Tabel Level 1 (cokelat),-,"17,17"
-L1-T5-PRO,1,5,Prosedur,Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.,Urutkan langkah menghitung mean penjualan cokelat dari tabel berkelompok.,Tabel Level 1 (cokelat),"LANGKAH (urutan benar; game mengacaknya):
-1. Tentukan titik tengah (x) tiap kelas
-2. Hitung hasil kali frekuensi dan titik tengah (f · x) tiap kelas
-3. Jumlahkan: Σ f · x = 515 dan Σ f = 30
-4. Bagi Σ f · x dengan Σ f: 515 ÷ 30
-5. Tuliskan hasilnya: mean ≈ 17,17 pcs",1 → 2 → 3 → 4 → 5
+L1-T5-MP,1,5,Matching,Tinggal satu langkah lagi sebelum laporan cokelat selesai: rata-rata penjualan per hari.,"Berdasarkan tabel penjualan cokelat, misalkan hanya dua kelas pertama (12–13 dan 14–15) yang dihitung. Pasangkan setiap besaran dengan nilainya.",Tabel Level 1 (cokelat),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Jumlah frekuensi (Σ f)  ↔  10
+2. Jumlah hasil kali f · x (Σ f · x)  ↔  139
+3. Mean dua kelas tersebut  ↔  13,9","1↔1, 2↔2, 3↔3"
 L2-T1-PG,2,1,PG,Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.,"Berdasarkan tabel penjualan permen, frekuensi kumulatif kelas 3,2–3,5 adalah ...",Tabel Level 2 (permen),"A. 5
 B. 11
 C. 21
@@ -66,11 +61,10 @@ D. 16",D
 L2-T1-TF,2,1,TF,Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.,"Berdasarkan tabel penjualan permen, pernyataan: frekuensi kumulatif kelas 2,8–3,1 adalah 6.",Tabel Level 2 (permen),"Benar
 Salah",Salah
 L2-T1-ISI,2,1,Isian,Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.,"Berdasarkan tabel penjualan permen, frekuensi kumulatif kelas 4,0–4,3 adalah ...",Tabel Level 2 (permen),-,27
-L2-T1-PRO,2,1,Prosedur,Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.,Urutkan langkah menyusun kolom frekuensi kumulatif pada tabel penjualan permen.,Tabel Level 2 (permen),"LANGKAH (urutan benar; game mengacaknya):
-1. Tuliskan frekuensi tiap kelas: 5, 6, 5, 5, 6, 3
-2. Frekuensi kumulatif kelas pertama sama dengan frekuensinya: 5
-3. Tambahkan frekuensi kelas berikutnya secara berurutan: 5 + 6 = 11, 11 + 5 = 16, 16 + 5 = 21, 21 + 6 = 27, 27 + 3 = 30
-4. Periksa bahwa frekuensi kumulatif terakhir sama dengan jumlah seluruh frekuensi, yaitu 30",1 → 2 → 3 → 4
+L2-T1-MP,2,1,Matching,Laporan permen mencatat berat permen yang terjual setiap hari. Bima mulai menyusun frekuensi kumulatif.,"Berdasarkan tabel penjualan permen, pasangkan setiap kelas dengan frekuensi kumulatifnya.",Tabel Level 2 (permen),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Kelas 2,8–3,1  ↔  11
+2. Kelas 3,2–3,5  ↔  16
+3. Kelas 4,0–4,3  ↔  27","1↔1, 2↔2, 3↔3"
 L2-T2-PG,2,2,PG,"Ayah bertanya, ""Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?"" Bima mencari kelas mediannya.","Berdasarkan tabel penjualan permen, banyak data n = 30, sehingga posisi median adalah n/2 = 15. Kelas median adalah ...",Tabel Level 2 (permen),"A. 2,8–3,1
 B. 3,2–3,5
 C. 3,6–3,9
@@ -78,11 +72,10 @@ D. 4,0–4,3",B
 L2-T2-TF,2,2,TF,"Ayah bertanya, ""Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?"" Bima mencari kelas mediannya.","Berdasarkan tabel penjualan permen, pernyataan: kelas median adalah 3,6–3,9 karena frekuensi kumulatifnya 21, yaitu lebih dari 15.",Tabel Level 2 (permen),"Benar
 Salah",Salah
 L2-T2-ISI,2,2,Isian,"Ayah bertanya, ""Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?"" Bima mencari kelas mediannya.","Berdasarkan tabel penjualan permen, nilai n/2, yaitu posisi median, adalah ...",Tabel Level 2 (permen),-,15
-L2-T2-PRO,2,2,Prosedur,"Ayah bertanya, ""Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?"" Bima mencari kelas mediannya.",Urutkan langkah menentukan kelas median pada tabel penjualan permen.,Tabel Level 2 (permen),"LANGKAH (urutan benar; game mengacaknya):
-1. Hitung banyak seluruh data: n = Σ f = 30
-2. Hitung posisi median: n/2 = 15
-3. Susun kolom frekuensi kumulatif: 5, 11, 16, 21, 27, 30
-4. Cari kelas pertama yang frekuensi kumulatifnya ≥ 15: kelas 3,2–3,5 (fk = 16), sehingga itulah kelas median",1 → 2 → 3 → 4
+L2-T2-MP,2,2,Matching,"Ayah bertanya, ""Penjualan permen yang berada di tengah-tengah data masuk kelas yang mana?"" Bima mencari kelas mediannya.","Berdasarkan tabel penjualan permen, data diurutkan dari yang terkecil. Pasangkan setiap data ke-… dengan kelas tempat data tersebut berada.",Tabel Level 2 (permen),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Data ke-3  ↔  Kelas 2,4–2,7
+2. Data ke-15  ↔  Kelas 3,2–3,5
+3. Data ke-29  ↔  Kelas 4,4–4,7","1↔1, 2↔2, 3↔3"
 L2-T3-PG,2,3,PG,"Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.","Berdasarkan tabel penjualan permen. Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05. Tepi bawah kelas median (L) adalah ...",Tabel Level 2 (permen),"A. 3,10
 B. 3,20
 C. 3,15
@@ -90,11 +83,10 @@ D. 3,25",C
 L2-T3-TF,2,3,TF,"Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.","Berdasarkan tabel penjualan permen. Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05. Pernyataan: panjang kelas (p), yaitu tepi atas dikurangi tepi bawah, adalah 0,4.",Tabel Level 2 (permen),"Benar
 Salah",Benar
 L2-T3-ISI,2,3,Isian,"Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.","Berdasarkan tabel penjualan permen, frekuensi kumulatif sebelum kelas median (F) adalah ...",Tabel Level 2 (permen),-,11
-L2-T3-PRO,2,3,Prosedur,"Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.","Urutkan langkah menentukan unsur-unsur rumus median pada tabel penjualan permen, sesuai urutan penulisan pada rumus (L, F, fm, lalu p). Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05.",Tabel Level 2 (permen),"LANGKAH (urutan benar; game mengacaknya):
-1. Tentukan kelas median, yaitu 3,2–3,5
-2. Tentukan tepi bawah kelas median: L = 3,2 − 0,05 = 3,15
-3. Tentukan frekuensi kumulatif sebelum kelas median: F = 11
-4. Tentukan frekuensi kelas median dan panjang kelas: fm = 5 dan p = 0,4",1 → 2 → 3 → 4
+L2-T3-MP,2,3,Matching,"Sebelum menghitung median, Bima menyiapkan unsur-unsur rumusnya satu per satu.","Berdasarkan tabel penjualan permen. Untuk data dengan satu angka desimal, tepi bawah = batas bawah − 0,05 dan tepi atas = batas atas + 0,05. Pasangkan setiap besaran pada kelas median dengan nilainya.",Tabel Level 2 (permen),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Tepi bawah kelas median  ↔  3,15
+2. Tepi atas kelas median  ↔  3,55
+3. Panjang kelas (p)  ↔  0,4","1↔1, 2↔2, 3↔3"
 L2-T4-PG,2,4,PG,Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.,"Berdasarkan tabel penjualan permen, median berat permen terjual per hari adalah ... kg.",Tabel Level 2 (permen),"A. 3,47
 B. 3,07
 C. 3,52
@@ -102,12 +94,10 @@ D. 3,55",A
 L2-T4-TF,2,4,TF,Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.,"Berdasarkan tabel penjualan permen, pernyataan: median berat permen terjual per hari adalah 3,47 kg.",Tabel Level 2 (permen),"Benar
 Salah",Benar
 L2-T4-ISI,2,4,Isian,Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.,"Berdasarkan tabel penjualan permen, median berat permen terjual per hari adalah ... kg.",Tabel Level 2 (permen),-,"3,47"
-L2-T4-PRO,2,4,Prosedur,Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.,Urutkan langkah menghitung median penjualan permen.,Tabel Level 2 (permen),"LANGKAH (urutan benar; game mengacaknya):
-1. Tuliskan rumus: Me = L + ((n/2 − F) / fm) × p
-2. Substitusikan nilainya: Me = 3,15 + ((15 − 11) / 5) × 0,4
-3. Hitung bagian dalam kurung: 4 / 5 = 0,8
-4. Kalikan dengan panjang kelas: 0,8 × 0,4 = 0,32
-5. Jumlahkan dengan tepi bawah: 3,15 + 0,32 = 3,47 kg",1 → 2 → 3 → 4 → 5
+L2-T4-MP,2,4,Matching,Langkah terakhir untuk laporan permen: Bima menghitung median penjualan.,"Berdasarkan tabel penjualan permen, pasangkan setiap bagian perhitungan median dengan hasilnya. Nilai yang dipakai: n/2 = 15, F = 11, fm = 5, p = 0,4.",Tabel Level 2 (permen),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. n/2 − F  ↔  4
+2. (n/2 − F) ÷ fm  ↔  0,8
+3. ((n/2 − F) ÷ fm) × p  ↔  0,32","1↔1, 2↔2, 3↔3"
 L3-T1-PG,3,1,PG,Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.,"Berdasarkan tabel penjualan mi instan, mean penjualan per hari adalah ... bungkus.",Tabel Level 3 (mi instan),"A. 44,5
 B. 46,3
 C. 46,5
@@ -115,11 +105,10 @@ D. 48,5",B
 L3-T1-TF,3,1,TF,Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.,"Berdasarkan tabel penjualan mi instan, pernyataan: mean penjualan mi instan per hari adalah 46,3 bungkus.",Tabel Level 3 (mi instan),"Benar
 Salah",Benar
 L3-T1-ISI,3,1,Isian,Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.,"Berdasarkan tabel penjualan mi instan, mean penjualan per hari adalah ... bungkus.",Tabel Level 3 (mi instan),-,"46,3"
-L3-T1-PRO,3,1,Prosedur,Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.,Urutkan langkah menghitung mean penjualan mi instan dari tabel berkelompok.,Tabel Level 3 (mi instan),"LANGKAH (urutan benar; game mengacaknya):
-1. Tentukan titik tengah tiap kelas: 28; 37; 46; 55; 64; 73
-2. Hitung hasil kali f · x tiap kelas: 140; 296; 276; 275; 256; 146
-3. Jumlahkan: Σ f · x = 1389 dan Σ f = 30
-4. Bagi: 1389 ÷ 30 = 46,3 bungkus",1 → 2 → 3 → 4
+L3-T1-MP,3,1,Matching,Laporan terakhir adalah penjualan mi instan. Ayah ingin tahu rata-rata penjualan per hari.,"Berdasarkan tabel penjualan mi instan, pasangkan setiap kelas dengan hasil kali frekuensi dan titik tengahnya (f · x).",Tabel Level 3 (mi instan),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Kelas 33–41  ↔  296
+2. Kelas 42–50  ↔  276
+3. Kelas 51–59  ↔  275","1↔1, 2↔2, 3↔3"
 L3-T2-PG,3,2,PG,Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.,"Berdasarkan tabel penjualan mi instan, median penjualan per hari adalah ... bungkus.",Tabel Level 3 (mi instan),"A. 41,5
 B. 46,3
 C. 50,5
@@ -127,12 +116,10 @@ D. 44,5",D
 L3-T2-TF,3,2,TF,Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.,"Berdasarkan tabel penjualan mi instan, pernyataan: kelas median adalah 33–41.",Tabel Level 3 (mi instan),"Benar
 Salah",Salah
 L3-T2-ISI,3,2,Isian,Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.,"Berdasarkan tabel penjualan mi instan, median penjualan per hari adalah ... bungkus.",Tabel Level 3 (mi instan),-,"44,5"
-L3-T2-PRO,3,2,Prosedur,Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.,Urutkan langkah menghitung median penjualan mi instan.,Tabel Level 3 (mi instan),"LANGKAH (urutan benar; game mengacaknya):
-1. Susun frekuensi kumulatif: 5, 13, 19, 24, 28, 30
-2. Hitung n/2 = 15, lalu tentukan kelas median: 42–50 (fk = 19 ≥ 15)
-3. Tentukan unsur rumus: L = 41,5; F = 13; fm = 6; p = 9
-4. Substitusikan: Me = 41,5 + ((15 − 13) / 6) × 9
-5. Hitung: Me = 41,5 + 3 = 44,5 bungkus",1 → 2 → 3 → 4 → 5
+L3-T2-MP,3,2,Matching,Sekarang Ayah ingin tahu nilai tengah penjualan mi instan.,"Berdasarkan tabel penjualan mi instan, pasangkan setiap besaran dengan nilainya.",Tabel Level 3 (mi instan),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Posisi median (n/2)  ↔  15
+2. Kelas median  ↔  42–50
+3. Median penjualan per hari  ↔  44,5","1↔1, 2↔2, 3↔3"
 L3-T3-PG,3,3,PG,"Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.","Berdasarkan tabel penjualan mi instan, Bima menghitung mean dan median penjualan per hari. Pernyataan yang benar adalah ...",Tabel Level 3 (mi instan),"A. Median lebih besar daripada mean, dengan selisih 1,8 bungkus
 B. Mean sama dengan median
 C. Mean lebih besar daripada median, dengan selisih 1,8 bungkus
@@ -140,9 +127,7 @@ D. Mean lebih besar daripada median, dengan selisih 18 bungkus",C
 L3-T3-TF,3,3,TF,"Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.","Berdasarkan tabel penjualan mi instan, pernyataan: median penjualan per hari lebih besar daripada mean-nya.",Tabel Level 3 (mi instan),"Benar
 Salah",Salah
 L3-T3-ISI,3,3,Isian,"Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.","Berdasarkan tabel penjualan mi instan, selisih antara mean dan median penjualan per hari (mean − median) adalah ... bungkus.",Tabel Level 3 (mi instan),-,"1,8"
-L3-T3-PRO,3,3,Prosedur,"Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.","Bima ingin membandingkan mean dan median penjualan mi instan. Ia menghitung mean terlebih dahulu, kemudian median, lalu membandingkannya. Urutkan langkah-langkahnya.",Tabel Level 3 (mi instan),"LANGKAH (urutan benar; game mengacaknya):
-1. Hitung titik tengah, f · x, Σ f · x, dan Σ f untuk mean
-2. Hitung mean = Σ f · x ÷ Σ f = 46,3
-3. Susun frekuensi kumulatif dan tentukan kelas median 42–50
-4. Hitung median dengan rumus: Me = 41,5 + ((15 − 13) / 6) × 9 = 44,5
-5. Bandingkan: mean − median = 46,3 − 44,5 = 1,8, sehingga mean lebih besar daripada median",1 → 2 → 3 → 4 → 5
+L3-T3-MP,3,3,Matching,"Untuk menutup laporan, Ayah meminta Bima membandingkan rata-rata dan nilai tengah penjualan mi instan.","Ayah ingin menutup laporan mi instan. Berdasarkan tabel penjualan mi instan, pasangkan setiap keperluan Ayah dengan nilai yang menjawabnya (dalam bungkus).",Tabel Level 3 (mi instan),"PASANGAN (urutan benar; game mengacak kolom kanan):
+1. Penjualan per hari bila seluruh penjualan dibagi rata ke 30 hari  ↔  46,3
+2. Nilai yang membagi data menjadi dua bagian sama banyak  ↔  44,5
+3. Selisih antara kedua ukuran di atas  ↔  1,8","1↔1, 2↔2, 3↔3"

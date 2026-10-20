@@ -102,30 +102,41 @@ func _run_test() -> void:
 	assert(quiz.is_solved == true, "Isian dengan koma harus valid")
 	print("  ✓ Soal Isian terverifikasi dengan toleransi penulisan koma desimal (15,8).")
 	
-	# 4. PENGUJIAN TIPE 4: PROSEDUR / LANGKAH URUTAN (L1-T1-PRO)
-	print("\n[4] Menguji Soal Tipe Prosedur (Urutan Langkah)...")
-	var q_pro = _get_variant(1, 1, "Prosedur")
-	gs.active_level_questions[4] = q_pro
+	# 4. PENGUJIAN TIPE 4: MATCHING / MENJODOHKAN (L1-T1-MP)
+	print("\n[4] Menguji Soal Tipe Matching (Menjodohkan)...")
+	var q_matching = _get_variant(1, 1, "Matching")
+	gs.active_level_questions[4] = q_matching
 	gs.current_point_index = 4
 	quiz._load_current_point_question()
-	assert(quiz.panel_procedure.visible == true, "Panel Prosedur harus terlihat")
-	assert(quiz.procedure_order_list.size() == 4, "Harus ada 4 langkah prosedur")
+	assert(quiz.panel_matching.visible == true, "Panel Matching harus terlihat")
+	assert(quiz.matching_left_col.get_child_count() == 3, "Harus ada 3 kartu kiri")
+	assert(quiz.matching_right_col.get_child_count() == 3, "Harus ada 3 kartu kanan")
 	
-	# Tukar langkah 0 dengan langkah 1 sehingga urutan keliru
-	quiz._move_procedure_item(0, 1)
-	quiz._on_check_procedure()
-	assert(gs.level_score == 200, "Skor 225 - 25 = 200 saat urutan keliru")
-	assert(quiz.is_solved == false, "Urutan salah tidak boleh solved")
+	# Pasangkan secara keliru
+	var valid_pairs = q_matching.get("valid_pairs", {})
+	quiz._on_left_item_pressed("L1")
+	quiz._on_right_item_pressed("R2" if valid_pairs["L1"] == "R1" else "R1")
+	quiz._on_left_item_pressed("L2")
+	quiz._on_right_item_pressed("R3" if valid_pairs["L2"] == "R2" else "R2")
+	quiz._on_left_item_pressed("L3")
+	var wrong_r3 = "R1"
+	for r in ["R1", "R2", "R3"]:
+		if not quiz.user_pairs.values().has(r):
+			wrong_r3 = r
+			break
+	quiz._on_right_item_pressed(wrong_r3)
+	quiz._on_check_matching()
+	assert(gs.level_score == 200, "Skor 225 - 25 = 200 saat pasangan keliru")
+	assert(quiz.is_solved == false, "Pasangan keliru tidak boleh solved")
 	
-	# Urutkan secara benar
-	var target_order = q_pro["correct_order"]
-	quiz.procedure_order_list.sort_custom(func(a, b):
-		return target_order.find(a["id"]) < target_order.find(b["id"])
-	)
-	quiz._on_check_procedure()
-	assert(gs.level_score == 300, "Skor 200 + 100 = 300 saat urutan benar")
-	assert(quiz.is_solved == true, "Urutan benar harus solved")
-	print("  ✓ Soal Prosedur terverifikasi (Evaluasi urutan langkah berhasil).")
+	# Pasangkan secara benar
+	for l_id in valid_pairs.keys():
+		quiz._on_left_item_pressed(l_id)
+		quiz._on_right_item_pressed(valid_pairs[l_id])
+	quiz._on_check_matching()
+	assert(gs.level_score == 300, "Skor 200 + 100 = 300 saat pasangan benar")
+	assert(quiz.is_solved == true, "Pasangan benar harus solved")
+	print("  ✓ Soal Matching terverifikasi (Evaluasi penjodohan berhasil).")
 	
 	# 5. PENGUJIAN PENYELESAIAN LEVEL PADA TITIK TERAKHIR (Titik 5)
 	print("\n[5] Menguji Titik Akhir & Penyelesaian Level...")

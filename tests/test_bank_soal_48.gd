@@ -5,7 +5,7 @@ var gs: Node
 
 func _init() -> void:
 	print("==================================================")
-	print("🎯 MEMVERIFIKASI BANK 48 SOAL & ROLL 25% PER TIPE")
+	print("🎯 MEMVERIFIKASI BANK 48 SOAL & ROLL 25% PER TIPE (DENGAN MATCHING)")
 	print("==================================================")
 	
 	var dm_script = load("res://scripts/autoload/data_manager.gd")
@@ -48,18 +48,19 @@ func _init() -> void:
 					"Isian":
 						assert(not str(v.get("correct_answer", "")).is_empty(), "Kunci isian tidak boleh kosong: %s" % v.get("id"))
 						assert(v.get("accepted_answers", []).size() >= 1, "Harus ada accepted_answers: %s" % v.get("id"))
-					"Prosedur":
-						assert(v.get("procedure_items", []).size() >= 3, "Prosedur harus minimal 3 langkah: %s" % v.get("id"))
-						assert(v.get("correct_order", []).size() == v.get("procedure_items", []).size(), "Order harus sesuai jumlah items: %s" % v.get("id"))
+					"Matching":
+						assert(v.get("left_items", []).size() == 3, "Matching harus ada 3 item kiri: %s" % v.get("id"))
+						assert(v.get("right_items", []).size() == 3, "Matching harus ada 3 item kanan: %s" % v.get("id"))
+						assert(v.get("valid_pairs", {}).size() == 3, "Matching harus ada 3 pasangan valid: %s" % v.get("id"))
 			
-			assert(types_present.has("PG") and types_present.has("TF") and types_present.has("Isian") and types_present.has("Prosedur"),
-				"Level %d Titik %d harus memuat 4 tipe lengkap (PG, TF, Isian, Prosedur)" % [lvl, p])
+			assert(types_present.has("PG") and types_present.has("TF") and types_present.has("Isian") and types_present.has("Matching"),
+				"Level %d Titik %d harus memuat 4 tipe lengkap (PG, TF, Isian, Matching)" % [lvl, p])
 	
-	print("  ✓ Seluruh 48 soal tervalidasi: Tiap titik memiliki varian lengkap PG, TF, Isian, dan Prosedur.")
+	print("  ✓ Seluruh 48 soal tervalidasi: Tiap titik memiliki varian lengkap PG, TF, Isian, dan Matching.")
 	
-	# 2. PENGUJIAN ROLL ACAN DENGAN PELUANG 25% TIAP JENIS
+	# 2. PENGUJIAN ROLL ACAK DENGAN PELUANG 25% TIAP JENIS
 	print("\n[2] Menguji distribusi acak (25% peluang per jenis soal)...")
-	var type_distribution = {"PG": 0, "TF": 0, "Isian": 0, "Prosedur": 0}
+	var type_distribution = {"PG": 0, "TF": 0, "Isian": 0, "Matching": 0}
 	var simulation_runs = 200
 	
 	for run in range(simulation_runs):
@@ -80,13 +81,13 @@ func _init() -> void:
 		
 	print("  ✓ Peluang pemilihan 4 tipe soal terbukti merata ~25% per jenis.")
 	
-	# 3. PENGUJIAN PENGACAKAN AWAL LANGKAH PROSEDUR DI QUIZ SCENE
-	print("\n[3] Menguji pengacakan langkah prosedur di QuizScene...")
+	# 3. PENGUJIAN PENGACAKAN AWAL KOLOM KANAN MATCHING DI QUIZ SCENE
+	print("\n[3] Menguji pengacakan kolom kanan Matching di QuizScene...")
 	gs.start_level(1)
-	# Paksa titik 4 menggunakan varian prosedur
+	# Paksa titik 4 menggunakan varian Matching
 	var variants_l1_t4 = dm.get_question_variants(1, 4)
 	for v in variants_l1_t4:
-		if v.get("type") == "Prosedur":
+		if v.get("type") == "Matching":
 			gs.active_level_questions[4] = v
 			break
 			
@@ -96,10 +97,14 @@ func _init() -> void:
 	root.add_child(quiz)
 	
 	process_frame.connect(func():
-		assert(quiz.current_question["type"] == "Prosedur", "Harus memuat tipe Prosedur")
-		var is_initial_match = quiz._is_procedure_matching(quiz.current_question["correct_order"])
-		assert(is_initial_match == false, "Urutan awal prosedur TIDAK boleh sudah terurut benar (harus teracak)")
-		print("  ✓ Urutan langkah prosedur terbukti teracak saat pertama kali ditampilkan.")
+		assert(quiz.current_question["type"] == "Matching", "Harus memuat tipe Matching")
+		var is_sequential = true
+		for i in range(quiz.shuffled_right_items.size()):
+			if quiz.shuffled_right_items[i].get("id") != "R%d" % (i + 1):
+				is_sequential = false
+				break
+		assert(is_sequential == false, "Kolom kanan Matching TIDAK boleh sudah terurut R1, R2, R3 (harus teracak)")
+		print("  ✓ Kolom kanan Matching terbukti teracak saat pertama kali ditampilkan.")
 		
 		print("\n==================================================")
 		print("🎉 SEMUA PENGUJIAN BANK 48 SOAL LULUS 100%!")

@@ -1,4 +1,4 @@
-extends SceneTree
+﻿extends SceneTree
 
 # Test LevelCompleteModal Phase 5 Styling (desain.md)
 # Memverifikasi tampilan pop-up perayaan penyelesaian level:
@@ -86,7 +86,7 @@ func _run_test() -> void:
 	print("  ✓ Tombol aksi terbukti bersih tanpa emoji dan berikon flat vector.")
 
 	# 2. VERIFIKASI SETUP LEVEL 2
-	print("\n[2] Memvalidasi LevelCompleteModal untuk Level 2 (Permen - Median)...")
+	print("\n[2] Memvalidasi LevelCompleteModal untuk Level 2 (Permen - Mean)...")
 	modal.setup_level_complete(2, 350, 400)
 	var h_sb_lvl2 = modal.header_banner.get_theme_stylebox("panel") as StyleBoxFlat
 	assert(h_sb_lvl2.bg_color.is_equal_approx(tm.COLOR_LVL2_PINK), "Warna header Level 2 harus Pink #FF6FAE")

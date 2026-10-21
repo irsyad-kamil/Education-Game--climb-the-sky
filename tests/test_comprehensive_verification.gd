@@ -1,4 +1,4 @@
-extends SceneTree
+﻿extends SceneTree
 
 var dm: Node
 var gs: Node
@@ -123,7 +123,7 @@ func _run_ui_verification() -> void:
 	assert(menu.btn_stage_1.disabled == false, "Btn Level 1 harus aktif")
 	assert(menu.btn_stage_2.disabled == false, "Btn Level 2 harus aktif (Level 1 sudah tamat)")
 	assert(menu.btn_stage_3.disabled == true, "Btn Level 3 harus masih terkunci")
-	assert("Level 2 (Median) Siap Dimainkan" in menu.status_label.text, "Status label harus mengarahkan ke Level 2")
+	assert("Level 2 Siap Dimainkan" in menu.status_label.text, "Status label harus mengarahkan ke Level 2")
 	print("  ✓ Tampilan menu sinkron dengan status unlock Level 2")
 	
 	# Simulasikan penyelesaian Level 2

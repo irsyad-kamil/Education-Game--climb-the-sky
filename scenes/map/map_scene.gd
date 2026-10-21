@@ -1,4 +1,4 @@
-extends Control
+﻿extends Control
 class_name MapScene
 
 # MapScene v2.0 (Modern, Clean, & Palette desain.md)
@@ -128,8 +128,8 @@ func _update_hud() -> void:
 	var tm = _get_tm()
 	var level_names = {
 		1: "Level 1: Konsep & Perhitungan Rata-rata (Mean)",
-		2: "Level 2: Konsep & Penentuan Nilai Tengah (Median)",
-		3: "Level 3: Evaluasi Komparatif Mean & Median"
+		2: "Level 2: Perhitungan Rata-rata Tabel Frekuensi (Mean)",
+		3: "Level 3: Analisis & Evaluasi Rata-rata (Mean)"
 	}
 
 	var lvl = gs.current_level if gs else 1

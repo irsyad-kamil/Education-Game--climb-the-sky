@@ -1,4 +1,4 @@
-extends Control
+﻿extends Control
 class_name CampfireScene
 
 @onready var title_label: Label = $TopBar/HBoxContainer/TitleLabel

@@ -7,16 +7,16 @@
       "flavor_intro": "Malam semakin larut. Di meja belajar sederhananya, Bima memandangi secarik catatan kecil yang ditinggalkan ibunya bersama secangkir teh hangat: 'Ibu selalu percaya kamu bisa, Nak.'",
       "slides": [
         {
-          "heading": "Mengapa Kita Perlu Ukuran Pemusatan?",
-          "body": "Bima menyadari, untuk mengetahui apakah nilai sekolahnya cukup baik untuk lulus dan meraih beasiswa, ia tidak bisa hanya melihat satu nilai terbaik atau terburuk.\n\nIa membutuhkan satu nilai representatif (wakil) yang menggambarkan keseluruhan kumpulan datanya."
+          "heading": "Mengapa Kita Perlu Menghitung Mean?",
+          "body": "Bima menyadari, untuk mengetahui performa penjualan toko sembako keluarga, ia tidak bisa hanya melihat satu hari penjualan tertinggi atau terendah.\n\nIa membutuhkan satu nilai rata-rata (mean) yang merepresentasikan keseluruhan penjualan harian."
         },
         {
-          "heading": "Tiga Ukuran Pemusatan Data Tunggal",
-          "body": "1. Mean (Rata-rata Hitung):\n   Jumlah seluruh nilai dibagi banyak data. Ini adalah titik keseimbangan matematis.\n\n2. Median (Nilai Tengah):\n   Nilai yang berada tepat di tengah SETELAH data diurutkan dari terkecil ke terbesar.\n\n3. Modus (Nilai Paling Sering):\n   Nilai atau angka yang memiliki frekuensi kemunculan terbanyak."
+          "heading": "Konsep Mean (Rata-rata Hitung)",
+          "body": "Mean (Rata-rata Hitung):\nJumlah seluruh nilai data dibagi dengan banyak data (N).\n\nMean merupakan titik keseimbangan matematis dari seluruh kumpulan data penjualan."
         },
         {
-          "heading": "Tips Menjawab untuk Bima",
-          "body": "• Untuk mencari Median: Selalu urutkan data terlebih dahulu!\n• Jika banyak data genap, median adalah rata-rata dari dua nilai di tengah.\n• Modus bisa lebih dari satu (bimodus/multimodus), atau bahkan tidak ada jika semua data muncul sama seringnya."
+          "heading": "Tips Menghitung Mean",
+          "body": "• Jumlahkan semua nilai data secara teliti.\n• Hitung total banyak data yang ada.\n• Bagi total penjumlahan nilai dengan banyak data: Mean = Σx / N."
         }
       ]
     },
@@ -31,8 +31,8 @@
           "body": "Ketika data semakin banyak, kita menyajikannya dalam tabel frekuensi (Nilai vs Frekuensi).\n\nRumus Mean:\nMean = Σ(x · f) / Σf\n(Kalikan tiap nilai dengan frekuensinya, jumlahkan semuanya, lalu bagi dengan total frekuensi)."
         },
         {
-          "heading": "Mencari Median pada Tabel Frekuensi",
-          "body": "1. Hitung total frekuensi (N = Σf).\n2. Tentukan posisi tengah (N / 2).\n3. Gunakan frekuensi kumulatif untuk menemukan pada nilai keberapakah letak data tengah tersebut."
+          "heading": "Langkah Menghitung Mean pada Tabel Frekuensi",
+          "body": "1. Kalikan setiap nilai (x) dengan frekuensinya (f).\n2. Jumlahkan hasil perkalian tersebut: Σ(x · f).\n3. Hitung total seluruh frekuensi: N = Σf.\n4. Bagi total perkalian dengan total frekuensi: Mean = Σ(x · f) / Σf."
         }
       ]
     },
@@ -44,11 +44,11 @@
       "slides": [
         {
           "heading": "Apa itu Nilai Ekstrem (Outlier)?",
-          "body": "Nilai ekstrem adalah angka yang nilainya jauh melompat lebih besar atau lebih kecil dibanding data lainnya dalam satu kelompok.\n\nContoh: Nilai ulangan 70, 75, 75, 80, dan satu orang mendapat nilai 10."
+          "body": "Nilai ekstrem adalah angka yang nilainya jauh melompat lebih besar atau lebih kecil dibanding data lainnya dalam satu kelompok.\n\nContoh: Penjualan harian rata-rata berkisar 15-20 pcs, lalu ada satu hari penjualan mencapai 100 pcs."
         },
         {
-          "heading": "Mean vs Median terhadap Outlier",
-          "body": "• Mean SANGAT rentan terpengaruh nilai ekstrem. Satu nilai yang anjlok atau melompat tinggi akan menarik rata-rata secara signifikan.\n\n• Median KEBAL (resisten) terhadap nilai ekstrem, karena median hanya bergantung pada urutan posisi tengah, bukan besar nilai di ujung data."
+          "heading": "Sensitivitas Mean terhadap Outlier",
+          "body": "• Mean SANGAT rentan terpengaruh oleh nilai ekstrem (outlier).\n\n• Satu nilai penjualan yang melompat tinggi atau anjlok drastis akan menarik nilai rata-rata secara signifikan."
         }
       ]
     },
@@ -60,7 +60,7 @@
       "slides": [
         {
           "heading": "Konsep Rata-Rata Gabungan",
-          "body": "Jika Kelompok A (banyak siswa n₁, rata-rata x̄₁) digabung dengan Kelompok B (banyak siswa n₂, rata-rata x̄₂):\n\nMean Gabungan = (n₁ · x̄₁ + n₂ · x̄₂) / (n₁ + n₂)\n\nIngat: Jangan langsung merata-ratakan kedua rata-rata jika jumlah anggotanya berbeda!"
+          "body": "Jika Kelompok A (banyak data n₁, rata-rata x̄₁) digabung dengan Kelompok B (banyak data n₂, rata-rata x̄₂):\n\nMean Gabungan = (n₁ · x̄₁ + n₂ · x̄₂) / (n₁ + n₂)\n\nIngat: Jangan langsung menjumlahkan dan membagi dua kedua rata-rata jika banyak anggotanya berbeda!"
         }
       ]
     },
@@ -72,11 +72,11 @@
       "slides": [
         {
           "heading": "Memahami Data Berkelompok (Interval Kelas)",
-          "body": "Pada data besar, angka dikelompokkan ke dalam interval (contoh: 51–60, 61–70).\n\nUntuk menghitung perkiraan Mean:\n1. Tentukan titik tengah tiap kelas (xᵢ = [Batas Bawah + Batas Atas] / 2).\n2. Kalikan titik tengah dengan frekuensinya (xᵢ · fᵢ).\n3. Jumlahkan dan bagi dengan total frekuensi."
+          "body": "Pada data besar, angka dikelompokkan ke dalam interval (contoh: 51–60, 61–70).\n\nUntuk menghitung perkiraan Mean:\n1. Tentukan titik tengah tiap kelas (xᵢ = [Batas Bawah + Batas Atas] / 2).\n2. Kalikan titik tengah dengan frekuensinya (xᵢ · fᵢ).\n3. Jumlahkan dan bagi dengan total frekuensi: Mean = Σ(xᵢ · fᵢ) / Σf."
         },
         {
-          "heading": "Memilih Ukuran Pemusatan yang Bijak",
-          "body": "Dalam dunia nyata:\n• Gunakan Mean untuk data yang tersebar merata tanpa nilai ekstrem.\n• Gunakan Median untuk data yang timpang (seperti penghasilan penduduk atau harga rumah).\n• Gunakan Modus untuk menentukan inventaris barang (seperti ukuran pakaian atau sepatu yang paling laris)."
+          "heading": "Penerapan Mean dalam Pengambilan Keputusan",
+          "body": "Dalam pengelolaan toko sembako:\n• Mean digunakan untuk merencanakan rata-rata restok barang mingguan.\n• Mengetahui rata-rata penjualan membantu mencegah kekurangan atau penumpukan stok."
         }
       ]
     },
@@ -87,8 +87,8 @@
       "flavor_intro": "Melihat gemerlap lampu kota dari ketinggian. Beban utang keluarga telah berkurang drastis berkat ketekunannya (+5 HP).",
       "slides": [
         {
-          "heading": "Sifat Transformasi Data",
-          "body": "Jika setiap data dikali c lalu ditambah d:\n• Mean baru = (c · Mean lama) + d\n• Median baru = (c · Median lama) + d\n• Modus baru = (c · Modus lama) + d\n\nSeluruh ukuran pemusatan mengalami perubahan yang sama persis mengikuti operasi perkalian dan penjumlahan tersebut."
+          "heading": "Sifat Transformasi Data pada Mean",
+          "body": "Jika setiap data dikali c lalu ditambah d:\n• Mean baru = (c · Mean lama) + d\n\nOperasi perkalian dan penambahan pada setiap data akan langsung mengubah nilai rata-rata (mean) secara linier."
         }
       ]
     },
@@ -100,7 +100,7 @@
       "slides": [
         {
           "heading": "Persiapan Evaluasi Akhir",
-          "body": "Bima telah menguasai seluruh konsep dari data tunggal, frekuensi, nilai ekstrem, hingga data kelompok.\n\nKini saatnya membuktikan bahwa kerja keras, kejujuran pada ilmu, dan bakti kepada keluarga mampu mengubah takdir seseorang."
+          "body": "Bima telah menguasai seluruh konsep Mean mulai dari data tunggal, tabel frekuensi, nilai ekstrem, hingga data berkelompok.\n\nKini saatnya membuktikan bahwa kerja keras, ketelitian perhitungan, dan bakti kepada keluarga mampu membuahkan hasil terbaik."
         }
       ]
     }

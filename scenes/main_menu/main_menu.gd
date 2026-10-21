@@ -1,4 +1,4 @@
-extends Control
+﻿extends Control
 class_name MainMenu
 
 # MainMenu v2.0 (Desain Modern, Responsif, & Palet desain.md)
@@ -183,9 +183,9 @@ func _update_ui_state() -> void:
 
 	gs.load_progress()
 
-	# 1. Level 1: Mountain (Mean) - Selalu Terbuka
+	# 1. Level 1 - Selalu Terbuka
 	btn_stage_1.disabled = false
-	var text_1 = "Level 1: Mountain (Mean)\n5 Titik Soal • Skor Maks: 500"
+	var text_1 = "Level 1\n5 Titik Soal • Skor Maks: 500"
 	var info_1_text = "5 Titik Soal • Max Skor: 500"
 	if gs.is_level_1_cleared:
 		var best_1 = int(gs.best_scores.get(1, 0))
@@ -195,7 +195,7 @@ func _update_ui_state() -> void:
 	if card_1_info:
 		card_1_info.text = info_1_text
 
-	# 2. Level 2: Underground (Median) - Terbuka setelah Level 1 selesai
+	# 2. Level 2 - Terbuka setelah Level 1 selesai
 	var is_unlocked_2 = gs.is_level_unlocked(2)
 	btn_stage_2.disabled = not is_unlocked_2
 	if lock_overlay_2:
@@ -203,20 +203,20 @@ func _update_ui_state() -> void:
 	var text_2 = ""
 	var info_2_text = ""
 	if is_unlocked_2:
-		text_2 = "Level 2: Underground (Median)\n4 Titik Soal • Skor Maks: 400"
+		text_2 = "Level 2\n4 Titik Soal • Skor Maks: 400"
 		info_2_text = "4 Titik Soal • Max Skor: 400"
 		if gs.is_level_2_cleared:
 			var best_2 = int(gs.best_scores.get(2, 0))
 			text_2 += " | Skor Terbaik: %d" % best_2
 			info_2_text = "Selesai • Skor Terbaik: %d" % best_2
 	else:
-		text_2 = "Level 2: Underground (Median)\n[Terkunci - Selesaikan Level 1 Terlebih Dahulu]"
+		text_2 = "Level 2\n[Terkunci - Selesaikan Level 1 Terlebih Dahulu]"
 		info_2_text = "Terkunci (Selesaikan Level 1)"
 	btn_stage_2.text = text_2
 	if card_2_info:
 		card_2_info.text = info_2_text
 
-	# 3. Level 3: Sky (Evaluasi Komparatif Mean & Median) - Terbuka setelah Level 2 selesai
+	# 3. Level 3 - Terbuka setelah Level 2 selesai
 	var is_unlocked_3 = gs.is_level_unlocked(3)
 	btn_stage_3.disabled = not is_unlocked_3
 	if lock_overlay_3:
@@ -224,14 +224,14 @@ func _update_ui_state() -> void:
 	var text_3 = ""
 	var info_3_text = ""
 	if is_unlocked_3:
-		text_3 = "Level 3: Sky (Evaluasi Komparatif)\n3 Titik Soal • Skor Maks: 300"
+		text_3 = "Level 3\n3 Titik Soal • Skor Maks: 300"
 		info_3_text = "3 Titik Soal • Max Skor: 300"
 		if gs.is_level_3_cleared:
 			var best_3 = int(gs.best_scores.get(3, 0))
 			text_3 += " | Skor Terbaik: %d" % best_3
 			info_3_text = "Selesai • Skor Terbaik: %d" % best_3
 	else:
-		text_3 = "Level 3: Sky (Evaluasi Komparatif)\n[Terkunci - Selesaikan Level 2 Terlebih Dahulu]"
+		text_3 = "Level 3\n[Terkunci - Selesaikan Level 2 Terlebih Dahulu]"
 		info_3_text = "Terkunci (Selesaikan Level 2)"
 	btn_stage_3.text = text_3
 	if card_3_info:
@@ -239,11 +239,11 @@ func _update_ui_state() -> void:
 
 	# Status Label di Layar Pilih Level
 	if not gs.is_level_1_cleared:
-		status_label.text = "Pemain Baru: Memulai Petualangan di Level 1 (Mean)"
+		status_label.text = "Pemain Baru: Memulai Petualangan di Level 1"
 	elif not gs.is_level_2_cleared:
-		status_label.text = "Level 1 Selesai! Level 2 (Median) Siap Dimainkan"
+		status_label.text = "Level 1 Selesai! Level 2 Siap Dimainkan"
 	elif not gs.is_level_3_cleared:
-		status_label.text = "Level 2 Selesai! Level 3 (Kombinasi) Siap Dimainkan"
+		status_label.text = "Level 2 Selesai! Level 3 Siap Dimainkan"
 	else:
 		status_label.text = "Prestasi: Seluruh Level (1, 2, & 3) Telah Berhasil Diselesaikan!"
 

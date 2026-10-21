@@ -1,4 +1,4 @@
-extends Control
+﻿extends Control
 class_name LevelCompleteModalUI
 
 # LevelCompleteModalUI v1.0 (desain.md Architecture)
@@ -48,8 +48,8 @@ func setup_level_complete(lvl: int, final_score: int, best_score: int) -> void:
 	# Header Title & Subtitle
 	var level_titles = {
 		1: "Level 1: Cokelat (Mean)",
-		2: "Level 2: Permen (Median)",
-		3: "Level 3: Mi Instan (Evaluasi Komparatif)"
+		2: "Level 2: Permen (Mean)",
+		3: "Level 3: Mi Instan (Mean)"
 	}
 	title_label.text = "%s SELESAI!" % level_titles.get(lvl, "LEVEL %d" % lvl).to_upper()
 	title_label.add_theme_color_override("font_color", tm.COLOR_TEXT_NAVY if lvl == 3 else Color(1, 1, 1, 1))
@@ -97,13 +97,13 @@ func setup_level_complete(lvl: int, final_score: int, best_score: int) -> void:
 	
 	# Unlock Announcement Text
 	if lvl == 1:
-		unlock_text.text = "Level 2 (Permen - Median) Kini Terbuka di Menu Level!"
+		unlock_text.text = "Level 2 (Penjualan Permen) Kini Terbuka di Menu Level!"
 		btn_continue.text = "Pilih Level Berikutnya"
 	elif lvl == 2:
-		unlock_text.text = "Level 3 (Mi Instan - Komparatif) Kini Terbuka di Menu Level!"
+		unlock_text.text = "Level 3 (Penjualan Mi Instan) Kini Terbuka di Menu Level!"
 		btn_continue.text = "Pilih Level Berikutnya"
 	else:
-		unlock_text.text = "Selamat! Seluruh materi Mean & Median telah berhasil kamu kuasai!"
+		unlock_text.text = "Selamat! Seluruh materi Mean (Rata-rata) telah berhasil kamu kuasai!"
 		btn_continue.text = "Selesai & Ke Menu Utama"
 	
 	visible = true

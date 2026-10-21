@@ -1,4 +1,4 @@
-extends Control
+﻿extends Control
 class_name QuizScene
 
 # QuizScene v2.0 (Modern, Bright, & Central Palette desain.md)
@@ -189,8 +189,8 @@ func _update_top_bar() -> void:
 
 	var level_titles = {
 		1: "Konsep Rata-rata (Mean)",
-		2: "Konsep Nilai Tengah (Median)",
-		3: "Evaluasi Komparatif Mean & Median"
+		2: "Mean Data Tabel Frekuensi",
+		3: "Analisis & Evaluasi Mean"
 	}
 
 	# Label & Badge level

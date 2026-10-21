@@ -1,4 +1,4 @@
-extends SceneTree
+﻿extends SceneTree
 
 var dm: Node
 var gs: Node
@@ -46,7 +46,7 @@ func _run_test() -> void:
 	assert(menu.btn_stage_2.disabled == false, "Btn Level 2 harus terbuka")
 	assert(menu.btn_stage_3.disabled == true, "Btn Level 3 harus masih terkunci")
 	assert("Skor Terbaik: 450" in menu.btn_stage_1.text, "Teks Level 1 harus menampilkan skor terbaik 450")
-	assert("Level 2 (Median) Siap Dimainkan" in menu.status_label.text, "Status label harus mengarahkan ke Level 2")
+	assert("Level 2 Siap Dimainkan" in menu.status_label.text, "Status label harus mengarahkan ke Level 2")
 	print("[PASS] State after Level 1 cleared verified (Level 2 unlocked, best score displayed).")
 	
 	# 3. State setelah Level 2 Cleared
@@ -57,7 +57,7 @@ func _run_test() -> void:
 	assert(menu.btn_stage_2.disabled == false, "Btn Level 2 harus aktif")
 	assert(menu.btn_stage_3.disabled == false, "Btn Level 3 harus sekarang terbuka")
 	assert("Skor Terbaik: 375" in menu.btn_stage_2.text, "Teks Level 2 harus menampilkan skor terbaik 375")
-	assert("Level 3 (Kombinasi) Siap Dimainkan" in menu.status_label.text, "Status label harus mengarahkan ke Level 3")
+	assert("Level 3 Siap Dimainkan" in menu.status_label.text, "Status label harus mengarahkan ke Level 3")
 	print("[PASS] State after Level 2 cleared verified (Level 3 unlocked, best score displayed).")
 	
 	# 4. State setelah Semua Level Cleared
